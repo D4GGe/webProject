@@ -17,6 +17,9 @@ public abstract class Generic_post {
     int id;
     Date date;
     String content;
+    int user_id;
+
+
     
 public String get_name(){
     return name;

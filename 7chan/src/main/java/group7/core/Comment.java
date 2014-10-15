@@ -6,6 +6,8 @@
 
 package group7.core;
 
+import java.util.Date;
+
 /**
  *
  * @author Daniel
@@ -13,5 +15,18 @@ package group7.core;
 public class Comment extends Generic_post {
     
     
+   public Comment(int id, String name, Date date,String content){
+       this.id = id;
+       this.name =name;
+       this.date = date;
+       this.content = content;
+       
+   }
     
+   public Comment(){
+       this.id = 1;
+       this.name = "rubrik";
+       this.date = new Date();
+       this.content = "content post";
+   }
 }

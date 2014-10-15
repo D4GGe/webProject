@@ -16,6 +16,14 @@ public class User {
     int id;
     int nrPosts;
     int nrComments;
+    // constructor for testes
+    public User(){
+       this.name = "sample";
+       this.password = "sample";
+       this.id =1;
+       this.nrComments = 0;
+       this.nrPosts = 1;
+    }
                    
     public String get_name(){
         return name;

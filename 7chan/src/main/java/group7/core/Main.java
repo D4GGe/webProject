@@ -13,8 +13,19 @@ package group7.core;
 public class Main {
     User user;
     PostList<Post> posts;
+    public Main(){
+        user = new User();
+        posts = new PostList<Post>();
+        posts.add(new Post());
+        posts.add(new Post());
+    }
     
-    
+    public User get_user(){
+        return user;
+    }
+    public PostList<Post> get_posts(){
+        return posts;
+    }
     
     
 }
