@@ -6,7 +6,13 @@
 
 package group7.core;
 
-
-public class PostListImpl extends PostList {
+/**
+ *
+ * @author Daniel
+ */
+public class Main {
+    User user;
+    PostList<Post> posts;
+    
     
 }

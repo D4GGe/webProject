@@ -11,6 +11,8 @@ package group7.core;
  * @author Daniel
  */
 public class Post extends Generic_post{
+   PostList<Comment> comments;
+   
    
     
 }
