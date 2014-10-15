@@ -1,5 +1,6 @@
 package group7.ctrl;
 
+import group7.core.Main;
 import java.io.Serializable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -16,6 +17,9 @@ import javax.inject.Named;
 @RequestScoped
 public class PostBB implements Serializable{
     
-    
+@Inject
+public PostBB (Main main){
+        
+    }
     
 }

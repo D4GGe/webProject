@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet library="css" name="bootstrap.css"  />
+        <h:outputStylesheet library="css" name="default.css"  />
+        <title>7chan</title>
+    </h:head>
+
+    <h:body>
+        <div id="topHalf">
+            <div class="row">
+              <div class="col-md-9">
+                        <img src="../resources/img/banner.jpg"></img>
+                </div>
+                <div id="Space" class="col-md-1"></div>
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-default btn-block">Login</button>
+                    <br></br>
+                    <button type="button" class="btn btn-default btn-block">Register</button>
+                </div>
+            </div>
+            
+            <div class="row">
+                <br></br>
+                <nav class="navbar navbar-default col-md-9" role="navigation">
+                    <h:link value="New Post" class="navbar-brand" outcome="newPost" />
+                    <h:link value="User" class="navbar-brand" outcome="user" />
+                    <h:link value="Legacy" class="navbar-brand" outcome="legacy" />
+                    <h:link value="Recent" class="navbar-brand" outcome="recent" />
+                    <h:link value="About" class="navbar-brand" outcome="about" />            
+                </nav>
+            </div>
+        </div>
+        <div id="bottomHalf">
+            <div class="row">
+                <div class="col-md-2">
+                    <img src="../resources/img/goaticon.png"></img><br></br>
+                    <p class="text-right">
+                        name<br></br>
+                        # posts 
+                    </p>
+                </div>
+                <div id="content" class="well col-md-7">
+                    <ui:insert name="content">Content</ui:insert>
+                </div>
+            </div>
+        </div>
+       
+        
+        <footer>
+            <p> ThisIsFooter</p> 
+        </footer>
+    </h:body>
+
+</html>
