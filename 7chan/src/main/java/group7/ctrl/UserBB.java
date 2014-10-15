@@ -6,27 +6,25 @@ import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-/**
- *
  * @author Richard
  */
 @Named("user")
 @SessionScoped
 public class UserBB implements Serializable{
     
-    //private final String password;
+    private final User password;
     private final User name;
     
     @Inject
-    public UserBB(User name){
+    public UserBB(User name, User password){
         this.name = name;
+        this.password = password;
     }
         
     public User getName(){
             return name;
+        }
+    public User getPassword(){
+            return password;
         }
 }
