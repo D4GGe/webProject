@@ -43,6 +43,14 @@ public void set_id (int id){
     this.id = id;
 }
 
+public void set_date(Date date){
+    this.date = date;
+}
+
+public void set_content(String con){
+    this.content = con;
+}
+
 
 
     
