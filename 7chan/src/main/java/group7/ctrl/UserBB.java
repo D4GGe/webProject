@@ -20,7 +20,8 @@ public class UserBB implements Serializable{
         this.name = name;
         this.password = password;
     }
-        
+    
+    //Unclear whether or not these following commands are necessary for the bean!
     public User getName(){
             return name;
         }

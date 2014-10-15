@@ -16,10 +16,12 @@ import javax.inject.Named;
 @Named
 @RequestScoped
 public class PostBB implements Serializable{
+
+    private final Main reg;
     
 @Inject
-public PostBB (Main main){
-        
+public PostBB (Main main) throws InstantiationException, IllegalAccessException{
+        this.reg = Main.class.newInstance();
     }
     
 }
