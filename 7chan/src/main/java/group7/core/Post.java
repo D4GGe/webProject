@@ -13,7 +13,7 @@ import java.util.Date;
  * @author Daniel
  */
 public class Post extends Generic_post{
-   PostList<Comment> comments;
+   CommentsList<Comment> comments;
    
    public Post(int id, String name, Date date,String content){
        this.id = id;
@@ -28,13 +28,17 @@ public class Post extends Generic_post{
        this.name = "rubrik";
        this.date = new Date();
        this.content = "content post";
-       comments =new PostList<Comment>();
+       comments =new CommentsList<Comment>();
        comments.add(new Comment());
        comments.add(new Comment());
    }
    
-   public void set_comments(PostList<Comment> comments){
+   public void set_comments(CommentsList<Comment> comments){
        this.comments = comments;
+   }
+   public void add_comment(Comment a){
+       comments.add(a);
+       
    }
    
     
