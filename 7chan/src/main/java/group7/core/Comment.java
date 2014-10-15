@@ -23,4 +23,10 @@ public class Comment extends Generic_post {
        
    }
     
+   public Comment(){
+       this.id = 1;
+       this.name = "rubrik";
+       this.date = new Date();
+       this.content = "content post";
+   }
 }

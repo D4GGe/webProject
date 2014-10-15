@@ -22,6 +22,16 @@ public class Post extends Generic_post{
        this.content = content;
        
    }
+   //for testing
+   public Post(){
+       this.id = 1;
+       this.name = "rubrik";
+       this.date = new Date();
+       this.content = "content post";
+       comments =new PostList<Comment>();
+       comments.add(new Comment());
+       comments.add(new Comment());
+   }
    
    public void set_comments(PostList<Comment> comments){
        this.comments = comments;
