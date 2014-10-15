@@ -16,6 +16,7 @@ public class Comment extends Generic_post {
     int post_id;
     
    public Comment(int id, String name, Date date,String content){
+       
        this.id = id;
        this.name =name;
        this.date = date;

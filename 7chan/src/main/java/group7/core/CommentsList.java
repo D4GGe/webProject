@@ -10,6 +10,7 @@ package group7.core;
  *
  * @author Daniel
  */
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,9 +22,7 @@ import java.util.logging.Logger;
  *
  * @author Daniel
  */
-public class CommentsList<t> extends ArrayList<t>   {
-    public CommentsList(int id){
-        
-    }
+public class CommentsList<Comment> extends ArrayList<Comment>   {
+    
     
 }
