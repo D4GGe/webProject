@@ -12,19 +12,24 @@ import javax.inject.Named;
 @SessionScoped
 public class UserBB implements Serializable{
     
-    private final User password;
-    private final User name;
+    private int id;
+    private String password;
+    private String name;
     
     @Inject
-    public UserBB(User name, User password){
+    public UserBB(String name, String password){
         this.name = name;
         this.password = password;
     }
+    
+    public int getId(){
+        return id;
+    }
         
-    public User getName(){
+    public String getName(){
             return name;
         }
-    public User getPassword(){
+    public String getPassword(){
             return password;
         }
 }
