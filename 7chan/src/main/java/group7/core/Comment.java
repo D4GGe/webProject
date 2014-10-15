@@ -10,7 +10,7 @@ package group7.core;
  *
  * @author Daniel
  */
-public class comment extends Generic_post {
+public class Comment extends Generic_post {
     
     
     
