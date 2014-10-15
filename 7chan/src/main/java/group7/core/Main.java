@@ -20,7 +20,12 @@ public class Main {
         posts.add(new Post());
     }
     
-    
+    public User get_user(){
+        return user;
+    }
+    public PostList<Post> get_posts(){
+        return posts;
+    }
     
     
 }
