@@ -22,16 +22,15 @@ public class UserBB implements Serializable{
         this.password = password;
     }
     
-<<<<<<< HEAD
+
     //Unclear whether or not these following commands are necessary for the bean!
-    public User getName(){
-=======
+   
+
     public int getId(){
         return id;
     }
         
     public String getName(){
->>>>>>> master
             return name;
         }
     public String getPassword(){
