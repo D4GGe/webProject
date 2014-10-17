@@ -6,15 +6,11 @@
 
 package group7.core;
 
-import java.util.ArrayList;
-import java.util.List;
-
-
 /**
  *
  * @author Daniel
  */
-public class PostList<t> extends ArrayList<t>   {
-    
-    
+public interface IForum {
+    public IUserContainer getUserContainer();
+    public IPostContainer getPostContainer();
 }

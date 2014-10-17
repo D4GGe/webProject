@@ -6,40 +6,39 @@
 
 package group7.core;
 
-import java.util.Date;
+import java.sql.Time;
+import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import persistence.AbstractEntity;
+
 
 /**
  *
  * @author Daniel
  */
-public class Post extends Generic_post{
-   CommentsList<Comment> comments;
-   
-   public Post(int id, String name, Date date,String content){
-       this.id = id;
+@Entity
+public class Post extends AbstractEntity {
+    private String name;
+    private Time   time;
+    private String content;
+    @OneToMany
+    private List<Comment> comments;
+    @OneToOne
+    private User user;
+   public Post( String name, Time time,String content){
        this.name =name;
-       this.date = date;
+       
+       this.time = time;
        this.content = content;
        
-   }
+}
+   
    //for testing
    public Post(){
-       this.id = 1;
-       this.name = "rubrik";
-       this.date = new Date();
-       this.content = "content post";
-       comments =new CommentsList<Comment>();
-       comments.add(new Comment());
-       comments.add(new Comment());
    }
    
-   public void set_comments(CommentsList<Comment> comments){
-       this.comments = comments;
-   }
-   public void add_comment(Comment a){
-       comments.add(a);
-       
-   }
    
     
 }

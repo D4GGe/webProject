@@ -6,28 +6,41 @@
 
 package group7.core;
 
-import java.util.Date;
+import java.sql.Time;
+import javax.persistence.Entity;
+import javax.persistence.OneToOne;
+import persistence.AbstractEntity;
 
 /**
  *
  * @author Daniel
  */
-public class Comment extends Generic_post {
-    int post_id;
+@Entity
+public class Comment extends AbstractEntity {
     
-   public Comment(int id, String name, Date date,String content){
-       
-       this.id = id;
-       this.name =name;
-       this.date = date;
-       this.content = content;
-       
-   }
+    private Time time;
+    private String data;
+    @OneToOne
+    private User user;
+
     
-   public Comment(){
-       this.id = 1;
-       this.name = "rubrik";
-       this.date = new Date();
-       this.content = "content post";
-   }
+    public Comment(){
+        
+    }
+    
+    public Comment(Time a, String data , User user){
+        this.time = a;
+        this.data = data;
+        this.user = user;
+        
+    }
+    
+    public Time getTime(){
+        return time;
+        
+    }
+    public String getData(){
+        return data;
+    }
+    
 }

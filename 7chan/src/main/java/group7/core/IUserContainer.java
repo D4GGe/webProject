@@ -6,23 +6,16 @@
 
 package group7.core;
 
-/**
- *
- * @author Daniel
- */
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
+import javax.ejb.Local;
+import persistence.IDAO;
 
 /**
  *
  * @author Daniel
  */
-public class CommentsList<Comment> extends ArrayList<Comment>   {
+@Local
+public interface IUserContainer extends IDAO<User,Long> {
     
-    
+    public User login(String name, String password);
 }

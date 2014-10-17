@@ -6,35 +6,36 @@
 
 package group7.core;
 
+import javax.persistence.Entity;
+import persistence.AbstractEntity;
+
 /**
  *
- * @author Sanna
+ * @author Daniel
  */
-public class User {
+@Entity
+public class User extends AbstractEntity {
     String name;
     String password;
-    int id;
     int nrPosts;
     int nrComments;
     // constructor for testes
     public User(){
-       this.name = "sample";
-       this.password = "sample";
-       this.id =1;
-       this.nrComments = 0;
-       this.nrPosts = 1;
+       
     }
-                   
+    
+    public User(String name, String password){
+        
+    }
+    
     public String get_name(){
         return name;
+        
     }
     public String get_password(){
         return password;
     }
     
-    public int get_id(){
-        return id;
-    }
     
     public int get_nr_posts(){
         return nrPosts;
@@ -48,9 +49,6 @@ public class User {
         this.name=name;
     }
     
-    public void set_id(int id){
-        this.id=id;
-    }
     public void set_password(String password){
         this.password=password;
     }
