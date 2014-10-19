@@ -6,10 +6,12 @@
 
 package group7.core;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import persistence.AbstractDAO;
 
 @Stateless
@@ -35,7 +37,21 @@ public class UserContainer extends AbstractDAO<User, Long> implements IUserConta
 
     @Override
     public User login(String name, String password) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+         EntityManager em = getEntityManager();
+       
+        // Warning because typename not found in string (clazz.getSimpleName())
+        // Criteria API better, possible misstakes in String, NOTE space before t
+        TypedQuery<User> q =  em.createQuery("select U from User U where U.name =':name' AND U.password =':password'",User.class);
+        q.setParameter("name", name);
+        q.setParameter("password", password);
+        
+        List<User> a = q.getResultList();
+        if (a.size()==0){
+            return null;
+        }else{
+           return a.get(0);
+        }
+        
     }
     
     

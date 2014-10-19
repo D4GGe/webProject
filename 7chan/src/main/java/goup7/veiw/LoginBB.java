@@ -1,4 +1,4 @@
-    /*
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -6,6 +6,7 @@
 
 package goup7.veiw;
 
+import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
@@ -16,11 +17,11 @@ import javax.inject.Named;
  */
 @Named
 @RequestScoped
-public class NewPostBB {
-
+public class LoginBB implements Serializable {
     private String name;
-    private String content;
-    @PostConstruct
+    private String password;
+    
+     @PostConstruct
     public void post() {
         
     }
@@ -40,20 +41,18 @@ public class NewPostBB {
     }
 
     /**
-     * @return the content
+     * @return the password
      */
-    public String getContent() {
-        return content;
+    public String getPassword() {
+        return password;
     }
 
     /**
-     * @param content the content to set
+     * @param password the password to set
      */
-    public void setContent(String content) {
-        this.content = content;
+    public void setPassword(String password) {
+        this.password = password;
     }
-    
-    
     
     
 }
