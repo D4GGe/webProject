@@ -6,7 +6,8 @@
 
 package group7.core;
 
-import java.sql.Time;
+
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 import persistence.AbstractEntity;
@@ -18,7 +19,7 @@ import persistence.AbstractEntity;
 @Entity
 public class Comment extends AbstractEntity {
     
-    private Time time;
+    private Date date;
     private String data;
     @OneToOne
     private User user;
@@ -28,19 +29,47 @@ public class Comment extends AbstractEntity {
         
     }
     
-    public Comment(Time a, String data , User user){
-        this.time = a;
+    public Comment( String data , User user){
+        this.date = new Date();
         this.data = data;
         this.user = user;
         
     }
     
-    public Time getTime(){
-        return time;
+    public Date getDate(){
+        return date;
         
     }
     public String getData(){
         return data;
+    }
+
+    /**
+     * @param date the date to set
+     */
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    /**
+     * @param data the data to set
+     */
+    public void setData(String data) {
+        this.data = data;
+    }
+
+    /**
+     * @return the user
+     */
+    public User getUser() {
+        return user;
+    }
+
+    /**
+     * @param user the user to set
+     */
+    public void setUser(User user) {
+        this.user = user;
     }
     
 }
