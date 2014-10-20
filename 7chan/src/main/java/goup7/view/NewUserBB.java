@@ -49,5 +49,9 @@ public class NewUserBB implements Serializable{
     public void setPassword(String password) {
         this.password = password;
     }
+     @Override
+    public String toString() {
+        return "NewUserBB{"+"name=" + name + ", password=" + password + '}';
+    }
     
 }

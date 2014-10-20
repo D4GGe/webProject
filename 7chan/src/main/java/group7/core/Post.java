@@ -33,6 +33,7 @@ public class Post extends AbstractEntity {
     private List<Comment> comments;
     @ManyToOne
     private User user;
+    
    public Post( String name,String content){
        this.name =name;
        

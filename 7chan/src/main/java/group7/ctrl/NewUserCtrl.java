@@ -24,24 +24,28 @@ import javax.inject.Named;
 @RequestScoped
 
 public class NewUserCtrl implements Serializable{
-   // private SingletonForum sf;
+  
     private NewUserBB newUserBB;
     @EJB
     private IUserContainer userContainer;
-    public NewUserCtrl(){
-        
-    }
+    
     @Inject
     public void setnubb(NewUserBB nubb){
         this.newUserBB = nubb;
     }
     
     public void save(){
+
         System.out.println("********************" + userContainer.test());
         System.out.println(newUserBB.getName()+"********************         " + newUserBB.getPassword());
         
+
       userContainer.create(new User(newUserBB.getName(),newUserBB.getPassword()));
         
+
+      // sf.getForum().getUserContainer().create(new User(nubb.getName(),nubb.getPassword()));
+
+
         
     }
 }
