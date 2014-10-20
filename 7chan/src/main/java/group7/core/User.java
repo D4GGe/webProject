@@ -17,10 +17,10 @@ import persistence.AbstractEntity;
 @Entity
 @Table(name="CHAN_USER")
 public class User extends AbstractEntity {
-    String name;
-    String password;
-    int nrPosts;
-    int nrComments;
+    private String name;
+    private String password;
+    private int nrPosts;
+    private int nrComments;
     // constructor for testes
     public User(){
        
