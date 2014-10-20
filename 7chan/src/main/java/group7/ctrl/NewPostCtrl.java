@@ -8,8 +8,9 @@ package group7.ctrl;
 
 import goup7.view.NewPostBB;
 import group7.core.Post;
-import group7.core.SingletonForum;
+import group7.core.PostContainer;
 import java.io.Serializable;
+import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -21,23 +22,15 @@ import javax.inject.Named;
 @Named
 @RequestScoped
 public class NewPostCtrl implements Serializable{
-    private SingletonForum sf;
-    private NewPostBB npbb;
+    @EJB
+    private PostContainer postContainer ;
+    @Inject
+    private NewPostBB newPostBB;
     public NewPostCtrl(){
         
     }
-    @Inject
-    public NewPostCtrl(SingletonForum sf){
-        this.sf =sf;
-        
-    }
-    @Inject
-    public void setnpbb(NewPostBB npbb){
-        this.npbb = npbb;
-    }
-    
     public void save(){
-        sf.getForum().getPostContainer().create(new Post(npbb.getName(),npbb.getContent()));
+        postContainer.create(new Post(newPostBB.getName(),newPostBB.getContent()));
                 
         
     }

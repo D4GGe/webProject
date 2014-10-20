@@ -7,34 +7,27 @@
 package group7.ctrl;
 
 import goup7.view.LoginBB;
-import group7.core.SingletonForum;
+import group7.core.PostContainer;
 import group7.core.User;
+import group7.core.UserContainer;
 import java.io.Serializable;
-import javax.annotation.ManagedBean;
+import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
-import javax.inject.Inject;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
+import javax.inject.Named;
 import javax.servlet.http.HttpSession;
 
-/**
- *
- * @author Daniel
- */
-@ManagedBean
+@Named
 @SessionScoped
 public class LoginBean implements Serializable {
     private static final long serialVersionUID = 1L;
-    private SingletonForum sf;
+    @EJB
+    private UserContainer userContainer;
     private LoginBB lbb;
     
-    public LoginBean(){
-        
-    }
-    @Inject
-    public LoginBean(SingletonForum sf){
-        this.sf = sf;
-    }
+    
 
     /**
      * @param lbb the lbb to set
@@ -45,7 +38,7 @@ public class LoginBean implements Serializable {
     }
     
    public String login() {
-        User result = sf.getForum().getUserContainer().login(lbb.getName(), lbb.getPassword());
+        User result = userContainer.login(lbb.getName(), lbb.getPassword());
         if (result!=null) {
             // get Http Session and store username
             HttpSession session =  (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
@@ -72,7 +65,7 @@ public class LoginBean implements Serializable {
       {
         HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
         long id = Long.parseLong(session.getAttribute("userid").toString());
-        return sf.getForum().getUserContainer().find(id);
+        return null;
       
       }
       

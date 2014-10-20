@@ -6,13 +6,11 @@
 
 package group7.ctrl;
 
-import goup7.view.NewPostBB;
 import goup7.view.NewUserBB;
-import group7.core.Post;
-import group7.core.SingletonForum;
-import group7.core.User;
+import group7.core.IUserContainer;
+import group7.core.UserContainer;
 import java.io.Serializable;
-import javax.annotation.ManagedBean;
+import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -25,24 +23,24 @@ import javax.inject.Named;
 @RequestScoped
 
 public class NewUserCtrl implements Serializable{
-    private SingletonForum sf;
-    private NewUserBB nubb;
+   // private SingletonForum sf;
+    private NewUserBB newUserBB;
+    @EJB
+    private IUserContainer userContainer;
     public NewUserCtrl(){
-        
-    }
-  @Inject
-    public NewUserCtrl(SingletonForum sf){
-        this.sf =sf;
         
     }
     @Inject
     public void setnubb(NewUserBB nubb){
-        this.nubb = nubb;
+        this.newUserBB = nubb;
     }
     
     public void save(){
-        sf.getForum().getUserContainer().create(new User(nubb.getName(),nubb.getPassword()));
-                
+        System.out.println("********************" + userContainer.test());
+        System.out.println(newUserBB.getName()+"********************         " + newUserBB.getPassword());
+        
+      // sf.getForum().getUserContainer().create(new User(nubb.getName(),nubb.getPassword()));
+        
         
     }
 }

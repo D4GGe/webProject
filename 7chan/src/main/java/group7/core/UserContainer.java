@@ -34,7 +34,10 @@ public class UserContainer extends AbstractDAO<User, Long> implements IUserConta
         return new UserContainer();
     }
 
-
+    @Override
+    public String test(){
+        return "test";
+    }
     @Override
     public User login(String name, String password) {
          EntityManager em = getEntityManager();
