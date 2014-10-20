@@ -9,6 +9,7 @@ package group7.core;
 
 import java.util.Date;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -25,7 +26,7 @@ public class Comment extends AbstractEntity {
     @Temporal(TemporalType.DATE)
     private Date date;
     private String data;
-    @OneToOne
+    @ManyToOne
     private User user;
 
     
