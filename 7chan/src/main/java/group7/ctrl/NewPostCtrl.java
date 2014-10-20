@@ -23,7 +23,9 @@ import javax.inject.Named;
 public class NewPostCtrl implements Serializable{
     private SingletonForum sf;
     private NewPostBB npbb;
-    
+    public NewPostCtrl(){
+        
+    }
     @Inject
     public NewPostCtrl(SingletonForum sf){
         this.sf =sf;

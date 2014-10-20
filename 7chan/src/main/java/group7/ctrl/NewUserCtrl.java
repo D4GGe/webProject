@@ -25,7 +25,9 @@ import javax.inject.Named;
 public class NewUserCtrl implements Serializable{
     private SingletonForum sf;
     private NewUserBB nubb;
-    
+    public NewUserCtrl(){
+        
+    }
   @Inject
     public NewUserCtrl(SingletonForum sf){
         this.sf =sf;
