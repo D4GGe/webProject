@@ -7,10 +7,11 @@
 package goup7.view;
 
 import group7.core.Post;
-import group7.core.SingletonForum;
+import group7.core.PostContainer;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.annotation.PostConstruct;
+import javax.ejb.EJB;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -22,26 +23,24 @@ import javax.inject.Named;
 @Named
 @ViewScoped
 public class PostStreamBB implements Serializable {
-    private SingletonForum sf;
+    
     private int currentPage;
     private final int pageSize = 10;
     private int count;
+    @EJB
+    private PostContainer postContainer;
     protected PostStreamBB(){
         
     }
     
-    @Inject
-    public PostStreamBB(SingletonForum sf){
-        this.sf = sf;
-    }
-    
+        
     @PostConstruct
     public void post(){
-        count = sf.getForum().getPostContainer().count();
+        count = postContainer.count();
     }
     
     public Collection<Post> getList(){
-        return sf.getForum().getPostContainer().findRange(pageSize * currentPage, pageSize);
+        return postContainer.findRange(pageSize * currentPage, pageSize);
     }
     
      public void next() {
