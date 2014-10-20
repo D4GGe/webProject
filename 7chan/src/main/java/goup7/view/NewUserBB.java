@@ -7,6 +7,7 @@
 package goup7.view;
 
 import java.io.Serializable;
+import javax.annotation.ManagedBean;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
@@ -18,7 +19,7 @@ import javax.inject.Named;
 @Named
 @RequestScoped
 public class NewUserBB implements Serializable{
-     private String name;
+    private String name;
     private String password;
     @PostConstruct
     public void post() {

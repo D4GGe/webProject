@@ -12,6 +12,7 @@ import group7.core.Post;
 import group7.core.SingletonForum;
 import group7.core.User;
 import java.io.Serializable;
+import javax.annotation.ManagedBean;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -22,6 +23,7 @@ import javax.inject.Named;
  */
 @Named
 @RequestScoped
+
 public class NewUserCtrl implements Serializable{
     private SingletonForum sf;
     private NewUserBB nubb;
