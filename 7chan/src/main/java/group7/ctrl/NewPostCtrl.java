@@ -6,7 +6,7 @@
 
 package group7.ctrl;
 
-import goup7.veiw.NewPostBB;
+import goup7.view.NewPostBB;
 import group7.core.Post;
 import group7.core.SingletonForum;
 import java.io.Serializable;

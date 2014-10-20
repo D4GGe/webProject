@@ -6,7 +6,7 @@
 
 package group7.ctrl;
 
-import goup7.veiw.LoginBB;
+import goup7.view.LoginBB;
 import group7.core.SingletonForum;
 import group7.core.User;
 import java.io.Serializable;

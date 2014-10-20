@@ -6,7 +6,7 @@
 
 package group7.ctrl;
 
-import goup7.veiw.NewUserBB;
+import goup7.view.NewUserBB;
 import group7.core.SingletonForum;
 import java.io.Serializable;
 import javax.enterprise.context.RequestScoped;

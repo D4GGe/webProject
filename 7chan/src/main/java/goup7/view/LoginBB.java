@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package goup7.veiw;
+package goup7.view;
 
 import java.io.Serializable;
 import javax.annotation.PostConstruct;

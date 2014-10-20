@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package goup7.veiw;
+package goup7.view;
 
 import group7.core.Post;
 import group7.core.SingletonForum;
