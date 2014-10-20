@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <h:body>
+
+        <ui:composition template="/WEB-INF/template.xhtml">
+
+            <ui:define name="top">
+                <h3>Write post</h3>
+                
+            </ui:define>
+            <ui:define name="content">
+                <h:form>
+                    <h:panelGrid columns="1" class="table">
+                        <h:outputLabel value="Content"/>
+                        <h:inputText value="#{newPostBB.content}"/> 
+                        <h:outputLabel value="Name" />
+                        <h:inputText value="#{newPostBB.name}"/>
+                    </h:panelGrid>
+                    <div class="btn-group">
+                        
+                        
+                        <h:commandButton value="Save" actionListener="#{newPostCtrl.save}" 
+                                         action="newPost?faces-redirect=true" class="btn btn-default"/>
+                        
+                       
+                        <!-- Or like this (no injection in control bean)
+                        <h:commandButton value="Save" action="{#AddProductCtrl.save(AddProductBB)}" class="btn btn-default"/>
+                        -->
+                        
+                    </div>
+                </h:form>
+            </ui:define>
+
+            <ui:define name="bottom">
+
+            </ui:define>
+                
+             
+        </ui:composition>
+    </h:body>
+</html>
