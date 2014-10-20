@@ -8,6 +8,7 @@ package group7.ctrl;
 
 import goup7.view.NewUserBB;
 import group7.core.IUserContainer;
+import group7.core.User;
 import group7.core.UserContainer;
 import java.io.Serializable;
 import javax.ejb.EJB;
@@ -39,7 +40,7 @@ public class NewUserCtrl implements Serializable{
         System.out.println("********************" + userContainer.test());
         System.out.println(newUserBB.getName()+"********************         " + newUserBB.getPassword());
         
-      // sf.getForum().getUserContainer().create(new User(nubb.getName(),nubb.getPassword()));
+      userContainer.create(new User(newUserBB.getName(),newUserBB.getPassword()));
         
         
     }
