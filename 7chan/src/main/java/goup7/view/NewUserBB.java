@@ -21,6 +21,7 @@ import javax.inject.Named;
 public class NewUserBB implements Serializable{
     private String name;
     private String password;
+    
     @PostConstruct
     public void post() {
         
@@ -52,6 +53,10 @@ public class NewUserBB implements Serializable{
      */
     public void setPassword(String password) {
         this.password = password;
+    }
+     @Override
+    public String toString() {
+        return "NewUserBB{"+"name=" + name + ", password=" + password + '}';
     }
     
 }

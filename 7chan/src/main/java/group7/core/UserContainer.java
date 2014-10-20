@@ -16,14 +16,13 @@ import persistence.AbstractDAO;
 
 @Stateless
 public class UserContainer extends AbstractDAO<User, Long> implements IUserContainer {
-    @PersistenceContext
+    //@PersistenceContext
     private EntityManager em;
     
     public UserContainer() {
         
         super(User.class);
     }
-
   
     @Override
     protected EntityManager getEntityManager() {
