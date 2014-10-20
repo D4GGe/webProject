@@ -41,7 +41,7 @@ public class UserContainer extends AbstractDAO<User, Long> implements IUserConta
        
         // Warning because typename not found in string (clazz.getSimpleName())
         // Criteria API better, possible misstakes in String, NOTE space before t
-        TypedQuery<User> q =  em.createQuery("select U from User U where U.name =':name' AND U.password =':password'",User.class);
+        TypedQuery<User> q =  em.createQuery("select U from CHAN_USER U where U.name =':name' AND U.password =':password'",User.class);
         q.setParameter("name", name);
         q.setParameter("password", password);
         

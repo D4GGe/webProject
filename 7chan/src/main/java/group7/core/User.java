@@ -7,6 +7,7 @@
 package group7.core;
 
 import javax.persistence.Entity;
+import javax.persistence.Table;
 import persistence.AbstractEntity;
 
 /**
@@ -14,6 +15,7 @@ import persistence.AbstractEntity;
  * @author Daniel
  */
 @Entity
+@Table(name="CHAN_USER")
 public class User extends AbstractEntity {
     String name;
     String password;

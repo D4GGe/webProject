@@ -13,6 +13,8 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import persistence.AbstractEntity;
 
 
@@ -23,6 +25,7 @@ import persistence.AbstractEntity;
 @Entity
 public class Post extends AbstractEntity {
     private String name;
+    @Temporal(TemporalType.DATE)
     private Date   date;
     private String content;
     @OneToMany
