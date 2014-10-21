@@ -6,12 +6,14 @@
 package group7.ctrl; 
 
 import goup7.view.EditUserBB;
+import goup7.view.LoginBB;
 import goup7.view.NewUserBB;
 import group7.core.IUserContainer;
 import group7.core.User;
 import java.io.Serializable;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -23,27 +25,25 @@ import javax.inject.Named;
 @RequestScoped
 public class EditUserCtrl implements Serializable{ 
     
+    @Inject
     private EditUserBB editUserBB;
+    @Inject
+    private LoginBean loginBean;
+    //private EditUserBB editUserBB;
     @EJB
     private IUserContainer userContainer;
-    
-    @Inject
-    public void set(EditUserBB editUserBB){
-        this.editUserBB = editUserBB;
-    }
+  
 
     protected EditUserCtrl() {
     }
     
-    /*
-    @Inject
-    private LoginBean loginbean;
-  */
-    
-    public void update(){
+    public void edit(){
         // loginbean.getUser().set_name(userBB.getName());
         // loginbean.getUser().set_password(userBB.getPassword());
         userContainer.update(new User(editUserBB.getName(), editUserBB.getPassword()));
+        
+        
+       
     }
    
     /*

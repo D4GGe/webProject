@@ -15,13 +15,19 @@ import javax.inject.Named;
 @Named
 @RequestScoped
 public class EditUserBB implements Serializable{ 
-    
+    private long id;
     private String name;
     private String password;
 
     protected EditUserBB() {
     }
+public long getId() {
+        return id;
+    }
 
+    public void setId(long id) {
+        this.id = id;
+    }
     public void setName(String name) {
         this.name = name;
     }

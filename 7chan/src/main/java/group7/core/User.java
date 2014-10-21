@@ -35,6 +35,7 @@ public class User extends AbstractEntity {
         this.nrComments = 0 ;
         
     }
+  
     // public String get_email(){
       //  return email;
         
