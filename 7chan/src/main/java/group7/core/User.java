@@ -39,9 +39,10 @@ public class User extends AbstractEntity {
         return email;
         
     }
-    public String set_email(){
+    public void set_email(String email){
         this.email=email;
     }
+    
     public String get_name(){
         return name;
         

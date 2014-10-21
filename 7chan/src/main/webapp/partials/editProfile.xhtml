@@ -1,16 +1,60 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <title>TODO supply a title</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    </head>
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <!-- Can't use the new official namespaces, bug in Mojarra f:metadata won't work 
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    --> 
+
     <body>
-        <div>TODO write content</div>
+
+        <ui:composition template="/WEB-INF/template.xhtml">
+
+            <ui:define name="metadata">
+                <f:metadata>
+                    <f:viewParam name="id" value="#{editProductBB.id}"  />
+                    <f:viewParam name="name" value="#{editProductBB.name}"  />
+                    <f:viewParam name="price" value="#{editProductBB.price}"  />
+                </f:metadata>
+            </ui:define>
+
+            <ui:define name="top">
+                <h2>Delete product</h2>
+                 <h:link outcome="productList.xhtml">Products</h:link>
+            </ui:define>
+
+
+            <ui:define name="content">
+               
+                <h:form>
+                    <h:panelGrid columns="2" class="table">
+                        <h:outputLabel value="Id"/>
+                        <h:outputText value="#{editProductBB.id}"/> 
+                        <h:outputLabel value="Name" />
+                        <h:inputText value="#{editProductBB.name}"/> 
+                        <h:outputLabel value="Price" />
+                        <h:inputText value="#{editProductBB.price}"/> 
+                    </h:panelGrid>
+                    <div class="btn-group">
+                        <h:commandButton value="Cancel" immediate="true" class="btn btn-default"
+                                         action="productList?faces-redirect=true" />
+                        <h:commandButton value="Edit" actionListener="#{editProductCtrl.edit()}" 
+                                         action="productList?faces-redirect=true" 
+                                         class="btn btn-default"/>
+                    </div>
+                </h:form>
+            </ui:define>
+
+            <ui:define name="bottom">
+
+            </ui:define>
+        </ui:composition>
+
+
     </body>
 </html>
