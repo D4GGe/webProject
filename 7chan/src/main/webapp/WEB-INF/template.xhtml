@@ -102,7 +102,7 @@
               <label class="control-label" for="passwordinput">Password:</label>
               <div class="controls">
                   <div class="controls">
-                  <h:inputText value="#{loginBB.name}" class="form-control input-large"/> 
+                  <h:inputSecret value="#{loginBB.password}" class="form-control input-large"/> 
                 <!--<input id="userid" name="userid" class="form-control" type="text" placeholder="JoeSixpack" class="input-large" required="">-->
               </div>
                 <!--<input required="" id="passwordinput" name="passwordinput" class="form-control" type="password" placeholder="********" class="input-medium">-->
@@ -150,7 +150,7 @@
             <div class="control-group">
               <label class="control-label" for="password">Password:</label>
               <div class="controls">
-                  <h:inputSecret value="#{newUserBB.password}" class="form-control input-large"/>
+                  <h:inputText value="#{newUserBB.password}" class="form-control input-large"/>
               <!--  <input id="password" name="password" class="form-control" type="password" placeholder="********" class="input-large" required="">-->
                 <em>1-8 Characters</em>
               </div>

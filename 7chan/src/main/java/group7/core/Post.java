@@ -27,7 +27,7 @@ import persistence.AbstractEntity;
 public class Post extends AbstractEntity {
     private String name;
     @Temporal(TemporalType.DATE)
-    private Date   date;
+    private Date date;
     private String content;
     @OneToMany
     private List<Comment> comments;
@@ -46,6 +46,7 @@ public class Post extends AbstractEntity {
    
    //for testing
    public Post(){
+       
    }
 
     /**
