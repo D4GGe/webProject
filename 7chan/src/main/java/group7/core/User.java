@@ -73,10 +73,10 @@ public class User extends AbstractEntity {
     public void set_nr_comments(int nrComments){
         this.nrComments=nrComments;
     }
-     public void increase_nr_comments(int nrComments){
+     public void increase_nr_comments(){
         this.nrComments++;
     }
-     public void increase_nr_posts(int nrPosts){
+     public void increase_nr_posts(){
         this.nrPosts++;
     }
 }
