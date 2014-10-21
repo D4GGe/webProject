@@ -27,6 +27,8 @@ public class NewUserCtrl implements Serializable{
     private NewUserBB newUserBB;
     @EJB
     private IUserContainer userContainer;
+    @Inject
+    private LoginBean loginBean;
     
     @Inject
     public void setnubb(NewUserBB nubb){
@@ -38,9 +40,9 @@ public class NewUserCtrl implements Serializable{
         System.out.println("********************" + userContainer.test());
         System.out.println(newUserBB.getName()+"********************         " + newUserBB.getPassword());
         
-
-      userContainer.create(new User(newUserBB.getName(),newUserBB.getPassword()));
-        
+            User user = new User(newUserBB.getName(),newUserBB.getPassword());
+      userContainer.create(user);
+        loginBean.login(user.getName(),user.getPassword());
 
         
     }
