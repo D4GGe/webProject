@@ -14,13 +14,19 @@
             <ui:define name="top">
                  <h:link outcome="user.xhtml">User</h:link>
             </ui:define>
-
+            
 
             <ui:define name="content">
                 <h:form>
                     <h:panelGrid columns="1" class="table">
                         <h:outputLabel value="New password" />
                         <h:inputText value="#{editUserBB.password}"/> 
+                        <h:outputLabel value="First name" />
+                        <h:inputText value="#{editUserBB.firstname}"/> 
+                        <h:outputLabel value="Last name" />
+                        <h:inputText value="#{editUserBB.lastname}"/> 
+                        <h:outputLabel value="Age" />
+                        <h:inputText value="#{editUserBB.age}"/> 
                     </h:panelGrid>
                     <div class="btn-group">
                         <h:commandButton value="Cancel" immediate="true" class="btn btn-default"
