@@ -34,8 +34,10 @@ public class NewCommentCtrl implements Serializable {
         return "personList?faces-redirect=true";
     }*/
     public void save() {
-        newCommentBB.getPostcontainer().find(newCommentBB.getPostId()).getComments().add(new Comment(newCommentBB.getContent()));
-        //ss.getShop().getProductCatalogue().update(new Product(editprodBB.getId(), editprodBB.getName(), editprodBB.getPrice()));
+        newCommentBB.getCommentList().add(new Comment(newCommentBB.getContent()));
+        
+        System.out.println(newCommentBB.getCommentList().size());
+//ss.getShop().getProductCatalogue().update(new Product(editprodBB.getId(), editprodBB.getName(), editprodBB.getPrice()));
                 
     }
     

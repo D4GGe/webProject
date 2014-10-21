@@ -3,82 +3,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html">
-    <h:head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <h:outputStylesheet library="css" name="bootstrap.css"  />
-        <h:outputStylesheet library="css" name="default.css"  />
-        <title>7chan</title>
-    </h:head>
-
     <h:body>
-        <div id="topHalf">
-            <div class="row">
-              <div class="col-md-9">
-                        <img src="../resources/img/banner.jpg"></img>
-                </div>
-                <div id="Space" class="col-md-1"></div>
-                <div class="col-md-2">
-                    <button type="button" class="btn btn-default btn-block">Login</button>
+        <ui:composition template="/WEB-INF/template.xhtml">
+            <ui:define name="content">
+                <h3>Main</h3>
+                <p>
+                    Testtext
                     <br></br>
-                    <button type="button" class="btn btn-default btn-block">Register</button>
-                </div>
-            </div>
-            
-            <br></br>
-            <nav class="navbar navbar-default" role="navigation">
-                <h:link value="New Post" class="navbar-brand" outcome="newPost" />
-                <h:link value="User" class="navbar-brand" outcome="user" />
-                <h:link value="Legacy" class="navbar-brand" outcome="legacy" />
-                <h:link value="Recent" class="navbar-brand" outcome="recent" />
-                <h:link value="About" class="navbar-brand" outcome="about" />            
-            </nav>
-        </div>
-        <div id="bottomHalf">
-            <table>
-                <tr>
-                    <td>
-                        <img src="../resources/img/goaticon.png"></img>
-                    </td>
-                    <td>
-                        <form role="form">
-                        <div class="form-group">
-                            <label for="exampleInputFile">Change avatar</label>
-                            <input type="file" id="exampleInputFile"></input>
-                            <p class="help-block">Choose a file to change avatar.</p>
-                        </div>
-                        </form>
-                    </td>
-                </tr>
-            </table>
-            <br></br>
-            <form role="form">
-  
-                <div class="form-group">
-                    <label for="exampleInputEmail1">User name</label>
-                    <input type="text" class="form-control" name="inputName" id="inputName" placeholder="GoatLover"></input>
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
-                    <input type="text" class="form-control" name="inputPassword" id="inputPassword" placeholder="Password"></input>
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Email</label>
-                    <input type="email" class="form-control" name="inputEmail" id="inputEmail" placeholder="goatlover@goatmail.com"></input>
-                </div>
-            </form>
-            
-            <br></br>
-            <br></br>
-            
-            <button type="button" class="btn btn-default">Save Changes</button>
-            <button type="button" class="btn btn-default">Cancel</button>
-            
-        </div>
-       
-        
-        <footer>
-            <p> ThisIsFooter</p> 
-        </footer>
+                    #{loginBean.loggedIn}
+                    #{loginBean.user.get_name()}
+                </p>
+            </ui:define>
+        </ui:composition>
     </h:body>
-
 </html>

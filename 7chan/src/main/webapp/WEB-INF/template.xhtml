@@ -3,192 +3,199 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:h="http://java.sun.com/jsf/html">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
     <h:head>
-        
+
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <h:outputStylesheet library="css" name="bootstrap.css"  />
         <h:outputStylesheet library="css" name="custom.css"  />
         <h:outputStylesheet library="css" name="jumb.css"  />
         <h:outputScript library="js" name="bootstrap.min.js"/>
-        
+
         <title>7chan</title>
     </h:head>
 
-  <h:body>
+    <h:body>
 
-    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-         <h:link value="7chan" class="navbar-brand" outcome="main.xhtml" />  
+        <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <h:link value="7chan" class="navbar-brand" outcome="main.xhtml" />  
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav nav-pills pull-right">
+                        <li><h:link value="New Post" class="navbar-brand" outcome="newPost" /></li>
+                        <li><h:link value="Legacy" class="navbar-brand" outcome="legacy" /></li>
+                        <li> <h:link value="Recent" class="navbar-brand" outcome="recent" /></li>
+                        <li><h:link value="About" class="navbar-brand" outcome="about" /></li>
+                        <li><h:link value="postStream" class="navbar-brand" outcome="postStream" /> </li>
+                        <c:if test="#{not loginBean.loggedIn}">
+                            <li> <a class="navbar-brand " href="#signup" data-toggle="modal" data-target=".bs-modal-sm">Sign In/Register</a> </li>
+                        </c:if>
+                        <c:if test="#{loginBean.loggedIn}">
+                            <li><h:link value="Profile" class="navbar-brand" outcome="user" /> </li>
+                        </c:if>
+
+
+                    </ul>               
+
+                </div><!--/.navbar-collapse -->
+            </div>
         </div>
-        <div class="navbar-collapse collapse">
-            <ul class="nav nav-pills pull-right">
-          <li><h:link value="New Post" class="navbar-brand" outcome="newPost" /></li>
-          <li><h:link value="Legacy" class="navbar-brand" outcome="legacy" /></li>
-          <li> <h:link value="Recent" class="navbar-brand" outcome="recent" /></li>
-          <li><h:link value="About" class="navbar-brand" outcome="about" /></li>
-          <li><h:link value="postStream" class="navbar-brand" outcome="postStream" /> </li>
-          <li> <a class="navbar-brand " href="#signup" data-toggle="modal" data-target=".bs-modal-sm">Sign In/Register</a> </li>
-          
-        </ul>               
-          
-        </div><!--/.navbar-collapse -->
-      </div>
-    </div>
 
-    <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class="jumbotron">
-      <div class="container">
-        <h1>7chan</h1>
-        <p>4chan but more!</p>
-        
-      </div>
-    </div>
+        <!-- Main jumbotron for a primary marketing message or call to action -->
+        <div class="jumbotron">
+            <div class="container">
+                <h1>7chan</h1>
+                <p>4chan but more!</p>
 
-    <div class="container">
-      <!-- Example row of columns -->
-      <div class="row">
-        <ui:insert name="content">Content</ui:insert>
-      </div>
-      
-      
-      
-      
-<!-- Modal -->
-<div class="modal fade bs-modal-sm" id="myModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-sm">
-    <div class="modal-content">
-        
-        <div class="bs-example bs-example-tabs">
-            <ul id="myTab" class="nav nav-tabs">
-              <li class="active"><a href="#signin" data-toggle="tab">Sign In</a></li>
-              <li class=""><a href="#signup" data-toggle="tab">Register</a></li>
-              <li class=""><a href="#why" data-toggle="tab">Why?</a></li>
-            </ul>
+            </div>
         </div>
-      <div class="modal-body">
-        <div id="myTabContent" class="tab-content">
-        <div class="tab-pane fade in" id="why">
-        <p>We need this information so that you can receive access to the site and its content. Rest assured your information will not be sold, traded, or given to anyone.</p>
-        
-        </div>
-        <div class="tab-pane fade active in" id="signin">
-            <h:form class="form-horizontal">
-                
-            
-            <fieldset>
-            <!-- Sign In Form -->
-            <!-- Text input-->
-            <div class="control-group">
-              <label class="control-label" for="userid">Alias:</label>
-              <div class="controls">
-                  <div class="controls">
-                  <h:inputText value="#{loginBB.name}" class="form-control input-large"/> 
-                <!--<input id="userid" name="userid" class="form-control" type="text" placeholder="JoeSixpack" class="input-large" required="">-->
-              </div>
-              <!--  <input required="" id="userid" name="userid" type="text" class="form-control input-medium" placeholder="JoeSixpack"  required="">-->
-              </div>
+
+        <div class="container">
+            <!-- Example row of columns -->
+            <div class="row">
+                <ui:insert name="content">Content</ui:insert>
             </div>
 
-            <!-- Password input-->
-            <div class="control-group">
-              <label class="control-label" for="passwordinput">Password:</label>
-              <div class="controls">
-                  <div class="controls">
-                  <h:inputSecret value="#{loginBB.password}" class="form-control input-large"/> 
-                <!--<input id="userid" name="userid" class="form-control" type="text" placeholder="JoeSixpack" class="input-large" required="">-->
-              </div>
-                <!--<input required="" id="passwordinput" name="passwordinput" class="form-control" type="password" placeholder="********" class="input-medium">-->
-              </div>
+
+
+
+            <!-- Modal -->
+            <div class="modal fade bs-modal-sm" id="myModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-sm">
+                    <div class="modal-content">
+
+                        <div class="bs-example bs-example-tabs">
+                            <ul id="myTab" class="nav nav-tabs">
+                                <li class="active"><a href="#signin" data-toggle="tab">Sign In</a></li>
+                                <li class=""><a href="#signup" data-toggle="tab">Register</a></li>
+                                <li class=""><a href="#why" data-toggle="tab">Why?</a></li>
+                            </ul>
+                        </div>
+                        <div class="modal-body">
+                            <div id="myTabContent" class="tab-content">
+                                <div class="tab-pane fade in" id="why">
+                                    <p>We need this information so that you can receive access to the site and its content. Rest assured your information will not be sold, traded, or given to anyone.</p>
+
+                                </div>
+                                <div class="tab-pane fade active in" id="signin">
+                                    <h:form class="form-horizontal">
+
+
+                                        <fieldset>
+                                            <!-- Sign In Form -->
+                                            <!-- Text input-->
+                                            <div class="control-group">
+                                                <label class="control-label" for="userid">Alias:</label>
+                                                <div class="controls">
+                                                    <div class="controls">
+                                                        <h:inputText value="#{loginBB.name}" class="form-control input-large"/> 
+                                                        <!--<input id="userid" name="userid" class="form-control" type="text" placeholder="JoeSixpack" class="input-large" required="">-->
+                                                    </div>
+                                                    <!--  <input required="" id="userid" name="userid" type="text" class="form-control input-medium" placeholder="JoeSixpack"  required="">-->
+                                                </div>
+                                            </div>
+
+                                            <!-- Password input-->
+                                            <div class="control-group">
+                                                <label class="control-label" for="passwordinput">Password:</label>
+                                                <div class="controls">
+                                                    <div class="controls">
+                                                        <h:inputSecret value="#{loginBB.password}" class="form-control input-large"/> 
+                                                        <!--<input id="userid" name="userid" class="form-control" type="text" placeholder="JoeSixpack" class="input-large" required="">-->
+                                                    </div>
+                                                    <!--<input required="" id="passwordinput" name="passwordinput" class="form-control" type="password" placeholder="********" class="input-medium">-->
+                                                </div>
+                                            </div>
+
+
+
+                                            <!-- Button -->
+                                            <div class="control-group">
+                                                <label class="control-label" for="signin"></label>
+                                                <div class="controls">
+
+                                                    <h:commandButton value="Sign in" actionListener="#{loginBean.login()}" 
+                                                                     action="main?faces-redirect=true" class="btn btn-success"/>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                    </h:form>
+                                </div>
+                                <div class="tab-pane fade" id="signup">
+                                    <h:form class="form-horizontal">
+
+                                        <fieldset>
+                                            <!-- Sign Up Form -->
+                                            <!-- Text input-->
+                                            <div class="control-group">
+                                                <label class="control-label" for="Email">Email:</label>
+                                                <div class="controls">
+
+                                                    <!--<input id="Email" name="Email" class="form-control" type="text" placeholder="JoeSixpack@sixpacksrus.com" class="input-large" required="">-->
+                                                </div>
+                                            </div>
+
+                                            <!-- Text input-->
+                                            <div class="control-group">
+                                                <label class="control-label" for="userid">Name:</label>
+                                                <div class="controls">
+                                                    <h:inputText value="#{newUserBB.name}" class="form-control input-large"/> 
+                                                    <!--<input id="userid" name="userid" class="form-control" type="text" placeholder="JoeSixpack" class="input-large" required="">-->
+                                                </div>
+                                            </div>
+
+                                            <!-- Password input-->
+                                            <div class="control-group">
+                                                <label class="control-label" for="password">Password:</label>
+                                                <div class="controls">
+                                                    <h:inputText value="#{newUserBB.password}" class="form-control input-large"/>
+                                                    <!--  <input id="password" name="password" class="form-control" type="password" placeholder="********" class="input-large" required="">-->
+                                                    <em>1-8 Characters</em>
+                                                </div>
+                                            </div>
+
+
+                                            <!-- Button -->
+                                            <div class="control-group">
+                                                <label class="control-label" for="confirmsignup"></label>
+                                                <div class="controls">
+                                                    <h:commandButton value="Save" actionListener="#{newUserCtrl.save}" 
+                                                                     action="user?faces-redirect=true" class="btn btn-success"/>
+
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                    </h:form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <center>
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </center>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            
+            <!-- end modal -->
 
-            <!-- Button -->
-            <div class="control-group">
-              <label class="control-label" for="signin"></label>
-              <div class="controls">
-                <button id="signin" name="signin" class="btn btn-success">Sign In</button>
-                <h:commandButton value="Sign inn" actionListener="#{loginBean.login()}" 
-                                         action="user?faces-redirect=true" class="btn btn-default"/>
-              </div>
-            </div>
-            </fieldset>
-            </h:form>
-        </div>
-        <div class="tab-pane fade" id="signup">
-             <h:form class="form-horizontal">
-          
-            <fieldset>
-            <!-- Sign Up Form -->
-            <!-- Text input-->
-            <div class="control-group">
-              <label class="control-label" for="Email">Email:</label>
-              <div class="controls">
-                  
-                <!--<input id="Email" name="Email" class="form-control" type="text" placeholder="JoeSixpack@sixpacksrus.com" class="input-large" required="">-->
-              </div>
-            </div>
-            
-            <!-- Text input-->
-            <div class="control-group">
-              <label class="control-label" for="userid">Name:</label>
-              <div class="controls">
-                  <h:inputText value="#{newUserBB.name}" class="form-control input-large"/> 
-                <!--<input id="userid" name="userid" class="form-control" type="text" placeholder="JoeSixpack" class="input-large" required="">-->
-              </div>
-            </div>
-            
-            <!-- Password input-->
-            <div class="control-group">
-              <label class="control-label" for="password">Password:</label>
-              <div class="controls">
-                  <h:inputText value="#{newUserBB.password}" class="form-control input-large"/>
-              <!--  <input id="password" name="password" class="form-control" type="password" placeholder="********" class="input-large" required="">-->
-                <em>1-8 Characters</em>
-              </div>
-            </div>
- 
-            
-            <!-- Button -->
-            <div class="control-group">
-              <label class="control-label" for="confirmsignup"></label>
-              <div class="controls">
-                  <h:commandButton value="Save" actionListener="#{newUserCtrl.save}" 
-                                         action="user?faces-redirect=true" class="btn btn-success"/>
-                
-              </div>
-            </div>
-            </fieldset>
-            </h:form>
-      </div>
-    </div>
-      </div>
-      <div class="modal-footer">
-      <center>
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </center>
-      </div>
-    </div>
-  </div>
-</div>
 
-<!-- end modal -->
-     
+            <footer>
+                <p> </p>
+            </footer>
+        </div> <!-- /container -->
 
-      <footer>
-        <p> </p>
-      </footer>
-    </div> <!-- /container -->
-
-   </h:body>
+    </h:body>
 </html>

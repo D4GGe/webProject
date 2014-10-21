@@ -26,14 +26,16 @@ public class NewCommentBB {
  
     private String name;
     private String content;
-    private long postid=1;
+    private long postid;
+    private Post post;
     
     @EJB
     private IPostContainer postContainer;
     
     @PostConstruct
     public void post() {
-        
+        this.postid =151;
+        this.setPost(getPostcontainer().find(getPostId()));
     }
 
     /**
@@ -71,6 +73,20 @@ public class NewCommentBB {
     }
     public List<Comment> getCommentList(){
        return getPostcontainer().find(getPostId()).getComments();
+    }
+
+    /**
+     * @return the post
+     */
+    public Post getPost() {
+        return post;
+    }
+
+    /**
+     * @param post the post to set
+     */
+    public void setPost(Post post) {
+        this.post = post;
     }
     
      
