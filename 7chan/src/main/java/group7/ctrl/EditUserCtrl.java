@@ -34,11 +34,10 @@ public class EditUserCtrl implements Serializable{
     private LoginBean loginbean;
   */
     
-    public String update(){
+    public void update(){
         // loginbean.getUser().set_name(userBB.getName());
         // loginbean.getUser().set_password(userBB.getPassword());
         userContainer.update(new User(userBB.getName(), userBB.getPassword()));
-        return "productList?faces-redirect=true";
     }
     /*
     Depending on the behaviour of the database, 
