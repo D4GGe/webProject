@@ -2,19 +2,21 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:h="http://java.sun.com/jsf/html">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:body>
         <ui:composition template="/WEB-INF/template.xhtml">
-            <h3>PostStream</h3>
+       
             <ui:define name="content">
 
 
                 <div class="list-group">
+                    #{postStreamBB.pages.size()}
                     <ui:repeat var="p" value="#{postStreamBB.list}" varStatus="status">
 
                         <a href="#" class="list-group-item">
                             <h4>#{p.user.get_name()}: #{p.name} - #{p.id}</h4>
-                            
+
                             <p>#{p.content}</p>
                             <p style="color: #adadad">#{p.date}</p>
                             <h:link outcome="newComment.xhtml" >Comment</h:link>
@@ -23,13 +25,17 @@
                 </div>
                 <h:form>
                     <ul class="pagination">
-                        <li class="disabled"><h:commandLink actionListener="${postStreamBB.prev}">&laquo;</h:commandLink></li>
-                    <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                    <li><h:commandLink actionListener="${postStreamBB.next}">&raquo;</h:commandLink></li>
+                        
+                        <li><h:commandLink actionListener="#{postStreamBB.prev}">&laquo;</h:commandLink></li>
+                        <ui:repeat value="#{postStreamBB.pages}" var="item">
+                            <!--<c:if test="#{item == postStreamBB.currentPage}">
+                            <li class="active"><h:commandLink actionListener="#{postStreamBB.next}"> #{item} <span class="sr-only">(current)</span></h:commandLink></li>
+                            </c:if>-->
+                            
+                                <li> <h:commandLink actionListener="#{postStreamBB.setCurrentPage(item-1)}">#{item}</h:commandLink></li>
+                            
+                        </ui:repeat>
+                        <li><h:commandLink actionListener="#{postStreamBB.next}">&raquo;</h:commandLink></li>
                     </ul>
                 </h:form>
                 <!-- Or like this (no injection in control bean)
