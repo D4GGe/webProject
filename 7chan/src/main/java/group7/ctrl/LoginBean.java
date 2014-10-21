@@ -7,6 +7,7 @@
 package group7.ctrl;
 
 import goup7.view.LoginBB;
+import group7.core.IUserContainer;
 import group7.core.PostContainer;
 import group7.core.User;
 import group7.core.UserContainer;
@@ -24,12 +25,14 @@ import javax.servlet.http.HttpSession;
 public class LoginBean implements Serializable {
     private static final long serialVersionUID = 1L;
     @EJB
-    private UserContainer userContainer;
+    private IUserContainer userContainer;
     private LoginBB loginBB;
-    
+    private User user;
+    private boolean loggedIn;
     
 
     /**
+     * @param loginBB
      * @param loginbBB the loginBB to set
      */
     @Inject
@@ -41,8 +44,8 @@ public class LoginBean implements Serializable {
         User result = userContainer.login(loginBB.getName(), loginBB.getPassword());
         if (result!=null) {
             // get Http Session and store username
-            HttpSession session =  (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
-            session.setAttribute("userid", result.getId());
+            this.loggedIn = true;
+            this.user = result;
             return "home";
         } else {
  
@@ -63,17 +66,19 @@ public class LoginBean implements Serializable {
    
       public User getUser()
       {
-        HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
-        long id = Long.parseLong(session.getAttribute("userid").toString());
-        return null;
+        
+        return user;
       
       }
       
+      public boolean getLoggedIn(){
+          return loggedIn;
+      }
       
-      public String logout() {
-      HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
-      session.invalidate();
-      return "login";
+      public void logout() {
+      this.user = null;
+      this.loggedIn = false;
+      
    }
     
     
