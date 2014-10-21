@@ -6,6 +6,7 @@
 
 package goup7.view;
 
+import group7.core.IPostContainer;
 import group7.core.Post;
 import group7.core.PostContainer;
 import java.io.Serializable;
@@ -28,9 +29,9 @@ public class PostStreamBB implements Serializable {
     private final int pageSize = 10;
     private int count;
     @EJB
-    private PostContainer postContainer;
+    private IPostContainer postContainer;
     protected PostStreamBB(){
-        
+        currentPage = 0;
     }
     
         

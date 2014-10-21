@@ -7,6 +7,7 @@
 package group7.ctrl;
 
 import goup7.view.NewPostBB;
+import group7.core.IPostContainer;
 import group7.core.Post;
 import group7.core.PostContainer;
 import java.io.Serializable;
@@ -23,7 +24,7 @@ import javax.inject.Named;
 @RequestScoped
 public class NewPostCtrl implements Serializable{
     @EJB
-    private PostContainer postContainer ;
+    private IPostContainer postContainer ;
     @Inject
     private NewPostBB newPostBB;
     public NewPostCtrl(){

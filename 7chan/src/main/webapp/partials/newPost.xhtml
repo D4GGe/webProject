@@ -7,7 +7,26 @@
         <ui:composition template="/WEB-INF/template.xhtml">
             <ui:define name="content">
                 <h3>New Post</h3>
-
+                <h:form>
+                    
+                        <h:outputLabel value="Header"/>
+                        <h:inputText value="#{newPostBB.name}" class="form-control" /> 
+                        <h:outputLabel value="Content" />
+                        <h:inputTextarea value="#{newPostBB.content}" class="form-control" rows="3"/>
+                    
+                    <div class="btn-group">
+                        
+                        
+                        <h:commandButton value="Save" actionListener="#{newPostCtrl.save}" 
+                                         action="user?faces-redirect=true" class="btn btn-primary whide_button "/>
+                        
+                       
+                        <!-- Or like this (no injection in control bean)
+                        <h:commandButton value="Save" action="{#AddProductCtrl.save(AddProductBB)}" class="btn btn-default"/>
+                        -->
+                        
+                    </div>
+                </h:form>
             </ui:define>
         </ui:composition>
     </h:body>

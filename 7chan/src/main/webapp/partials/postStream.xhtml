@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <h:body>
+        <ui:composition template="/WEB-INF/template.xhtml">
+            <h3>PostStream</h3>
+            <ui:define name="content">
+
+
+                <div class="list-group">
+                    <ui:repeat var="p" value="#{postStreamBB.list}" varStatus="status">
+
+                        <a href="#" class="list-group-item">
+                            <h4>#{p.name}   #{p.id}</h4>
+                            <p>#{p.content}</p>
+                            <p style="color: #adadad">#{p.date}</p>
+                        </a>
+                    </ui:repeat>
+                </div>
+
+
+
+
+
+                <!-- Or like this (no injection in control bean)
+                <h:commandButton value="Save" action="{#AddProductCtrl.save(AddProductBB)}" class="btn btn-default"/>
+                -->
+
+
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

@@ -28,6 +28,10 @@
         <from-outcome>about</from-outcome>
         <to-view-id>partials/about.xhtml</to-view-id>
     </navigation-case>  
+    <navigation-case>
+        <from-outcome>postStream</from-outcome>
+        <to-view-id>partials/postStream.xhtml</to-view-id>
+    </navigation-case>  
 </navigation-rule>       
     
 </faces-config>
