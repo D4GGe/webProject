@@ -24,7 +24,7 @@ import javax.inject.Named;
 @RequestScoped
 public class NewPostCtrl implements Serializable{
     @EJB
-    private IPostContainer postContainer ;
+    private IPostContainer postContainer;
     @Inject
     private NewPostBB newPostBB;
     @Inject

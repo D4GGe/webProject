@@ -19,6 +19,7 @@ import persistence.AbstractEntity;
 public class User extends AbstractEntity {
     private String name;
     private String password;
+    private String email;
    private int nrPosts;
     private int nrComments;
     // constructor for testes
@@ -29,11 +30,18 @@ public class User extends AbstractEntity {
     public User(String name, String password){
         this.name = name;
         this.password = password;
+        this.email = email;
         this.nrPosts = 0;
         this.nrComments = 0 ;
         
     }
-    
+     public String get_email(){
+        return email;
+        
+    }
+    public String set_email(){
+        this.email=email;
+    }
     public String get_name(){
         return name;
         
@@ -63,6 +71,12 @@ public class User extends AbstractEntity {
     }
     public void set_nr_comments(int nrComments){
         this.nrComments=nrComments;
+    }
+     public void increase_nr_comments(int nrComments){
+        this.nrComments++;
+    }
+     public void increase_nr_posts(int nrPosts){
+        this.nrPosts++;
     }
 }
 
