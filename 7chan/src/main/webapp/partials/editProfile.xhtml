@@ -5,46 +5,36 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets">
 
-    <!-- Can't use the new official namespaces, bug in Mojarra f:metadata won't work 
-    xmlns:f="http://xmlns.jcp.org/jsf/core"
-    xmlns:h="http://xmlns.jcp.org/jsf/html"
-    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-    --> 
-
     <body>
 
         <ui:composition template="/WEB-INF/template.xhtml">
 
             <ui:define name="metadata">
                 <f:metadata>
-                    <f:viewParam name="id" value="#{editProductBB.id}"  />
-                    <f:viewParam name="name" value="#{editProductBB.name}"  />
-                    <f:viewParam name="price" value="#{editProductBB.price}"  />
+                    <f:viewParam name="name" value="#{editUserBB.name}"  />
+                    <f:viewParam name="price" value="#{editUserBB.password}"  />
                 </f:metadata>
             </ui:define>
 
             <ui:define name="top">
-                <h2>Delete product</h2>
-                 <h:link outcome="productList.xhtml">Products</h:link>
+                 <h:link outcome="user.xhtml">Products</h:link>
             </ui:define>
 
 
             <ui:define name="content">
                
                 <h:form>
-                    <h:panelGrid columns="2" class="table">
-                        <h:outputLabel value="Id"/>
-                        <h:outputText value="#{editProductBB.id}"/> 
+                    <h:panelGrid columns="2" class="table"> 
                         <h:outputLabel value="Name" />
-                        <h:inputText value="#{editProductBB.name}"/> 
-                        <h:outputLabel value="Price" />
-                        <h:inputText value="#{editProductBB.price}"/> 
+                        <h:inputText value="#{editUserBB.name}"/> 
+                        <h:outputLabel value="Password" />
+                        <h:inputText value="#{editUserBB.password}"/> 
                     </h:panelGrid>
                     <div class="btn-group">
                         <h:commandButton value="Cancel" immediate="true" class="btn btn-default"
-                                         action="productList?faces-redirect=true" />
-                        <h:commandButton value="Edit" actionListener="#{editProductCtrl.edit()}" 
-                                         action="productList?faces-redirect=true" 
+                                         action="user?faces-redirect=true" />
+                        <h:commandButton value="Edit" actionListener="#{editUserCtrl.update()}" 
+                                         action="user?faces-redirect=true" 
                                          class="btn btn-default"/>
                     </div>
                 </h:form>
