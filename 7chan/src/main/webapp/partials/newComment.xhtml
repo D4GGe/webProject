@@ -1,16 +1,46 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <title>TODO supply a title</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <h:body>
+        <ui:composition template="/WEB-INF/template.xhtml">
+            <ui:define name="content">
+                <div class="well">
+                    <h4>#{newCommentBB.getPostcontainer().find(newCommentBB.getPostId()).getName()}</h4>
+                    <br></br>
+                     <h:outputText value="#{newCommentBB.getPostcontainer().find(newCommentBB.getPostId()).getContent()}"></h:outputText>
+                </div>
+               
+                <div class="list-group">
+                <ui:repeat var="p" value="#{newCommentBB.getCommentList()}" varStatus="status">
+                    
+                            <p class="list-group-item">#{p.data}</p>
+                            <!--<p style="color: #adadad">#{p.date}</p>-->
+                           
+                       
+                    </ui:repeat>
+                </div>
+               
+                <h3>New Comment</h3>
+                <h:form>
+                        <h:outputLabel value="Content" />
+                        <h:inputTextarea value="#{newCommentBB.content}" class="form-control" rows="3"/>
+                    
+                    <div class="btn-group">
+                        
+                        
+                        <h:commandButton value="Save" actionListener="#{newCommentCtrl.save}" 
+                                         action="postStream?faces-redirect=true" class="btn btn-primary whide_button "/>
+                        
+                       
+                        <!-- Or like this (no injection in control bean)
+                        <h:commandButton value="Save" action="{#AddProductCtrl.save(AddProductBB)}" class="btn btn-default"/>
+                        -->
+                        
+                    </div>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
 </html>
