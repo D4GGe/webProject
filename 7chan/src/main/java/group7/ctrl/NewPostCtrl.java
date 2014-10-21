@@ -27,12 +27,16 @@ public class NewPostCtrl implements Serializable{
     private IPostContainer postContainer;
     @Inject
     private NewPostBB newPostBB;
+    @Inject
+    private LoginBean loginBean;
+            
     public NewPostCtrl(){
         
     }
     public void save(){
-        postContainer.create(new Post(newPostBB.getName(),newPostBB.getContent()));
-                
+        System.out.println(loginBean.getUser().get_name());
+        postContainer.create(new Post(newPostBB.getName(),newPostBB.getContent(),loginBean.getUser()));
+              
         
     }
     

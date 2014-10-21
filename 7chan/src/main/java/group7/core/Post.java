@@ -34,9 +34,9 @@ public class Post extends AbstractEntity {
     @ManyToOne
     private User user;
     
-   public Post( String name,String content){
+   public Post( String name,String content,User user){
        this.name =name;
-       
+       this.user = user;
        this.date = new Date();
        this.content = content;
        this.comments = new ArrayList<Comment>();

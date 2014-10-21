@@ -13,7 +13,8 @@
                     <ui:repeat var="p" value="#{postStreamBB.list}" varStatus="status">
 
                         <a href="#" class="list-group-item">
-                            <h4>#{p.name}   #{p.id}</h4>
+                            <h4>#{p.user.get_name()}: #{p.name} - #{p.id}</h4>
+                            
                             <p>#{p.content}</p>
                             <p style="color: #adadad">#{p.date}</p>
                             <h:link outcome="newComment.xhtml" >Comment</h:link>
