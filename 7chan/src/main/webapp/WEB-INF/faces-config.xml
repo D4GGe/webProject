@@ -32,6 +32,14 @@
         <from-outcome>postStream</from-outcome>
         <to-view-id>partials/postStream.xhtml</to-view-id>
     </navigation-case>  
+    <navigation-case>
+        <from-outcome>editproduct</from-outcome>
+        <to-view-id>partials/editProduct.xhtml</to-view-id>
+    </navigation-case> 
+    <navigation-case>
+        <from-outcome>main</from-outcome>
+        <to-view-id>partials/main.xhtml</to-view-id>
+    </navigation-case>
 </navigation-rule>       
     
 </faces-config>
