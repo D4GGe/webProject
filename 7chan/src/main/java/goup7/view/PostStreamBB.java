@@ -10,6 +10,7 @@ import group7.core.IPostContainer;
 import group7.core.Post;
 import group7.core.PostContainer;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -26,7 +27,7 @@ import javax.inject.Named;
 public class PostStreamBB implements Serializable {
     
     private int currentPage;
-    private final int pageSize = 10;
+    private final int pageSize = 2;
     private int count;
     @EJB
     private IPostContainer postContainer;
@@ -42,6 +43,13 @@ public class PostStreamBB implements Serializable {
     
     public Collection<Post> getList(){
         return postContainer.findRange(pageSize * currentPage, pageSize);
+    }
+    public Collection<Integer> getPages(){
+        Collection a = new ArrayList<Integer>();
+        for(int n = 0; (n) * pageSize < count;n++){
+            a.add(n+1);
+        }
+        return a;
     }
     
      public void next() {
