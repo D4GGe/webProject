@@ -6,6 +6,7 @@
 package group7.ctrl; 
 
 import goup7.view.EditUserBB;
+import goup7.view.NewUserBB;
 import group7.core.IUserContainer;
 import group7.core.User;
 import java.io.Serializable;
@@ -22,9 +23,14 @@ import javax.inject.Named;
 @RequestScoped
 public class EditUserCtrl implements Serializable{ 
     
-   @EJB
+    private EditUserBB editUserBB;
+    @EJB
     private IUserContainer userContainer;
-    private EditUserBB userBB;
+    
+    @Inject
+    public void set(EditUserBB editUserBB){
+        this.editUserBB = editUserBB;
+    }
 
     protected EditUserCtrl() {
     }
@@ -37,8 +43,9 @@ public class EditUserCtrl implements Serializable{
     public void update(){
         // loginbean.getUser().set_name(userBB.getName());
         // loginbean.getUser().set_password(userBB.getPassword());
-        userContainer.update(new User(userBB.getName(), userBB.getPassword()));
+        userContainer.update(new User(editUserBB.getName(), editUserBB.getPassword()));
     }
+   
     /*
     Depending on the behaviour of the database, 
     the commented solution might be the optimal solution for editing a user. 
