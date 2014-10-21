@@ -25,20 +25,20 @@ public class LoginBean implements Serializable {
     private static final long serialVersionUID = 1L;
     @EJB
     private UserContainer userContainer;
-    private LoginBB lbb;
+    private LoginBB loginBB;
     
     
 
     /**
-     * @param lbb the lbb to set
+     * @param loginbBB the loginBB to set
      */
     @Inject
-    public void setLbb(LoginBB lbb) {
-        this.lbb = lbb;
+    public void setLoginbb(LoginBB loginBB) {
+        this.loginBB = loginBB;
     }
     
    public String login() {
-        User result = userContainer.login(lbb.getName(), lbb.getPassword());
+        User result = userContainer.login(loginBB.getName(), loginBB.getPassword());
         if (result!=null) {
             // get Http Session and store username
             HttpSession session =  (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);

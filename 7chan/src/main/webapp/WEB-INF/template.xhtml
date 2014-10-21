@@ -89,6 +89,10 @@
             <div class="control-group">
               <label class="control-label" for="userid">Alias:</label>
               <div class="controls">
+                  <div class="controls">
+                  <h:inputText value="#{loginBB.name}" class="form-control input-large"/> 
+                <!--<input id="userid" name="userid" class="form-control" type="text" placeholder="JoeSixpack" class="input-large" required="">-->
+              </div>
               <!--  <input required="" id="userid" name="userid" type="text" class="form-control input-medium" placeholder="JoeSixpack"  required="">-->
               </div>
             </div>
@@ -97,6 +101,10 @@
             <div class="control-group">
               <label class="control-label" for="passwordinput">Password:</label>
               <div class="controls">
+                  <div class="controls">
+                  <h:inputText value="#{loginBB.name}" class="form-control input-large"/> 
+                <!--<input id="userid" name="userid" class="form-control" type="text" placeholder="JoeSixpack" class="input-large" required="">-->
+              </div>
                 <!--<input required="" id="passwordinput" name="passwordinput" class="form-control" type="password" placeholder="********" class="input-medium">-->
               </div>
             </div>
@@ -108,6 +116,8 @@
               <label class="control-label" for="signin"></label>
               <div class="controls">
                 <button id="signin" name="signin" class="btn btn-success">Sign In</button>
+                <h:commandButton value="Sign inn" actionListener="#{loginBean.login()}" 
+                                         action="user?faces-redirect=true" class="btn btn-default"/>
               </div>
             </div>
             </fieldset>
