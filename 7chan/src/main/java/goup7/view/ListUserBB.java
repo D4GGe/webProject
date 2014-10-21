@@ -7,19 +7,19 @@ package goup7.view;
 
 import group7.core.IUserContainer;
 import group7.core.User;
-import group7.core.UserContainer;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.view.ViewScoped;
-import javax.inject.Inject;
 import javax.inject.Named;
 
 /**
  *
  * @author Richard
  */
+@Named 
+@ViewScoped
 public class ListUserBB implements Serializable{
     
     private int currentPage;
