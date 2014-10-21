@@ -9,12 +9,7 @@
 
         <ui:composition template="/WEB-INF/template.xhtml">
 
-            <ui:define name="metadata">
-                <f:metadata>
-                    <f:viewParam name="name" value="#{editUserBB.name}"  />
-                    <f:viewParam name="price" value="#{editUserBB.password}"  />
-                </f:metadata>
-            </ui:define>
+            
 
             <ui:define name="top">
                  <h:link outcome="user.xhtml">User</h:link>
@@ -23,10 +18,8 @@
 
             <ui:define name="content">
                 <h:form>
-                    <h:panelGrid columns="2" class="table"> 
-                        <h:outputLabel value="Name" />
-                        <h:inputText value="#{editUserBB.name}"/> 
-                        <h:outputLabel value="Password" />
+                    <h:panelGrid columns="1" class="table">
+                        <h:outputLabel value="New password" />
                         <h:inputText value="#{editUserBB.password}"/> 
                     </h:panelGrid>
                     <div class="btn-group">

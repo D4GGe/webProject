@@ -5,8 +5,11 @@
  */
 package goup7.view;
 
+import group7.ctrl.LoginBean;
 import java.io.Serializable;
+import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 /**
  *
@@ -21,6 +24,14 @@ public class EditUserBB implements Serializable{
 
     protected EditUserBB() {
     }
+    @Inject
+    LoginBean loginBean;
+    
+      @PostConstruct
+    public void post() {
+       
+    }
+    
 public long getId() {
         return id;
     }

@@ -8,8 +8,10 @@ package group7.ctrl;
 
 import goup7.view.NewPostBB;
 import group7.core.IPostContainer;
+import group7.core.IUserContainer;
 import group7.core.Post;
 import group7.core.PostContainer;
+import group7.core.UserContainer;
 import java.io.Serializable;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
@@ -25,6 +27,8 @@ import javax.inject.Named;
 public class NewPostCtrl implements Serializable{
     @EJB
     private IPostContainer postContainer;
+    @EJB
+    private IUserContainer userContainer;
     @Inject
     private NewPostBB newPostBB;
     @Inject
@@ -36,7 +40,8 @@ public class NewPostCtrl implements Serializable{
     public void save(){
         System.out.println(loginBean.getUser().get_name());
         postContainer.create(new Post(newPostBB.getName(),newPostBB.getContent(),loginBean.getUser()));
-        loginBean.getUser().increase_nr_posts();
+       loginBean.getUser().increase_nr_posts();
+        userContainer.update(loginBean.getUser()); 
         
     }
     
