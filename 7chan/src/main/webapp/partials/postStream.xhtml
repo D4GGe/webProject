@@ -8,7 +8,6 @@
             <h3>PostStream</h3>
             <ui:define name="content">
 
-
                 <div class="list-group">
                     <ui:repeat var="p" value="#{postStreamBB.list}" varStatus="status">
 
@@ -21,10 +20,12 @@
                         </a>
                     </ui:repeat>
                 </div>
+                +
                 <h:form>
                     <ul class="pagination">
                         <li class="disabled"><h:commandLink actionListener="${postStreamBB.prev}">&laquo;</h:commandLink></li>
-                    <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+                    
+                        <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
                     <li><a href="#">2</a></li>
                     <li><a href="#">3</a></li>
                     <li><a href="#">4</a></li>

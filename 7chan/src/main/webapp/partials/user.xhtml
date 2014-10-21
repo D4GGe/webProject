@@ -31,6 +31,9 @@
                     <div class="btn-group">
                        <h:commandButton value="Edit profile" immediate="true" action="editProfile?faces-redirect=true" class="btn btn-default"/>
                     </div>
+                    <div class="btn-group">
+                       <h:commandButton value="Delete profile" immediate="true" actionListener="#{editUserCtrl.delete}" action="main?faces-redirect=true" class="btn btn-default"/>
+                    </div>
                 </h:form>
             </ui:define>
         </ui:composition>
