@@ -17,17 +17,25 @@
             
 
             <ui:define name="content">
+                <div class="edit_user_container">
                 <h:form>
-                    <h:panelGrid columns="1" class="table">
+                     <div class="form-group">
                         <h:outputLabel value="New password" />
-                        <h:inputText value="#{editUserBB.password}"/> 
+                        <h:inputText class="form-control" value="#{editUserBB.password}"/> 
+                     </div>
+                        <div class="form-group">
                         <h:outputLabel value="First name" />
-                        <h:inputText value="#{editUserBB.firstname}"/> 
+                        <h:inputText class="form-control" value="#{editUserBB.firstname}"/> 
+                        </div>
+                    <div class="form-group">
                         <h:outputLabel value="Last name" />
-                        <h:inputText value="#{editUserBB.lastname}"/> 
+                        <h:inputText class="form-control" value="#{editUserBB.lastname}"/> 
+                    </div>
+                    
+                        <div class="form-group">
                         <h:outputLabel value="Age" />
-                        <h:inputText value="#{editUserBB.age}"/> 
-                    </h:panelGrid>
+                        <h:inputText class="form-control" value="#{editUserBB.age}"/> 
+                        </div>
                     <div class="btn-group">
                         <h:commandButton value="Cancel" immediate="true" class="btn btn-default"
                                          action="user?faces-redirect=true" />
@@ -36,6 +44,7 @@
                                          class="btn btn-default"/>
                     </div>
                 </h:form>
+                </div>
             </ui:define>
 
             <ui:define name="bottom">
