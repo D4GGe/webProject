@@ -38,7 +38,6 @@ public class EditUserCtrl implements Serializable{
     }
     
     public void edit(){
-        loginBean.getUser().set_name(editUserBB.getName());
         loginBean.getUser().set_password(editUserBB.getPassword());
         
         userContainer.update(loginBean.getUser());
