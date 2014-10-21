@@ -89,8 +89,4 @@ public class NewCommentBB {
         this.post = post;
     }
     
-     
-    
-    
-    
 }

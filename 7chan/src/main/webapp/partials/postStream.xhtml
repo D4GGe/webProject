@@ -21,17 +21,17 @@
                         </a>
                     </ui:repeat>
                 </div>
-
+                <h:form>
                     <ul class="pagination">
-                    <li class="disabled"><a href="#">&laquo;</a></li>
+                        <li class="disabled"><h:commandLink actionListener="${postStreamBB.prev}">&laquo;</h:commandLink></li>
                     <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
                     <li><a href="#">2</a></li>
                     <li><a href="#">3</a></li>
                     <li><a href="#">4</a></li>
                     <li><a href="#">5</a></li>
-                    <li><a href="#">&raquo;</a></li>
+                    <li><h:commandLink actionListener="${postStreamBB.next}">&raquo;</h:commandLink></li>
                     </ul>
-
+                </h:form>
                 <!-- Or like this (no injection in control bean)
                 <h:commandButton value="Save" action="{#AddProductCtrl.save(AddProductBB)}" class="btn btn-default"/>
                 -->
