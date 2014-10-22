@@ -12,6 +12,7 @@ import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
@@ -21,13 +22,11 @@ import javax.inject.Named;
  * @author Daniel
  */
 @Named
-@SessionScoped
+@RequestScoped
 public class PostSearchBB implements Serializable {
     private String search;
-    private List<Post> posts;
    
-    @EJB
-    private IPostContainer postContainer;
+   
     
     @PostConstruct
     public void post(){
@@ -52,21 +51,8 @@ public class PostSearchBB implements Serializable {
     /**
      * @return the posts
      */
-    public List<Post> getPosts() {
-        return posts;
-    }
-
-    /**
-     * @param posts the posts to set
-     */
-    public void setPosts(List<Post> posts) {
-        this.posts = posts;
-    }
     
-    public void preform_search(){
-        posts = postContainer.getByName(search);
-        
-    }
+    
     
     
 }
