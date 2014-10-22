@@ -1,0 +1,348 @@
+UML i textform:
+för grupp 7 - HT2014
+Daniel, Kevin, Richard, Sanna
+
+Klasserna följer UML-n uppifrån och ner:
+
+-----------------------------------------------------------------------------------example
+<<StereoType>>
+
+Class Name
+
+--
+
++ Attribute 1 : Type
+
++ Attribute 2 : Type
+
+- Attribute 3 : Type
+
+- Attribute 4 : Type
+
+--
+
++ Operation 1 ( arg list ) : return
+
++ Operation 2 ( arg list ) : return
+
++ Operation 3 ( arg list ) : return
+
++ Operation 4 ( arg list ) : return
+
+// This is a comment
+
+// (--) This is a section break
+
+// Line break (\n) enter in-between text for line break
+
+-----------------------------------------------------------------------------------IDAO
+IDAO<T,K>
+--
+
+
+--
+
++ create(T)
++ delete(K)
++ update(T)
++ find(K) : T
++ findAll() : List<T>
++ findRange(int,int) : List<T>
++ count() : int
+-----------------------------------------------------------------------------------IEntity
+IEntity<K>
+--
+
+
+--
+
++ getId() : K
+-----------------------------------------------------------------------------------AbstractEntity
+AbstractEntity
+--
+
+-(id)(GV) id : Long
+--
+
+# AbstractEntity()
+# AbstractEntity(Long)
++ getId() : Long
++(O) hashCode() : int
++(O) equals(Object) : boolean
+-----------------------------------------------------------------------------------AbstractDAO
+AbstractDAO<T,K>
+--
+
+-(f) clazz : Class<T>
+--
+
+#(a) getEntityManager() : EntityManager
++(O) create(T)
++(O) delete(K)
++(O) update(T)
++(O) find(K) : T
++(O) findAll() : List<T>
++(O) findRange(int,int) : List<T>
+- get(boolean, int, int) : List<T>
++(O) count() : int
+-----------------------------------------------------------------------------------IEntityContainer
+IEntityContainer<T ex IEntity<K>,K>
+--
+
+
+--
+
++ create(T)
++ delete(K)
++ update(T)
++ find(K) : T
++ findAll() : List<T>
++ findRange(int,int) : List<T>
++ count() : int
+-----------------------------------------------------------------------------------AbstractEntityContainer
+AbstractEntityContainer<T ex IEntity<K>,K>
+--
+
+-(f) elems : List<T>
+--
++(O) create(T)
++(O) delete(K)
++(O) update(T)
++(O) find(K) : T
++(O) findAll() : List<T>
++(O) findRange(int,int) : List<T>
++(O) count() : int
+-----------------------------------------------------------------------------------Comment
+Comment
+--
+
+-(T) date : Date
+- data : String
+-(MTO) user : User
+--
+
++ Comment()
++ Comment(String)
++ getDate() : Date
++ getData() : String
++ setDate(Date)
++ setData(String)
++ getUser() : User
++ setUser(User)
++(O) toString(): String
+-----------------------------------------------------------------------------------Post
+Post
+--
+- name : String
+-(T) date : Date
+- content : String
+-(OTM) comments : List<Comment>
+-(MTO) user : User
+--
++ post(String,String,user)
++ post()
++ getName() : String
++ setName(String)
++ getDate() : Date
++ setDate(Date)
++ getContent() : String
++ setContent(String)
++ getComments() : List<Comment>
++ setComments(List<Comment>)
++ getUser() : User
++ setUser(User)
+-----------------------------------------------------------------------------------User
+User
+--
+- name : String
+- password : String
+- nrPosts : int
+- nrComments : int
+--
++ User()
++ User(String, String)
++ get_name() : String
++ get_password() : String
++ get_nr_posts() : int
++ get_nr_comments() : int
++ set_name(String)
++ set_password(String)
++ set_nr_posts(int)
++ set_nr_comments(int)
++ increase_nr_comments()
++ increase_nr_posts()
+-----------------------------------------------------------------------------------IUserContainer
+IUserContainer
+--
+
+--
++ test() : String
++ login(String, String) : User
+-----------------------------------------------------------------------------------IPostContainer
+IPostContainer
+--
+
+--
++ getByName(String) : List<Post>
+-----------------------------------------------------------------------------------UserContainer
+UserContainer
+--
+- em : EntityManager
+--
++ UserContainer()
+#(O) getEntityManager : EntityManager
++(s) newInstance() : IUserContainer
++(O) test() : String
++(O) login(String, String) : User
+-----------------------------------------------------------------------------------PostContainer
+PostContainer
+--
+-(PeCo) em : EntityManager
+--
++ PostContainer()
+#(O) getEntityManager : EntityManager
++(s) newInstance() : IPostContainer
++(O) getByName(String) : List<Post>
+-----------------------------------------------------------------------------------LoginBean
+LoginBean
+--
+-(s)(f) serialVersionUID : long
+-(ejb) userContainer : IUserContainer
+- loginBB : LoginBB
+- user : User
+- loggedIn : boolean
+--
++(PC) post()
++(inj) setLoginBB(LoginBB)
++ login()
++ getUser() : User
++ getLoggedIn() : boolean
++ logout()
+-----------------------------------------------------------------------------------LoginBB
+LoginBB
+--
+- name : String
+- password : String
+--
++(PC) post()
++ getName() : String
++ setName(String)
++ getPassword() : String
++ setPassword(String)
+-----------------------------------------------------------------------------------NewCommentCtrl
+NewCommentCtrl
+--
+- newCommentBB : NewCommentBB
+--
+# NewCommentCtrl()
++(inj) setNewCommentBB(NewCommentBB)
++ save()
+-----------------------------------------------------------------------------------NewCommentBB
+NewCommentBB
+--
+- name : String
+- content : String
+- postId : long
+- post : Post
+-(ejb) postContainer : IPostContainer
+--
++(PC) post()
++ getName() : String
++ setName(String)
++ getContent() : String
++ setContent(String)
++ getPostcontainer() : IPostContainer
++ getCommentList() : List<Comment>
++ getPost() : Post
++ setPost(Post)
+-----------------------------------------------------------------------------------NewUserCtrl
+NewUserCtrl
+--
+- newUserBB : NewUserBB
+-(ejb) UserContainer : IUserContainer
+--
++(inj) setnubb(NewUserBB)
++ save()
+-----------------------------------------------------------------------------------NewUserBB
+NewUserBB
+--
+- name : String
+- password : String
+--
++ getName() : String
++ setName(String)
++ getPassword() : String
++ setPassword(String)
++(O) toString() : String
+-----------------------------------------------------------------------------------EditUserCtrl
+EditUserCtrl
+--
+-(ejb) UserContainer : IUserContainer
+- UserBB : EditUserBB
+-(inj) loginbean : LoginBean
+--
+# EditUserCtrl()
++ update() : String
+-----------------------------------------------------------------------------------EditUserBB
+EditUserBB
+--
+- name : String
+- password : String
+--
+# EditUserBB()
++ setName(String)
++ setPassword(String)
++ getName() : String
++ getPassword() : String
+-----------------------------------------------------------------------------------NewPostCtrl
+NewPostCtrl
+--
+-(ejb) PostContainer : IPostContainer
+-(inj) newPostBB : NewPostBB
+-(inj) loginbean : LoginBean
+--
++ NewPostCtrl()
++ save()
+-----------------------------------------------------------------------------------NewPostBB
+NewPostBB
+--
+- name : String
+- content : String
+--
++(PC) post()
++ getName() : String
++ setName(String)
++ getContent() : String
++ setContent(String)
+-----------------------------------------------------------------------------------ListUserBB
+ListUserBB
+--
+- currentPage : int
+-(f) pageSize : int
+- count : int
+-(ejb) userContainer : IUserContainer
+--
+# ListUserBB()
++ user()
++ getList() : Collection<User>
++ next()
++ prev()
++ getCurrentPage() : int
++ setCurrentPage(int)
++ count() : int
+-----------------------------------------------------------------------------------PostStreamBB
+PostStreamBB
+--
+- currentPage : int
+-(f) pageSize : int
+- count : int
+-(ejb) postContainer : IPostContainer
+--
+# postStreamBB()
++(PC) post()
++ getList() : Collection<User>
++ next()
++ prev()
++ getCurrentPage() : int
++ setCurrentPage(int)
++ count() : int
