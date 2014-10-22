@@ -31,8 +31,7 @@ public class PostSearchBB implements Serializable {
     
     @PostConstruct
     public void post(){
-        posts = postContainer.getByName("asd");
-        search = "asffs";
+        
     }
     
     
