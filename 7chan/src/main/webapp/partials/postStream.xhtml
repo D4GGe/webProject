@@ -11,16 +11,13 @@
             <ui:define name="content">
                 <h:form>
                     
-<div class="col-lg-6">
-    <div class="input-group">
+
         <h:inputText class="form-control" value="#{postSearchBB.search}"></h:inputText>
-      <span class="input-group-btn">
-           
-          <h:commandButton value="Search" immediate="true" action="postsearch?faces-redirect=true"  class="btn btn-default"></h:commandButton>
-      </span>
      
-  </div><!-- /.col-lg-6 -->    
-</div><!-- /.row -->
+        <h:commandLink immediate="true" action="postSearch?faces-redirect=true"  styleClass="btn btn-primary">
+            <span class="glyphicon glyphicon-star"></span>
+        </h:commandLink>
+        
    </h:form>
                 <div class="list-group">
                     #{postStreamBB.pages.size()}
