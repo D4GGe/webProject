@@ -13,12 +13,10 @@
                     
 <div class="col-lg-6">
     <div class="input-group">
-        <h:inputText class="form-control"></h:inputText>
+        <h:inputText class="form-control" value="#{postSearchBB.search}"></h:inputText>
       <span class="input-group-btn">
            
-          <h:commandButton value="Search" action = "postsearch?faces-redirect=true"  class="btn btn-default" type="button">
-             
-          </h:commandButton>
+          <h:commandButton value="Search" immediate="true" action="postsearch?faces-redirect=true"  class="btn btn-default"></h:commandButton>
       </span>
      
   </div><!-- /.col-lg-6 -->    
