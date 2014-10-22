@@ -6,10 +6,12 @@
 
 package group7.core;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import persistence.AbstractDAO;
 
 @Stateless
@@ -27,6 +29,7 @@ public class PostContainer extends AbstractDAO<Post, Long> implements IPostConta
     protected EntityManager getEntityManager() {
        return em;
     }
+  
     
      public static IPostContainer newInstance() {
         return new PostContainer();
@@ -34,7 +37,14 @@ public class PostContainer extends AbstractDAO<Post, Long> implements IPostConta
 
     @Override
     public List<Post> getByName(String name) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+         EntityManager em = getEntityManager();
+        List<Post> found = new ArrayList<>();
+        // Warning because typename not found in string (clazz.getSimpleName())
+        // Criteria API better, possible misstakes in String, NOTE space before t
+        TypedQuery<Post> q =  em.createQuery("select P from Post P where p.name ='"+name+"'",Post.class);
+        found.addAll(q.getResultList());
+        return found;
+     
     }
     
     

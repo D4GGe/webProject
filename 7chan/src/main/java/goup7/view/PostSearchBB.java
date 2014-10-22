@@ -6,8 +6,11 @@
 
 package goup7.view;
 
+import group7.core.IPostContainer;
 import group7.core.Post;
 import java.util.List;
+import javax.annotation.PostConstruct;
+import javax.ejb.EJB;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
@@ -20,9 +23,13 @@ import javax.inject.Named;
 public class PostSearchBB {
     private String search;
     private List<Post> posts;
-
+    @EJB
+    private IPostContainer PostContainer;
     
-    
+    @PostConstruct
+    public void post(){
+        posts = PostContainer.getByName("asd");
+    }
     
     
     /**
@@ -52,6 +59,8 @@ public class PostSearchBB {
     public void setPosts(List<Post> posts) {
         this.posts = posts;
     }
+    
+    
     
     
 }
