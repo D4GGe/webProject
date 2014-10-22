@@ -30,6 +30,7 @@ public class LoginBean implements Serializable {
     private LoginBB loginBB;
     private User user;
     private boolean loggedIn;
+    private long postid;
 
     @PostConstruct
     public void post() {
@@ -120,6 +121,20 @@ public class LoginBean implements Serializable {
         this.user = null;
         this.loggedIn = false;
 
+    }
+
+    /**
+     * @return the postid
+     */
+    public long getPostid() {
+        return postid;
+    }
+
+    /**
+     * @param postid the postid to set
+     */
+    public void setPostid(long postid) {
+        this.postid = postid;
     }
 
 }

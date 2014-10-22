@@ -9,11 +9,13 @@ package goup7.view;
 import group7.core.Comment;
 import group7.core.IPostContainer;
 import group7.core.Post;
+import group7.ctrl.LoginBean;
 import java.util.Collection;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 
 /**
@@ -26,16 +28,16 @@ public class NewCommentBB {
  
     private String name;
     private String content;
-    private long postid;
+    
     private Post post;
     
     @EJB
     private IPostContainer postContainer;
-    
+     @Inject
+     private LoginBean loginBean; 
     @PostConstruct
     public void post() {
-        this.postid =151;
-        this.setPost(getPostcontainer().find(getPostId()));
+        
     }
 
     /**
@@ -68,17 +70,17 @@ public class NewCommentBB {
     public IPostContainer getPostcontainer() {
         return postContainer;
     }
-    public long getPostId() {
-        return postid;
-    }
+    
     public List<Comment> getCommentList(){
-       return getPostcontainer().find(getPostId()).getComments();
+        System.out.println(loginBean.getPostid());
+       return postContainer.find(loginBean.getPostid()).getComments();
     }
 
     /**
      * @return the post
      */
     public Post getPost() {
+        this.setPost(getPostcontainer().find(getPostid()));
         return post;
     }
 
@@ -88,5 +90,17 @@ public class NewCommentBB {
     public void setPost(Post post) {
         this.post = post;
     }
+
+    /**
+     * @return the postid
+     */
+    public long getPostid() {
+        return loginBean.getPostid();
+    }
+
+    /**
+     * @param postid the postid to set
+     */
+    
     
 }

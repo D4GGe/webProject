@@ -34,9 +34,10 @@ public class Comment extends AbstractEntity {
         
     }
     
-    public Comment(String data){
+    public Comment(String data,User user){
         this.date = new Date();
         this.data = data;
+        this.user = user;
        // this.user = user;
         
     }

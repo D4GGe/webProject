@@ -2,8 +2,13 @@ package group7.ctrl;
 
 import goup7.view.NewCommentBB;
 import group7.core.Comment;
+import group7.core.IPostContainer;
+import group7.core.IUserContainer;
 import group7.core.Post;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -19,29 +24,31 @@ public class NewCommentCtrl implements Serializable {
         // Must have for CDI
     }
     
-    
-    // Lie this --------------------
+    @EJB
+    private IPostContainer postContainer; 
+    @EJB
+    private IUserContainer userContainer; 
+    @Inject
+    private LoginBean loginBean;
     @Inject
     public void setNewCommentBB(NewCommentBB newCommentBB) {
         this.newCommentBB = newCommentBB;
     }
    
-    
-    // ---- or like this 
-    /*public String save(PersonDetailBB personBB) {
-        LOG.log(Level.INFO, "Save: {0}" + personBB);
-        reg.create(new Person(personBB.getId(), personBB.getFname(), personBB.getAge()));
-        return "personList?faces-redirect=true";
-    }*/
+
     public void save() {
-        newCommentBB.getCommentList().add(new Comment(newCommentBB.getContent()));
+        Post post = postContainer.find(newCommentBB.getPostid());
+       
+        Comment a = new Comment(newCommentBB.getContent(),loginBean.getUser());
+        post.getComments().add(a);
+        postContainer.update(post);  
+        loginBean.getUser().increase_nr_comments();
+        userContainer.update(loginBean.getUser());
         
-        System.out.println(newCommentBB.getCommentList().size());
-//ss.getShop().getProductCatalogue().update(new Product(editprodBB.getId(), editprodBB.getName(), editprodBB.getPrice()));
-                
+
     }
     
 }
-  
+   
 
 

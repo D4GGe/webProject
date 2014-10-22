@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -29,7 +30,7 @@ public class Post extends AbstractEntity {
     @Temporal(TemporalType.DATE)
     private Date date;
     private String content;
-    @OneToMany
+    @ManyToMany
     private List<Comment> comments;
     @ManyToOne
     private User user;
@@ -39,7 +40,7 @@ public class Post extends AbstractEntity {
        this.user = user;
        this.date = new Date();
        this.content = content;
-       this.comments = new ArrayList<Comment>();
+       this.comments = new ArrayList<>();
        
        
 }

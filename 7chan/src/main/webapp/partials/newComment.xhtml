@@ -2,21 +2,28 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:h="http://java.sun.com/jsf/html">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:body>
         <ui:composition template="/WEB-INF/template.xhtml">
+            <ui:define name="metadata">
+                <f:metadata>
+                    <f:viewParam name="postId" value="#{loginBean.postid}"/>
+                </f:metadata>
+            </ui:define>
             <ui:define name="content">
                 <div class="well">
-                    <h4>#{newCommentBB.getPostcontainer().find(newCommentBB.getPostId()).getName()}</h4>
+                    <h4>#{newCommentBB.getPost().name}</h4>
                     <br></br>
-                     <h:outputText value="#{newCommentBB.getPostcontainer().find(newCommentBB.getPostId()).getContent()}"></h:outputText>
+                   
+                    <h:outputText value="#{newCommentBB.getPost().content}"></h:outputText>
                 </div>
                
                 <div class="list-group">
                     <ui:repeat var="p" value="#{newCommentBB.commentList}" varStatus="status">
                     
-                            <p class="list-group-item">#{p.data}</p>
-                            <!--<p style="color: #adadad">#{p.date}</p>-->
+                        <p class="list-group-item"><b>#{p.user.name}: </b>#{p.data} <br/>#{p.date}</p>
+                            
                            
                        
                     </ui:repeat>
