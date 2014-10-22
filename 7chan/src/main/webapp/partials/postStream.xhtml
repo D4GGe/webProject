@@ -5,19 +5,20 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
+   
     <h:body>
         <ui:composition template="/WEB-INF/template.xhtml">
        
             <ui:define name="content">
                 <h:form>
                     
-
         <h:inputText class="form-control" value="#{postSearchBB.search}"></h:inputText>
      
-        <h:commandLink immediate="true" action="postSearch?faces-redirect=true"  styleClass="btn btn-primary">
-            <span class="glyphicon glyphicon-star"></span>
-        </h:commandLink>
+        <h:commandButton value="Search" immediate="true" action="postSearch?faces-redirect=true" actionListener="#{postSearchBB.preform_search}" styleClass="btn btn-primary">
+            
+        </h:commandButton>
         
+       
    </h:form>
                 <div class="list-group">
                     #{postStreamBB.pages.size()}
@@ -53,4 +54,5 @@
             </ui:define>
         </ui:composition>
     </h:body>
+ 
 </html>
