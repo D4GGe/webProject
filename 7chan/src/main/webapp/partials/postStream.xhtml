@@ -9,7 +9,16 @@
         <ui:composition template="/WEB-INF/template.xhtml">
        
             <ui:define name="content">
+                <h:form>
+                    
 
+        <h:inputText class="form-control" value="#{postSearchBB.search}"></h:inputText>
+     
+        <h:commandLink immediate="true" action="postSearch?faces-redirect=true"  styleClass="btn btn-primary">
+            <span class="glyphicon glyphicon-star"></span>
+        </h:commandLink>
+        
+   </h:form>
                 <div class="list-group">
                     #{postStreamBB.pages.size()}
                     <ui:repeat var="p" value="#{postStreamBB.list}" varStatus="status">
