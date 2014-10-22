@@ -8,9 +8,11 @@ package goup7.view;
 
 import group7.core.IPostContainer;
 import group7.core.Post;
+import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
@@ -19,16 +21,18 @@ import javax.inject.Named;
  * @author Daniel
  */
 @Named
-@ViewScoped
-public class PostSearchBB {
+@SessionScoped
+public class PostSearchBB implements Serializable {
     private String search;
     private List<Post> posts;
+   
     @EJB
-    private IPostContainer PostContainer;
+    private IPostContainer postContainer;
     
     @PostConstruct
     public void post(){
-        posts = PostContainer.getByName("asd");
+        posts = postContainer.getByName("asd");
+        search = "asffs";
     }
     
     
@@ -38,7 +42,7 @@ public class PostSearchBB {
     public String getSearch() {
         return search;
     }
-
+    
     /**
      * @param search the search to set
      */
@@ -60,7 +64,10 @@ public class PostSearchBB {
         this.posts = posts;
     }
     
-    
+    public void preform_search(){
+        posts = postContainer.getByName(search);
+        
+    }
     
     
 }
