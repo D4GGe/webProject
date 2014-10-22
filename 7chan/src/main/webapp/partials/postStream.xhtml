@@ -9,7 +9,21 @@
         <ui:composition template="/WEB-INF/template.xhtml">
        
             <ui:define name="content">
-
+                <h:form>
+                    
+<div class="col-lg-6">
+    <div class="input-group">
+        <h:inputText class="form-control"></h:inputText>
+      <span class="input-group-btn">
+           
+          <h:commandButton value="Search" action = "postsearch?faces-redirect=true"  class="btn btn-default" type="button">
+             
+          </h:commandButton>
+      </span>
+     
+  </div><!-- /.col-lg-6 -->    
+</div><!-- /.row -->
+   </h:form>
                 <div class="list-group">
                     #{postStreamBB.pages.size()}
                     <ui:repeat var="p" value="#{postStreamBB.list}" varStatus="status">
