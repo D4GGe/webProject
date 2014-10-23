@@ -38,7 +38,7 @@
                             </c:if>
                         <li><h:link value="Legacy" class="navbar-brand" outcome="legacy" /></li>
                         <li><h:link value="About" class="navbar-brand" outcome="about" /></li>
-                        <li><h:link value="postStream" class="navbar-brand" outcome="postStream" /> </li>
+                        <li><h:link value="Post stream" class="navbar-brand" outcome="postStream" /> </li>
                         <c:if test="#{not loginBean.loggedIn}">
                             <li> <a class="navbar-brand " href="#signup" data-toggle="modal" data-target=".bs-modal-sm">Sign In/Register</a> </li>
                         </c:if>
@@ -99,7 +99,7 @@
                                             <!-- Sign In Form -->
                                             <!-- Text input-->
                                             <div class="control-group">
-                                                <label class="control-label" for="userid">Alias:</label>
+                                                <label class="control-label-reg" for="userid">Alias:</label>
                                                 <div class="controls">
                                                     <div class="controls">
                                                         <h:inputText value="#{loginBB.name}" class="form-control input-large"/> 
@@ -111,7 +111,7 @@
 
                                             <!-- Password input-->
                                             <div class="control-group">
-                                                <label class="control-label" for="passwordinput">Password:</label>
+                                                <label class="control-label-reg" for="passwordinput">Password:</label>
                                                 <div class="controls">
                                                     <div class="controls">
                                                         <h:inputSecret value="#{loginBB.password}" class="form-control input-large"/> 
@@ -142,7 +142,7 @@
                                             <!-- Sign Up Form -->
                                             <!-- Text input-->
                                             <div class="control-group">
-                                                <label class="control-label" for="Email">Email:</label>
+                                                <label class="control-label-reg" for="Email">Email:</label>
                                                 <div class="controls">
                                                     <h:inputText value="#{newUserBB.email}" class="form-control input-large"/> 
                                                     <!--<input id="Email" name="Email" class="form-control" type="text" placeholder="JoeSixpack@sixpacksrus.com" class="input-large" required="">-->
@@ -151,7 +151,7 @@
 
                                             <!-- Text input-->
                                             <div class="control-group">
-                                                <label class="control-label" for="userid">Name:</label>
+                                                <label class="control-label-reg" for="userid">Name:</label>
                                                 <div class="controls">
                                                     <h:inputText value="#{newUserBB.name}" class="form-control input-large"/> 
                                                     <!--<input id="userid" name="userid" class="form-control" type="text" placeholder="JoeSixpack" class="input-large" required="">-->
@@ -160,13 +160,40 @@
 
                                             <!-- Password input-->
                                             <div class="control-group">
-                                                <label class="control-label" for="password">Password:</label>
+                                                <label class="control-label-reg" for="password">Password:</label>
                                                 <div class="controls">
                                                     <h:inputText value="#{newUserBB.password}" class="form-control input-large"/>
                                                     
                                                 </div>
                                             </div>
-
+                                            
+                                            <div class="checkbox">
+                                                <label class="control-label-reg">
+                                                      <input type="checkbox"/> 
+                                                     <a data-toggle="modal" data-target=".modaltva">
+                                                             Accept terms and conditions
+                                                    </a> 
+                                                </label>
+                                             </div>
+                                            
+       <div class="modal fade modaltva">
+           <div class="modal-dialog" id="terms">
+                 <div class="modal-content">
+                      <div class="modal-header">
+      
+        <h4 class="modal-title">Terms and conditions</h4>
+      </div>
+      <div class="modal-body">
+        <p>blablablablablablaablablablablablalab</p>
+         <!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
+        <button type="button" class="btn btn-primary" data-dismiss="modal">I have read the conditions</button>
+      </div>
+      
+       
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+   
 
                                             <!-- Button -->
                                             <div class="control-group">
