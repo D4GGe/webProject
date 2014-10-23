@@ -10,17 +10,7 @@
         <ui:composition template="/WEB-INF/template.xhtml">
 
             <ui:define name="content">
-                <div class="post_stream_search">
-
-                     
-                <h:form>
-        <h:inputText class="form-control" value="#{postSearchBB.search}"/>
-      
-       <h:commandButton value="Search" immediate="true" action="postSearch?faces-redirect=true" actionListener="#{postSearchCtrl.preform_search}" styleClass="btn btn-primary"/>
-            
-                </h:form> 
-                </div>
-
+               
                     <h:form>
                         <div class="row">
                             <div>
@@ -37,7 +27,7 @@
                        
                         
                     </h:form>
-                </div>
+                
 
 
                 <div class="list-group">
