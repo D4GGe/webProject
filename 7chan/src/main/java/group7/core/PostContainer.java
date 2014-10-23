@@ -6,6 +6,8 @@
 
 package group7.core;
 
+import com.uaihebert.factory.EasyCriteriaFactory;
+import com.uaihebert.model.EasyCriteria;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -39,11 +41,10 @@ public class PostContainer extends AbstractDAO<Post, Long> implements IPostConta
     public List<Post> getByName(String name) {
          EntityManager em = getEntityManager();
         List<Post> found = new ArrayList<>();
-        // Warning because typename not found in string (clazz.getSimpleName())
-        // Criteria API better, possible misstakes in String, NOTE space before t
-        TypedQuery<Post> q =  em.createQuery("select P from Post P where p.name ='"+name+"'",Post.class);
-        found.addAll(q.getResultList());
-        return found;
+        EasyCriteria<Post> easyCriteria = easyCriteria = EasyCriteriaFactory.createQueryCriteria(em,Post.class);
+        easyCriteria.andStringLike("content", "%"+name+"%");
+        easyCriteria.orEquals("name", name);
+        return easyCriteria.getResultList();
      
     }
     
