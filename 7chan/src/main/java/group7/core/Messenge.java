@@ -32,7 +32,7 @@ public class Messenge extends AbstractEntity {
     public Messenge(){
         
     }
-    public Messenge(String name, String content, User sender,User receiver) {
+    public Messenge(String content, User sender,User receiver) {
         this.sender = sender;
         this.receiver =receiver;
         this.date = new Date();

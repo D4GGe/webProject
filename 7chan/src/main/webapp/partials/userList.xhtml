@@ -3,7 +3,9 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:h="http://java.sun.com/jsf/html"> 
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"> 
+    
     <h:body>
         <ui:composition template="/WEB-INF/template.xhtml">
             <h3>Users</h3>
@@ -17,17 +19,23 @@
                     <ui:repeat var="user" value="#{listUserBB.list}" varStatus="status">
 
                         <div class="list-group">
-                            <a href="#" class="list-group-item disabled">
+                            <div class="list-group-item disabled">
                                 #{user.id} : #{user.name} 
+                                 <h:link value="Send messege" outcome="sendMessenge.xhtml"  >
+                                    <f:param name="userId" value="#{user.id}"/>
+                                </h:link>
                                 <h:form>
-                                <h:commandButton value="Add as friend"  actionListener="#{addFriendCtrl.addFriend(user.id)}"  styleClass="btn btn-primary">
-                                        </h:commandButton>
+                                    <h:commandButton value="Add as friend"  actionListener="#{addFriendCtrl.addFriend(user.id)}"  styleClass="btn btn-primary">
+                                    </h:commandButton>
                                 </h:form>
                                 <h:form>
-                                <h:commandButton value="Search"  actionListener="#{addFriendCtrl.removeFriend(user.id)}"  styleClass="btn btn-primary">
-                                        </h:commandButton>
+                                    <h:commandButton value="Search"  actionListener="#{addFriendCtrl.removeFriend(user.id)}"  styleClass="btn btn-primary">
+                                    </h:commandButton>
                                 </h:form>
-                            </a>
+                               
+
+                                
+                            </div>
                             <a href="#" class="list-group-item"><b>Real name:</b> #{user.firstname} #{user.lastname} </a>
                             <a href="#" class="list-group-item"><b>Age:</b> #{user.age}  </a>
                             <a href="#" class="list-group-item"><b>E-mail:</b> #{user.email}  </a>
