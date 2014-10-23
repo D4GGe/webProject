@@ -35,10 +35,12 @@ public class User extends AbstractEntity {
    private int nrPosts;
     private int nrComments;
     // constructor for testes
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
      private Date date;
     @ManyToMany
     private List<User> friends;
+    @ManyToMany
+    private List<Messenge> messenges;
      
 
     public User(){
@@ -263,6 +265,20 @@ public class User extends AbstractEntity {
      */
     public void setFriends(List<User> friends) {
         this.friends = friends;
+    }
+
+    /**
+     * @return the messenges
+     */
+    public List<Messenge> getMessenges() {
+        return messenges;
+    }
+
+    /**
+     * @param messenges the messenges to set
+     */
+    public void setMessenges(List<Messenge> messenges) {
+        this.messenges = messenges;
     }
 }
 

@@ -23,6 +23,10 @@
                                 <h:commandButton value="Add as friend"  actionListener="#{addFriendCtrl.addFriend(user.id)}"  styleClass="btn btn-primary">
                                         </h:commandButton>
                                 </h:form>
+                                <h:form>
+                                <h:commandButton value="Search"  actionListener="#{addFriendCtrl.removeFriend(user.id)}"  styleClass="btn btn-primary">
+                                        </h:commandButton>
+                                </h:form>
                             </a>
                             <a href="#" class="list-group-item"><b>Real name:</b> #{user.firstname} #{user.lastname} </a>
                             <a href="#" class="list-group-item"><b>Age:</b> #{user.age}  </a>
