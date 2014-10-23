@@ -39,11 +39,10 @@ public class PostContainer extends AbstractDAO<Post, Long> implements IPostConta
 
     @Override
     public List<Post> getByName(String name) {
-         EntityManager em = getEntityManager();
+        EntityManager em = getEntityManager();
         List<Post> found = new ArrayList<>();
         EasyCriteria<Post> easyCriteria = easyCriteria = EasyCriteriaFactory.createQueryCriteria(em,Post.class);
         easyCriteria.andStringLike("content", "%"+name+"%");
-        easyCriteria.orEquals("name", name);
         return easyCriteria.getResultList();
      
     }
