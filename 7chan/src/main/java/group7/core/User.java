@@ -35,6 +35,10 @@ public class User extends AbstractEntity {
     public User(String name, String password){
         this.name = name;
         this.password = password;
+        this.email =" ";
+        this.age=0;
+        this.firstname=" ";
+        this.lastname=" ";
         this.nrPosts = 0;
         this.nrComments = 0 ;
         
