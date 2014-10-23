@@ -111,6 +111,7 @@ public class LoginBean implements Serializable {
         return user;
 
     }
+    
 
     public boolean getLoggedIn() {
         return loggedIn;

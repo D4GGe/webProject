@@ -1,3 +1,20 @@
+.jumbotron{
+    background-image:  url(../resources/img/7chanbanner800.png);
+    background-repeat:no-repeat;
+    background-position: center;
+    padding-top: 50px!important;
+    box-shadow:7px 7px 5px 0px rgba(50,50,50,0.75);
+   
+}
+
+.navbar-fixed-top{
+     
+}
+
+.fill-jumbotron{
+    height:200px;
+    width:20px;
+}
 .whide_button{
     width: 100%;
     margin-top: 5px;

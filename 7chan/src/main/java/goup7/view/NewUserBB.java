@@ -22,6 +22,7 @@ public class NewUserBB implements Serializable{
     private String name;
     private String password;
     private String email;
+    
 
     /**
      * @return the name
