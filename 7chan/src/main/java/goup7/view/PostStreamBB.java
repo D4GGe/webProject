@@ -9,6 +9,7 @@ package goup7.view;
 import group7.core.IPostContainer;
 import group7.core.Post;
 import group7.core.PostContainer;
+import group7.ctrl.LoginBean;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -31,6 +32,8 @@ public class PostStreamBB implements Serializable {
     private int count;
     @EJB
     private IPostContainer postContainer;
+    @Inject
+    private LoginBean loginBean;
     protected PostStreamBB(){
         currentPage = 0;
     }
@@ -39,6 +42,9 @@ public class PostStreamBB implements Serializable {
     @PostConstruct
     public void post(){
         count = postContainer.count();
+    }
+    public Collection<Post> getUserPosts(){
+        return postContainer.getByUser(loginBean.getUser());
     }
     
     public Collection<Post> getList(){

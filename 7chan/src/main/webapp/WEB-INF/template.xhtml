@@ -36,7 +36,15 @@
                             <c:if test="#{loginBean.loggedIn}">
                         <li><h:link value="New Post" class="navbar-brand" outcome="newPost" /></li>
                             </c:if>
-                        <li><h:link value="Legacy" class="navbar-brand" outcome="legacy" /></li>
+                        <c:if test="#{loginBean.loggedIn}">
+                        <li><h:link value="Friends" class="navbar-brand" outcome="friends" /></li>
+                        </c:if>
+                        <c:if test="#{loginBean.loggedIn}">
+                        <li><h:link value="Old posts" class="navbar-brand" outcome="oldposts" /></li>
+                        </c:if>
+                        <c:if test="#{loginBean.loggedIn}">
+                        <li><h:link value="Messages" class="navbar-brand" outcome="messages" /></li>
+                        </c:if>
                         <li><h:link value="About" class="navbar-brand" outcome="about" /></li>
                         <li><h:link value="Post stream" class="navbar-brand" outcome="postStream" /> </li>
                         <c:if test="#{not loginBean.loggedIn}">
@@ -97,7 +105,7 @@
                                             <!-- Sign In Form -->
                                             <!-- Text input-->
                                             <div class="control-group">
-                                                <label class="control-label-reg" for="userid">Alias:</label>
+                                                <label class="control-label-reg" for="userid">User name:</label>
                                                 <div class="controls">
                                                     <div class="controls">
                                                         <h:inputText value="#{loginBB.name}" class="form-control input-large"/> 
@@ -149,7 +157,7 @@
 
                                             <!-- Text input-->
                                             <div class="control-group">
-                                                <label class="control-label-reg" for="userid">Name:</label>
+                                                <label class="control-label-reg" for="userid">User name:</label>
                                                 <div class="controls">
                                                     <h:inputText value="#{newUserBB.name}" class="form-control input-large"/> 
                                                     <!--<input id="userid" name="userid" class="form-control" type="text" placeholder="JoeSixpack" class="input-large" required="">-->

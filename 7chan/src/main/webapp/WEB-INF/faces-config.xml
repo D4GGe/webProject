@@ -12,13 +12,21 @@
         <from-outcome>newPost</from-outcome>
         <to-view-id>partials/newPost.xhtml</to-view-id>
     </navigation-case>
+     <navigation-case>
+        <from-outcome>friends</from-outcome>
+        <to-view-id>partials/friends.xhtml</to-view-id>
+    </navigation-case>
+    <navigation-case>
+        <from-outcome>messages</from-outcome>
+        <to-view-id>partials/messages.xhtml</to-view-id>
+    </navigation-case>
     <navigation-case>
         <from-outcome>user</from-outcome>
         <to-view-id>partials/user.xhtml</to-view-id>
     </navigation-case>
      <navigation-case>
         <from-outcome>legacy</from-outcome>
-        <to-view-id>partials/legacy.xhtml</to-view-id>
+        <to-view-id>partials/oldposts.xhtml</to-view-id>
     </navigation-case>
     <navigation-case>
         <from-outcome>postSearch</from-outcome>

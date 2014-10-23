@@ -18,7 +18,7 @@ import persistence.IDAO;
 public interface IPostContainer extends IDAO<Post, Long> {
 
     public List<Post> getByName(String name);
-     
+    public List<Post> getByUser(User user);
 }
     
 
