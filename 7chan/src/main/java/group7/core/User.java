@@ -8,7 +8,9 @@ package group7.core;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -35,6 +37,8 @@ public class User extends AbstractEntity {
     // constructor for testes
     @Temporal(TemporalType.DATE)
      private Date date;
+    @ManyToMany
+    private List<User> friends;
      
 
     public User(){
@@ -245,6 +249,20 @@ public class User extends AbstractEntity {
      */
     public void setNrComments(int nrComments) {
         this.nrComments = nrComments;
+    }
+
+    /**
+     * @return the friends
+     */
+    public List<User> getFriends() {
+        return friends;
+    }
+
+    /**
+     * @param friends the friends to set
+     */
+    public void setFriends(List<User> friends) {
+        this.friends = friends;
     }
 }
 
