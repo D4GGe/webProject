@@ -6,14 +6,14 @@
     <h:body>
         <ui:composition template="/WEB-INF/template.xhtml">
             <ui:define name="content">
-                <h3>Main</h3>
-                <p>
-                    Testtext
+                <h3>Welcome to 7chan</h3>
+                <h4>
+                   What are you waiting for? Start socializing now!
                     <br></br>
-                    #{loginBean.loggedIn}
+                  
                     #{loginBean.user.get_name()}
                     #{loginBean.user.get_nr_posts()}
-                </p>
+                </h4>
             </ui:define>
         </ui:composition>
     </h:body>

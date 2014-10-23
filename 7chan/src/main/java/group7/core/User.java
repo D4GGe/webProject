@@ -6,8 +6,12 @@
 
 package group7.core;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import persistence.AbstractEntity;
 
 /**
@@ -18,6 +22,7 @@ import persistence.AbstractEntity;
 @Table(name="CHAN_USER")
 public class User extends AbstractEntity {
     private String name;
+    //private Date date;
     private String firstname;
     private String lastname;
     private int age;
@@ -28,6 +33,10 @@ public class User extends AbstractEntity {
    private int nrPosts;
     private int nrComments;
     // constructor for testes
+    @Temporal(TemporalType.DATE)
+     private Date date;
+     
+
     public User(){
        
     }
@@ -43,25 +52,30 @@ public class User extends AbstractEntity {
         this.nrComments = 0 ;
         
     }
-    public User(long id, String name, String password){
-        super(id);
-        this.name = name;
-        this.password = password;
-        
-        this.nrPosts = 0;
-        this.nrComments = 0 ;
-        
-    }
+   
   public User(String name, String password, String email){
         this.name = name;
         this.password = password;
         this.email = email;
         this.nrPosts = 0;
         this.nrComments = 0 ;
+        this.date = new Date();
         
     }
   
-    
+    public String getDate() {
+        SimpleDateFormat ft = 
+      new SimpleDateFormat ("E yyyy.MM.dd");
+        return ft.format(date);
+        
+    }
+ 
+    /**
+     * @param date the date to set
+     */
+    public void setDate(Date date) {
+        this.date = date;
+    }
     
     public String get_name(){
         return getName();
