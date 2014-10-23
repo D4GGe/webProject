@@ -6,6 +6,8 @@
 
 package group7.core;
 
+import com.uaihebert.factory.EasyCriteriaFactory;
+import com.uaihebert.model.EasyCriteria;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -32,7 +34,8 @@ public class UserContainer extends AbstractDAO<User, Long> implements IUserConta
      public static IUserContainer newInstance() {
         return new UserContainer();
     }
-
+     
+    
     @Override
     public String test(){
         return "test";
