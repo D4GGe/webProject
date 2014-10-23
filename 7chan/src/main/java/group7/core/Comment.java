@@ -23,7 +23,7 @@ import persistence.AbstractEntity;
 @Entity
 
 public class Comment extends AbstractEntity {
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date date;
     private String data;
     @ManyToOne

@@ -25,6 +25,16 @@ public class addFriendCtrl {
     @Inject
     private LoginBean loginBean;
     
+    
+    
+    public void removeFriend(long userid){
+      User friend = userContainer.find(userid);
+      loginBean.getUser().getFriends().remove(friend);
+      friend.getFriends().remove(loginBean.getUser());
+      userContainer.update(friend);
+      userContainer.update(loginBean.getUser());
+    }
+    
     public void addFriend(long userid){
         System.out.println(userid + " *******************************************");
       User friend = userContainer.find(userid);

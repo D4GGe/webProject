@@ -28,7 +28,7 @@ import persistence.AbstractEntity;
 @Entity
 public class Post extends AbstractEntity {
     private String name;
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date date;
     private String content;
     @ManyToMany
