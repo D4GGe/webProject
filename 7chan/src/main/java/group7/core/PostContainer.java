@@ -41,7 +41,8 @@ public class PostContainer extends AbstractDAO<Post, Long> implements IPostConta
         List<Post> found = new ArrayList<>();
         // Warning because typename not found in string (clazz.getSimpleName())
         // Criteria API better, possible misstakes in String, NOTE space before t
-        TypedQuery<Post> q =  em.createQuery("select P from Post P where p.name ='"+name+"'",Post.class);
+        TypedQuery<Post> q =  em.createQuery("select P from Post P where P.name =':postname'    ",Post.class);
+        q.setParameter("postname","a");
         found.addAll(q.getResultList());
         return found;
      
