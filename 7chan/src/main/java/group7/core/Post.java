@@ -7,6 +7,7 @@
 package group7.core;
 
 import java.sql.Time;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -53,6 +54,12 @@ public class Post extends AbstractEntity {
     /**
      * @return the name
      */
+   public String getDate() {
+        SimpleDateFormat ft = 
+      new SimpleDateFormat ("E yyyy.MM.dd");
+        return ft.format(date);
+        
+    }
     public String getName() {
         return name;
     }
@@ -67,9 +74,7 @@ public class Post extends AbstractEntity {
     /**
      * @return the date
      */
-    public Date getDate() {
-        return date;
-    }
+    
 
     /**
      * @param date the date to set
