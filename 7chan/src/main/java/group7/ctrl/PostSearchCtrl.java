@@ -28,34 +28,17 @@ public class PostSearchCtrl implements Serializable {
     @EJB
      IPostContainer postContainer;
     
-    private PostSearchBB postSearchBB;
+   
     private List<Post> posts;
-    
+    private String search;
     
     public void preform_search(){
-        System.out.println("*****************************   "+postSearchBB.getSearch()+" *****************************");
-        setPosts(postContainer.getByName(postSearchBB.getSearch()));
+        System.out.println("*****************************   "+getSearch()+" *****************************");
+        setPosts(postContainer.getByName(getSearch()));
         
     }
 
-    /**
-     * @return the postSearchBB
-     */
-    public PostSearchBB getPostSearchBB() {
-        return postSearchBB;
-    }
-
-    /**
-     * @param postSearchBB the postSearchBB to set
-     */
-    @Inject
-    public void setPostSearchBB(PostSearchBB postSearchBB) {
-        this.postSearchBB = postSearchBB;
-    }
-
-    /**
-     * @return the posts
-     */
+    
     public List<Post> getPosts() {
         return posts;
     }
@@ -65,5 +48,19 @@ public class PostSearchCtrl implements Serializable {
      */
     public void setPosts(List<Post> posts) {
         this.posts = posts;
+    }
+
+    /**
+     * @return the search
+     */
+    public String getSearch() {
+        return search;
+    }
+
+    /**
+     * @param search the search to set
+     */
+    public void setSearch(String search) {
+        this.search = search;
     }
 }

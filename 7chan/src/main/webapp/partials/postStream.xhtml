@@ -17,7 +17,7 @@
                                 <div class="input-group">
                                      <h:inputText class="form-control" value="#{postSearchBB.search}"/>
                                     <span class="input-group-btn">
-                                        <h:commandButton value="Search" immediate="true" action="postSearch?faces-redirect=true"  styleClass="btn btn-primary">
+                                        <h:commandButton value="Search" action="postSearch?faces-redirect=true" actionListener="#{postSearchBB.preformSearch()}"  styleClass="btn btn-primary">
                                             <f:param name="postId" value="asdadsads"/>
                                         </h:commandButton>
                                     </span>

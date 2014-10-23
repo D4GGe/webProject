@@ -11,10 +11,7 @@ import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-/**
- *
- * @author Richard
- */
+
 @Named
 @RequestScoped
 public class EditUserBB implements Serializable{ 
