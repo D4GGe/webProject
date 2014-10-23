@@ -21,6 +21,7 @@ import javax.inject.Named;
 public class NewUserBB implements Serializable{
     private String name;
     private String password;
+    private String email;
 
     /**
      * @return the name
@@ -28,10 +29,15 @@ public class NewUserBB implements Serializable{
     public String getName() {
         return name;
     }
-
+ public String getEmail() {
+        return email;
+    }
     /**
      * @param name the name to set
      */
+  public void setEmail(String email) {
+        this.email=email;
+    }
     public void setName(String name) {
         this.name = name;
     }

@@ -39,7 +39,6 @@ public class LoginBean implements Serializable {
 
     /**
      * @param loginBB
-     * @param loginbBB the loginBB to set
      */
     @Inject
     public void setLoginbb(LoginBB loginBB) {

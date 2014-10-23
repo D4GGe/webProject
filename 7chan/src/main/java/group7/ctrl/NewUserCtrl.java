@@ -40,8 +40,8 @@ public class NewUserCtrl implements Serializable{
         System.out.println("********************" + userContainer.test());
         System.out.println(newUserBB.getName()+"********************         " + newUserBB.getPassword());
         
-            User user = new User(newUserBB.getName(),newUserBB.getPassword());
-      userContainer.create(user);
+        User user = new User(newUserBB.getName(),newUserBB.getPassword(), newUserBB.getEmail());
+        userContainer.create(user);
         loginBean.login(user.getName(),user.getPassword());
 
         
