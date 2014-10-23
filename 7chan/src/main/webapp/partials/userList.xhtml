@@ -11,13 +11,17 @@
 
 
                 <div class="list-group">
-                    <ui:repeat var="user" value="#{listUserBB.findAll()}" varStatus="status">
+                    <ui:repeat var="user" value="#{listUserBB.list}" varStatus="status">
 
                         <div class="list-group">
                             <a href="#" class="list-group-item disabled">
-                                Complete list of morons
+                                #{user.id} : #{user.name}
                             </a>
-                            <a href="#" class="list-group-item">user.name</a>
+                            <a href="#" class="list-group-item"><b>Real name:</b> #{user.firstname} #{user.lastname} </a>
+                            <a href="#" class="list-group-item"><b>Age:</b> #{user.age}  </a>
+                            <a href="#" class="list-group-item"><b>e-post:</b> #{user.email}  </a>
+                            <a href="#" class="list-group-item"><b>posts:</b> #{user.nrPosts}  </a>
+                            <a href="#" class="list-group-item"><b>comments:</b> #{user.nrComments}  </a>
                         </div>
                     </ui:repeat>
                 </div>

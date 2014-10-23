@@ -43,6 +43,8 @@
                             <li> <a class="navbar-brand " href="#signup" data-toggle="modal" data-target=".bs-modal-sm">Sign In/Register</a> </li>
                         </c:if>
                         <c:if test="#{loginBean.loggedIn}">
+                            
+                            <li><h:link value="Users" class="navbar-brand" outcome="userList" /> </li>
                             <li><h:link value="Profile" class="navbar-brand" outcome="user" /> </li>
                         </c:if>
 
