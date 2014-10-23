@@ -12,13 +12,16 @@
                     <c:if test="#{loginBean.loggedIn}">
                         <h:link outcome="postStream.xhtml">Get to socializing!</h:link>
                     </c:if>
+                    
                     <c:if test="#{not loginBean.loggedIn}">
-                    Do like #{listUserBB.getList().size()} others, <a class="navbar-brand " href="#signup" data-toggle="modal" data-target=".bs-modal-sm">sign in or register</a> and start socializing now!
+                    Do like #{listUserBB.getList().size()} others, 
+                    <a href="#signup" data-toggle="modal" data-target=".bs-modal-sm">sign in or register</a> and start socializing now!
                     </c:if>
+                   
                     <br></br>
                   
-                    #{loginBean.user.get_name()}
-                    #{loginBean.user.get_nr_posts()}
+                    <!--#{loginBean.user.get_name()}-->
+                    <!--#{loginBean.user.get_nr_posts()}-->
                 </h4>
             </ui:define>
         </ui:composition>
