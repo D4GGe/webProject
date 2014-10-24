@@ -5,7 +5,8 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
 
     <h:head>
 
@@ -153,7 +154,7 @@
                                             <div class="control-group">
                                                 <label class="control-label-reg" for="Email">Email:</label>
                                                 <div class="controls">
-                                                    <h:inputText value="#{newUserBB.email}" class="form-control input-large"/> 
+                                                    <h:inputText a:placeholder="example@mail.com" value="#{newUserBB.email}" class="form-control input-large"/> 
                                                     <!--<input id="Email" name="Email" class="form-control" type="text" placeholder="JoeSixpack@sixpacksrus.com" class="input-large" required="">-->
                                                 </div>
                                             </div>
@@ -162,7 +163,7 @@
                                             <div class="control-group">
                                                 <label class="control-label-reg" for="userid">User name:</label>
                                                 <div class="controls">
-                                                    <h:inputText value="#{newUserBB.name}" class="form-control input-large"/> 
+                                                    <h:inputText a:placeholder="username" value="#{newUserBB.name}" class="form-control input-large"/> 
                                                     <!--<input id="userid" name="userid" class="form-control" type="text" placeholder="JoeSixpack" class="input-large" required="">-->
                                                 </div>
                                             </div>
@@ -171,9 +172,10 @@
                                             <div class="control-group">
                                                 <label class="control-label-reg" for="password">Password:</label>
                                                 <div class="controls">
-                                                    <h:inputText value="#{newUserBB.password}" class="form-control input-large"/>
+                                                    <h:inputText a:placeholder="password" value="#{newUserBB.password}" class="form-control input-large" />
 
                                                 </div>
+                                                <i>At least 3 characters.</i>
                                             </div>
                                             <h:form id="form2">
                                                 <h:selectBooleanCheckbox id="check" binding="#{check}">
@@ -190,6 +192,7 @@
                                                     <div class="controls">
                                                         <h:commandButton id="regbutton" value="Register" type="submit" actionListener="#{newUserCtrl.save}" 
                                                                          action="user?faces-redirect=true" class="btn btn-success" disabled="#{not check.value}"/>
+                                                                         
 
                                                     </div>
                                                 
