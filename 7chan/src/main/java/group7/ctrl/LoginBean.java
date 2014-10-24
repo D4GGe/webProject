@@ -31,7 +31,9 @@ public class LoginBean implements Serializable {
     private User user;
     private boolean loggedIn;
     private long postid;
+    private String redirect;
 
+    
     @PostConstruct
     public void post() {
         this.loggedIn = false;
@@ -51,7 +53,7 @@ public class LoginBean implements Serializable {
         this.loginBB = loginBB;
     }
    
-    public void login(String userName,String userPassword) {
+    public String login(String userName,String userPassword) {
         //User result = userContainer.login(loginBB.getName(), loginBB.getPassword());
         //wrong metod shuld be an sql query but (as the function over)
         User result = null;
@@ -64,24 +66,16 @@ public class LoginBean implements Serializable {
         }
 
         if (result != null) {
-            // get Http Session and store username
             this.loggedIn = true;
             this.user = result;
+            return "user?faces-redirect=true";
 
         } else {
-
-            FacesContext.getCurrentInstance().addMessage(
-                    null,
-                    new FacesMessage(FacesMessage.SEVERITY_WARN,
-                            "Invalid Login!",
-                            "Please Try Again!"));
-
-            // invalidate session, and redirect to other pages
-            //message = "Invalid Login. Please Try Again!";
+            return "loginFail.xhtml?faces-redirect=true";
         }
 
     }
-    public void login() {
+    public String login() {
         //User result = userContainer.login(loginBB.getName(), loginBB.getPassword());
         //wrong metod shuld be an sql query but (as the function over)
         User result = null;
@@ -97,15 +91,11 @@ public class LoginBean implements Serializable {
             // get Http Session and store username
             this.loggedIn = true;
             this.user = result;
+            return "user?faces-redirect=true";
 
         } else {
 
-            FacesContext.getCurrentInstance().addMessage(
-                    null,
-                    new FacesMessage(FacesMessage.SEVERITY_WARN,
-                            "Invalid Login!",
-                            "Please Try Again!"));
-
+            return "loginfail?faces-redirect=true";
             // invalidate session, and redirect to other pages
             //message = "Invalid Login. Please Try Again!";
         }
@@ -141,6 +131,20 @@ public class LoginBean implements Serializable {
      */
     public void setPostid(long postid) {
         this.postid = postid;
+    }
+
+    /**
+     * @return the redirect
+     */
+    public String getRedirect() {
+        return redirect;
+    }
+
+    /**
+     * @param redirect the redirect to set
+     */
+    public void setRedirect(String redirect) {
+        this.redirect = redirect;
     }
 
 }

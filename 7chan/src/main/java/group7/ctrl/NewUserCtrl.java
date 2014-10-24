@@ -35,14 +35,19 @@ public class NewUserCtrl implements Serializable{
         this.newUserBB = nubb;
     }
     
-    public void save(){
+    public String save(){
 
-        System.out.println("********************" + userContainer.test());
-        System.out.println(newUserBB.getName()+"********************         " + newUserBB.getPassword());
         
+        
+        
+        
+        if(!userContainer.userExsists(newUserBB.getName())){
         User user = new User(newUserBB.getName(),newUserBB.getPassword(), newUserBB.getEmail());
-        userContainer.create(user);
+            userContainer.create(user);
         loginBean.login(user.getName(),user.getPassword());
+        return "user?faces-redirect=true"; 
+        }
+        return "registerFail.xhtml?faces-redirect=true";
 
         
     }
