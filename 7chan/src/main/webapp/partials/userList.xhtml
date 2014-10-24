@@ -5,7 +5,7 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"> 
-    
+
     <h:body>
         <ui:composition template="/WEB-INF/template.xhtml">
             <h3>Users</h3>
@@ -13,36 +13,42 @@
 
 
                 <div class="list-group">
-                    <h:form>
-                        <h:commandLink actionListener="#{listUserBB.userFriends}">Friends</h:commandLink>
-                    </h:form>
+
                     <ui:repeat var="user" value="#{listUserBB.list}" varStatus="status">
+                        <ui:fragment rendered="#{not loginBean.isUser(user.id)}"><br/> 
 
-                        <div class="list-group">
-                            <div class="list-group-item disabled">
-                                #{user.id} : #{user.name} 
-                                 <h:link value="Send messege" outcome="sendMessenge.xhtml"  >
-                                    <f:param name="userId" value="#{user.id}"/>
-                                </h:link>
-                                <h:form>
-                                    <h:commandButton value="Add as friend"  actionListener="#{addFriendCtrl.addFriend(user.id)}"  styleClass="btn btn-primary">
-                                    </h:commandButton>
-                                </h:form>
-                                <h:form>
-                                    <h:commandButton value="Search"  actionListener="#{addFriendCtrl.removeFriend(user.id)}"  styleClass="btn btn-primary">
-                                    </h:commandButton>
-                                </h:form>
-                               
-
+                            <div class="list-group">
+                                <div class="list-group-item disabled">
+                                    <b>#{user.name}</b>
+                                   
+                                </div>
+                                <div class="list-group-item"><b>Real name:</b> #{user.firstname} #{user.lastname} </div>
+                                <div class="list-group-item"><b>Age:</b> #{user.age} </div>
+                                <div class="list-group-item"><b>E-mail:</b> #{user.email} </div>
+                                <div class="list-group-item"><b>Number of posts:</b> #{user.nrPosts}  </div>
+                                <div class="list-group-item"><b>Number of comments:</b> #{user.nrComments}  </div>
                                 
+                                <div class="list-group-item">
+                                    <ui:fragment rendered="#{not listUserBB.isFriend(user.id)}">
+                                        <h:form>
+                                            <h:commandButton class="btn btn-success addremove" value="Add as friend"  actionListener="#{addFriendCtrl.addFriend(user.id)}"  styleClass="btn btn-primary">
+                                            </h:commandButton>
+                                        </h:form>
+                                    </ui:fragment>
+                                    <ui:fragment rendered="#{listUserBB.isFriend(user.id)}"> 
+                                        <h:form>
+                                            <h:commandButton class="btn btn-danger addremove" value="Remove as friend"  actionListener="#{addFriendCtrl.removeFriend(user.id)}"  styleClass="btn btn-primary">
+                                            </h:commandButton>
+                                        </h:form>
+                                    </ui:fragment>
+                                </div>
+                                    
                             </div>
-                            <a href="#" class="list-group-item"><b>Real name:</b> #{user.firstname} #{user.lastname} </a>
-                            <a href="#" class="list-group-item"><b>Age:</b> #{user.age}  </a>
-                            <a href="#" class="list-group-item"><b>E-mail:</b> #{user.email}  </a>
-                            <a href="#" class="list-group-item"><b>Number of posts:</b> #{user.nrPosts}  </a>
-                            <a href="#" class="list-group-item"><b>Number of comments:</b> #{user.nrComments}  </a>
-                        </div>
+                            
+                        </ui:fragment>
+                        
                     </ui:repeat>
+
                 </div>
 
 
