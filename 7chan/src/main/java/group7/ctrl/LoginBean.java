@@ -95,7 +95,7 @@ public class LoginBean implements Serializable {
 
         } else {
 
-            return "loginfail?faces-redirect=true";
+            return "loginFail.xhtml?faces-redirect=true";
             // invalidate session, and redirect to other pages
             //message = "Invalid Login. Please Try Again!";
         }

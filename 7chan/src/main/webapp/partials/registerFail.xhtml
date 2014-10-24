@@ -10,12 +10,11 @@
             <ui:define name="content">
                 
                 <div class="alert alert-warning alert-dismissible" role="alert">
-                    <strong>Warning!</strong> username already exists retry
+                    <strong>Warning!</strong> The username already exists! <br></br>
+                    Please <a href="#signup" data-toggle="modal" data-target=".bs-modal-sm">register or try signing in again.</a>
+                
                 </div>
-                Please do either of the following: 
-                <h:link outcome="register.xhtml">Register</h:link>
-                or
-                <h:link outcome="login.xhtml">Try signing in again</h:link>
+                
                 
                 </ui:define>
         </ui:composition>

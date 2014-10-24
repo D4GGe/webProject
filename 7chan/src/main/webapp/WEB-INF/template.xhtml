@@ -4,7 +4,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <h:head>
 
@@ -14,11 +15,7 @@
         <h:outputStylesheet library="css" name="custom.css"  />
         <h:outputStylesheet library="css" name="jumb.css"  />
         <h:outputScript library="js" name="bootstrap.min.js"/>
-        <script>
-            function checkClick(check) {
-                document.getElementById('regbutton').disabled = !check.checked;
-            }
-        </script>
+      
 
         <title>7chan</title>
 
@@ -179,29 +176,23 @@
                                                 </div>
                                             </div>
                                             <h:form id="form2">
-                                                <h:selectBooleanCheckbox id="check" onclick="checkClick(this)"/>
+                                                <h:selectBooleanCheckbox id="check" binding="#{check}">
+                                                    <f:ajax render="regbutton" />
+                                                </h:selectBooleanCheckbox>
                                                 <label class="control-label-reg">
                                                     <a data-toggle="modal" data-target=".modaltva">
                                                         Accept terms and conditions
                                                     </a> 
                                                 </label>
 
-                                            <!-- Button -->
-                                            <div class="control-group">
-                                                <label class="control-label" for="confirmsignup"></label>
-                                                <div class="controls">
-                                                    <h:commandButton value="Register"  
-                                                                     action="#{newUserCtrl.save}" class="btn btn-success"/>
-
-
-                                                <div class="control-group">
+                                            <!-- Button -->                                             
                                                     <label class="control-label" for="confirmsignup"></label>
                                                     <div class="controls">
                                                         <h:commandButton id="regbutton" value="Register" type="submit" actionListener="#{newUserCtrl.save}" 
-                                                                         action="user?faces-redirect=true" class="btn btn-success" disabled="true"/>
+                                                                         action="user?faces-redirect=true" class="btn btn-success" disabled="#{not check.value}"/>
 
                                                     </div>
-                                                </div>
+                                                
                                             </h:form>
 
                                             <div class="modal fade modaltva">
@@ -244,7 +235,7 @@
 
             <!-- end modal -->
 
-
+            <script>        </script>
             <footer>
                 <p> </p>
             </footer>
@@ -252,3 +243,4 @@
 
     </h:body>
 </html>
+  
