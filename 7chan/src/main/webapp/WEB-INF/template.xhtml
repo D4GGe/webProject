@@ -14,8 +14,14 @@
         <h:outputStylesheet library="css" name="custom.css"  />
         <h:outputStylesheet library="css" name="jumb.css"  />
         <h:outputScript library="js" name="bootstrap.min.js"/>
+        <script>
+            function checkClick(check) {
+                document.getElementById('regbutton').disabled = !check.checked;
+            }
+        </script>
 
         <title>7chan</title>
+
     </h:head>
 
     <h:body>
@@ -33,14 +39,14 @@
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav nav-pills pull-right">
-                            <c:if test="#{loginBean.loggedIn}">
-                        <li><h:link value="New Post" class="navbar-brand" outcome="newPost" /></li>
-                            </c:if>
                         <c:if test="#{loginBean.loggedIn}">
-                        <li><h:link value="Friends" class="navbar-brand" outcome="friends" /></li>
+                            <li><h:link value="New Post" class="navbar-brand" outcome="newPost" /></li>
                         </c:if>
                         <c:if test="#{loginBean.loggedIn}">
-                        <li><h:link value="Old posts" class="navbar-brand" outcome="oldposts" /></li>
+                            <li><h:link value="Friends" class="navbar-brand" outcome="friends" /></li>
+                        </c:if>
+                        <c:if test="#{loginBean.loggedIn}">
+                            <li><h:link value="Old posts" class="navbar-brand" outcome="oldposts" /></li>
                         </c:if>
                         <c:if test="#{loginBean.loggedIn}">
                             <li><h:link value="Messages" class="navbar-brand" outcome="messages" /></li>
@@ -51,7 +57,7 @@
                             <li> <a class="navbar-brand " href="#signup" data-toggle="modal" data-target=".bs-modal-sm">Sign In/Register</a> </li>
                         </c:if>
                         <c:if test="#{loginBean.loggedIn}">
-                            
+
                             <li><h:link value="Users" class="navbar-brand" outcome="userList" /> </li>
                             <li><h:link value="Profile" class="navbar-brand" outcome="user" /> </li>
                         </c:if>
@@ -66,15 +72,15 @@
         <!-- Main jumbotron for a primary marketing message or call to action -->
         <div class="jumbotron">
             <div class="fill-jumbotron">
-              
+
             </div>
         </div>
 
         <div class="container">
             <!-- Example row of columns -->
-            
-                <ui:insert name="content">Content</ui:insert>
-            
+
+            <ui:insert name="content">Content</ui:insert>
+
 
 
 
@@ -169,57 +175,54 @@
                                                 <label class="control-label-reg" for="password">Password:</label>
                                                 <div class="controls">
                                                     <h:inputText value="#{newUserBB.password}" class="form-control input-large"/>
-                                                    
+
                                                 </div>
                                             </div>
-                                            
-                                            <div class="checkbox">
+                                            <h:form id="form2">
+                                                <h:selectBooleanCheckbox id="check" onclick="checkClick(this)"/>
                                                 <label class="control-label-reg">
-                                                      <input type="checkbox"/> 
-                                                     
-                                                     <a data-toggle="modal" data-target=".modaltva">
-                                                             Accept terms and conditions
+                                                    <a data-toggle="modal" data-target=".modaltva">
+                                                        Accept terms and conditions
                                                     </a> 
                                                 </label>
-                                             </div>
-                                            
-       <div class="modal fade modaltva">
-           <div class="modal-dialog" id="terms">
-                 <div class="modal-content">
-                      <div class="modal-header">
-      
-        <h4 class="modal-title">Terms and conditions</h4>
-      </div>
-      <div class="modal-body">
-        <p>blablablablablablaablablablablablalab</p>
-         <!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
-        <!--<button type="button" class="btn btn-primary" data-dismiss="modal"></button>-->
-      </div>
-      <div class="modal-footer">
-          <center>
-          <button type="button" class="btn btn-primary" data-dismiss="modal">I have read the conditions</button>
-          </center>
-              </div>
-       
-    </div><!-- /.modal-content -->
-     
-  </div><!-- /.modal-dialog -->
- 
-</div><!-- /.modal -->
 
-   
 
-                                            <!-- Button -->
-                                            <div class="control-group">
-                                                <label class="control-label" for="confirmsignup"></label>
-                                                <div class="controls">
-                                                    <h:commandButton value="Register" actionListener="#{newUserCtrl.save}" 
-                                                                     action="user?faces-redirect=true" class="btn btn-success"/>
+                                                <div class="control-group">
+                                                    <label class="control-label" for="confirmsignup"></label>
+                                                    <div class="controls">
+                                                        <h:commandButton id="regbutton" value="Register" type="submit" actionListener="#{newUserCtrl.save}" 
+                                                                         action="user?faces-redirect=true" class="btn btn-success" disabled="true"/>
 
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </fieldset>
+                                            </h:form>
+
+                                            <div class="modal fade modaltva">
+                                                <div class="modal-dialog" id="terms">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+
+                                                            <h4 class="modal-title">Terms and conditions</h4>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <p>blablablablablablaablablablablablalab</p>
+                                                            <!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
+                                                            <!--<button type="button" class="btn btn-primary" data-dismiss="modal"></button>-->
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <center>
+                                                                <button type="button" class="btn btn-primary" data-dismiss="modal">I have read the conditions</button>
+                                                            </center>
+                                                        </div>
+
+                                                    </div><!-- /.modal-content -->
+
+                                                </div><!-- /.modal-dialog -->
+
+                                            </div><!-- /.modal -->
+                                            </fieldset>
                                     </h:form>
+                                    
                                 </div>
                             </div>
                         </div>
