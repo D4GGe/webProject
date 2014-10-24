@@ -17,5 +17,6 @@ import persistence.IDAO;
 @Local
 public interface IUserContainer extends IDAO<User,Long> {
     public boolean userExsists(String name);
+    public List<User> getByName(String name);
     public User login(String name, String password);
 }

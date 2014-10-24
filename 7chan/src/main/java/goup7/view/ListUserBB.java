@@ -27,6 +27,7 @@ public class ListUserBB implements Serializable{
     private int currentPage;
     private final int pageSize = 10;
     private int count;
+    private String searchWord;
     private Collection<User> list;
     @Inject
     LoginBean loginBean;
@@ -73,12 +74,31 @@ public class ListUserBB implements Serializable{
     public void userFriends(){
         list=loginBean.getUser().getFriends();
     }
+    
     public void setCurrentPage(int currentPage) {
         this.currentPage = currentPage;
     }
 
     public int count() {
         return count;
+    }
+
+    /**
+     * @return the searchWord
+     */
+    public String getSearchWord() {
+        return searchWord;
+    }
+
+    /**
+     * @param searchWord the searchWord to set
+     */
+    public void setSearchWord(String searchWord) {
+        this.searchWord = searchWord;
+        
+    }
+    public void doSearch(){
+        this.list = userContainer.getByName(searchWord);
     }
     
 }

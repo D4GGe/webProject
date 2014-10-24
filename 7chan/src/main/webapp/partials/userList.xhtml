@@ -10,7 +10,23 @@
         <ui:composition template="/WEB-INF/template.xhtml">
             <h3>Users</h3>
             <ui:define name="content">
-
+                        <div class="post_stream_search">
+                    <h:form>
+                        <div class="row">
+                            <div>
+                                <div class="input-group">
+                                    <h:inputText class="form-control" value="#{listUserBB.searchWord}"/>
+                                    <span class="input-group-btn">
+                                        <h:commandButton value="Search" actionListener="#{listUserBB.doSearch()}"  styleClass="btn btn-primary">
+                                        </h:commandButton>
+                                    </span>
+                                </div><!-- /input-group -->
+                            </div><!-- /.col-lg-6 -->
+                        </div><!-- /.row -->
+                       
+                        
+                    </h:form>
+                </div>
 
                 <div class="list-group">
 

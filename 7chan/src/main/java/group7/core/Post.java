@@ -54,10 +54,9 @@ public class Post extends AbstractEntity {
     /**
      * @return the name
      */
-   public String getDate() {
-        SimpleDateFormat ft = 
-      new SimpleDateFormat ("E yyyy.MM.dd");
-        return ft.format(date);
+   public Date getDate() {
+        
+        return date;
         
     }
     public String getName() {

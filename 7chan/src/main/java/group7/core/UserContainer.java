@@ -35,6 +35,8 @@ public class UserContainer extends AbstractDAO<User, Long> implements IUserConta
         return new UserContainer();
     }
      
+     
+     
     
     @Override
     public boolean userExsists(String name){
@@ -59,6 +61,15 @@ public class UserContainer extends AbstractDAO<User, Long> implements IUserConta
         }else{
            return a.get(0);
         }
+        
+    }
+
+    @Override
+    public List<User> getByName(String name) {
+        EntityManager em = getEntityManager();
+        EasyCriteria<User> easyCriteria = easyCriteria = EasyCriteriaFactory.createQueryCriteria(em,User.class);
+        easyCriteria.andStringLike("name","%"+name+"%");
+        return easyCriteria.getResultList();
         
     }
     

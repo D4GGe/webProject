@@ -11,13 +11,10 @@
 
             <ui:define name="content">
                 #{loginBean.updateUser()}
-                <div class="list-group">
-
+                <div class="list-group ">
                     <ui:repeat var="p" value="#{loginBean.user.messenges}" varStatus="status">
-                        #{p.isSender}
-                        
                         <ui:fragment rendered="#{p.isSender}"><br/>
-                            <div class="list-group-item  ">
+                            <div class="list-group-item  shadow">
                                 <f:param name="userId" value="#{p.sender.id}"/>
                                 <h4>To #{p.receiver.name} </h4>
                                 <p>#{p.content}</p>
@@ -25,7 +22,7 @@
                             </div>
                         </ui:fragment>
                         <ui:fragment rendered="#{not p.isSender}"><br/>
-                              <h:link outcome="sendMessenge.xhtml" class="list-group-item active ">
+                              <h:link outcome="sendMessenge.xhtml" class="list-group-item active shadow">
                                 <f:param name="userId" value="#{p.sender.id}"/>
                                 <h4>From #{p.sender.name}</h4>
                                 <p>#{p.content}</p>

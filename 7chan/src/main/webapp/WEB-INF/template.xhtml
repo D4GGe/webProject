@@ -190,8 +190,8 @@
                                             <!-- Button -->                                             
                                                     <label class="control-label" for="confirmsignup"></label>
                                                     <div class="controls">
-                                                        <h:commandButton id="regbutton" value="Register" type="submit" actionListener="#{newUserCtrl.save}" 
-                                                                         action="user?faces-redirect=true" class="btn btn-success" disabled="#{not check.value}"/>
+                                                        <h:commandButton id="regbutton" value="Register" type="submit" 
+                                                                         action="#{newUserCtrl.save}" class="btn btn-success" disabled="#{not check.value}"/>
                                                                          
 
                                                     </div>
