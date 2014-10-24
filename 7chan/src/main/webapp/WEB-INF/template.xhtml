@@ -43,7 +43,7 @@
                         <li><h:link value="Old posts" class="navbar-brand" outcome="oldposts" /></li>
                         </c:if>
                         <c:if test="#{loginBean.loggedIn}">
-                        <li><h:link value="Messages" class="navbar-brand" outcome="messages" /></li>
+                            <li><h:link value="Messages" class="navbar-brand" outcome="messages" /></li>
                         </c:if>
                         <li><h:link value="About" class="navbar-brand" outcome="about" /></li>
                         <li><h:link value="Post stream" class="navbar-brand" outcome="postStream" /> </li>
@@ -72,9 +72,9 @@
 
         <div class="container">
             <!-- Example row of columns -->
-            <div class="row">
+            
                 <ui:insert name="content">Content</ui:insert>
-            </div>
+            
 
 
 

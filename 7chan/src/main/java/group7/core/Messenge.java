@@ -29,6 +29,7 @@ public class Messenge extends AbstractEntity {
     @ManyToOne
     private User sender;
     private User receiver;
+    private boolean isSender;
     public Messenge(){
         
     }
@@ -37,6 +38,7 @@ public class Messenge extends AbstractEntity {
         this.receiver =receiver;
         this.date = new Date();
         this.content = content;
+        this.isSender = true;
     }
 
     /**
@@ -93,5 +95,19 @@ public class Messenge extends AbstractEntity {
      */
     public void setReceiver(User receiver) {
         this.receiver = receiver;
+    }
+
+    /**
+     * @return the isSender
+     */
+    public boolean isIsSender() {
+        return isSender;
+    }
+
+    /**
+     * @param isSender the isSender to set
+     */
+    public void setIsSender(boolean isSender) {
+        this.isSender = isSender;
     }
 }

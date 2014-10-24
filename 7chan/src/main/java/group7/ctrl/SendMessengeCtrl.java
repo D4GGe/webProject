@@ -33,9 +33,12 @@ public class SendMessengeCtrl implements Serializable{
     public void send(){
         User reciver = userContainer.find(sendMessengeBB.getUserId());
         User sender = loginBean.getUser();
-        Messenge messenge = new Messenge(sendMessengeBB.getContent(), sender, reciver);
-        reciver.getMessenges().add(messenge);
-        sender.getMessenges().add(messenge);
+        Messenge rmessenge = new Messenge(sendMessengeBB.getContent(), sender, reciver);
+        Messenge smessenge = new Messenge(sendMessengeBB.getContent(), sender, reciver);
+        sender.getMessenges().add(smessenge);
+        rmessenge.setIsSender(false);
+        reciver.getMessenges().add(rmessenge);
+        
         userContainer.update(sender);
         userContainer.update(reciver);
         

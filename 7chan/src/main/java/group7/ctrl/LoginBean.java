@@ -36,7 +36,13 @@ public class LoginBean implements Serializable {
     public void post() {
         this.loggedIn = false;
     }
+    public boolean isUser(long userid){
+        return user.getId() == userid;
+    }
 
+    public void updateUser(){
+        user = userContainer.find(user.getId());
+    }
     /**
      * @param loginBB
      */
@@ -44,7 +50,7 @@ public class LoginBean implements Serializable {
     public void setLoginbb(LoginBB loginBB) {
         this.loginBB = loginBB;
     }
-
+   
     public void login(String userName,String userPassword) {
         //User result = userContainer.login(loginBB.getName(), loginBB.getPassword());
         //wrong metod shuld be an sql query but (as the function over)

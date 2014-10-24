@@ -7,48 +7,34 @@
         <ui:composition template="/WEB-INF/template.xhtml">
             <ui:define name="content">
                 <h3>Profile</h3>
-                
-  <form class="form-horizontal" role="form">
-  <div class="form-group">
-    <label class="col-sm-2 control-label">User name</label>
-    <div class="col-sm-10">
-      <p class="form-control-static">#{loginBean.user.get_name()}</p>
-    </div>
-    <label class="col-sm-2 control-label">First name</label>
-    <div class="col-sm-10">
-      <p class="form-control-static">#{loginBean.user.getFirstname()}</p>
-    </div>
-    <label class="col-sm-2 control-label">Last name</label>
-    <div class="col-sm-10">
-      <p class="form-control-static">#{loginBean.user.getLastname()}</p>
-    </div>
-    <label class="col-sm-2 control-label">Age</label>
-    <div class="col-sm-10">
-      <p class="form-control-static">#{loginBean.user.getAge()}</p>
-    </div>
-    <label class="col-sm-2 control-label">Number of posts </label>
-    <div class="col-sm-10">
-      <p class="form-control-static">#{loginBean.user.get_nr_posts()}</p>
-    </div>
-    <label class="col-sm-2 control-label">Number of comments </label>
-    <div class="col-sm-10">
-      <p class="form-control-static">#{loginBean.user.get_nr_comments()}</p>
-    </div>
-    <label class="col-sm-2 control-label">Member since </label>
-    <div class="col-sm-10">
-        <p class="form-control-static">#{loginBean.user.getDate()}</p>
-    </div>
-    </div>
-  </form>    
-                    <h:form>
+
+                <div class="profile_dl">
+                    <dl>
+                        <dt>User name</dt>
+                        <dd>#{loginBean.user.name} </dd> 
+                        <dt>First name</dt>
+                        <dd>#{loginBean.user.firstname} </dd>
+                        <dt>Last name</dt>
+                        <dd>#{loginBean.user.lastname} </dd>
+                        <dt>Age</dt>
+                        <dd>#{loginBean.user.age} </dd>
+                        <dt>Number of posts</dt> 
+                        <dd>#{loginBean.user.nrPosts} </dd>
+                        <dt>Number of comments </dt>
+                        <dd>#{loginBean.user.nrComments} </dd>
+                        <dt>Member since</dt>
+                        <dd>#{loginBean.user.date}</dd>
+                    </dl>
+                </div>
+                <h:form>
                     <div class="btn-group">
                         <h:commandButton value="Log out" immediate="true" actionListener="#{loginBean.logout}" action="main?faces-redirect=true" class="btn btn-default"/>
                     </div>
                     <div class="btn-group">
-                       <h:commandButton value="Edit profile" immediate="true" action="editProfile?faces-redirect=true" class="btn btn-default"/>
+                        <h:commandButton value="Edit profile" immediate="true" action="editProfile?faces-redirect=true" class="btn btn-default"/>
                     </div>
                     <div class="btn-group">
-                       <h:commandButton value="Delete profile" immediate="true" actionListener="#{editUserCtrl.delete}" action="main?faces-redirect=true" class="btn btn-default"/>
+                        <h:commandButton value="Delete profile" immediate="true" actionListener="#{editUserCtrl.delete}" action="main?faces-redirect=true" class="btn btn-default"/>
                     </div>
                 </h:form>
             </ui:define>
