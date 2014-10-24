@@ -3,20 +3,20 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+      >
     <h:body>
         <ui:composition template="/WEB-INF/template.xhtml">
             <ui:define name="content">
                 <h3>Welcome to 7chan</h3>
                 <h4>
-                    <c:if test="#{loginBean.loggedIn}">
+                    <ui:fragment rendered="#{loginBean.loggedIn}">
                         <h:link outcome="postStream.xhtml">Get to socializing!</h:link>
-                    </c:if>
+                    </ui:fragment>
                     
-                    <c:if test="#{not loginBean.loggedIn}">
+                    <ui:fragment rendered="#{not loginBean.loggedIn}">
                     Do like #{listUserBB.getList().size()} others, 
                     <a href="#signup" data-toggle="modal" data-target=".bs-modal-sm">sign in or register</a> and start socializing now!
-                    </c:if>
+                    </ui:fragment>
                    
                     <br></br>
                   

@@ -61,6 +61,10 @@ public class ListUserBB implements Serializable{
         }
     }
     
+    public boolean isFriend(long id){
+        return loginBean.getUser().getFriends().contains(userContainer.find(id));
+    }
+    
     // ---- Getters/Setters -------------
    
     public int getCurrentPage() {
