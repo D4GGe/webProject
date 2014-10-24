@@ -38,15 +38,13 @@ public class NewUserCtrl implements Serializable{
     public String save(){
 
         
-        
-        
-        
-        if(!userContainer.userExsists(newUserBB.getName())){
+        if(!userContainer.userExsists(newUserBB.getName())&newUserBB.getName().length()>3&newUserBB.getPassword().length()>2&newUserBB.getEmail().length()>4){
         User user = new User(newUserBB.getName(),newUserBB.getPassword(), newUserBB.getEmail());
             userContainer.create(user);
         loginBean.login(user.getName(),user.getPassword());
         return "user?faces-redirect=true"; 
         }
+        System.out.println("daadssfdfds");
         return "registerFail.xhtml?faces-redirect=true";
 
         
