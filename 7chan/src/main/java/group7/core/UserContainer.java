@@ -37,8 +37,11 @@ public class UserContainer extends AbstractDAO<User, Long> implements IUserConta
      
     
     @Override
-    public String test(){
-        return "test";
+    public boolean userExsists(String name){
+        EntityManager em = getEntityManager();
+        EasyCriteria<User> easyCriteria = easyCriteria = EasyCriteriaFactory.createQueryCriteria(em,User.class);
+        easyCriteria.andEquals("name", name);
+        return !easyCriteria.getResultList().isEmpty();
     }
     @Override
     public User login(String name, String password) {

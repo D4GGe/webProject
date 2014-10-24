@@ -48,6 +48,10 @@
         <from-outcome>main</from-outcome>
         <to-view-id>partials/main.xhtml</to-view-id>
     </navigation-case>
+    <navigation-case>
+        <from-outcome>loginfail</from-outcome>
+        <to-view-id>partials/loginFail.xhtml</to-view-id>
+    </navigation-case>
 </navigation-rule>       
     
 </faces-config>
