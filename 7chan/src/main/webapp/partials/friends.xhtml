@@ -3,24 +3,47 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:h="http://java.sun.com/jsf/html"> 
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"> 
+
     <h:body>
         <ui:composition template="/WEB-INF/template.xhtml">
+            <h3>Users</h3>
             <ui:define name="content">
-                 <h3>Friends</h3>
+                #{listUserBB.userFriends()}
+
                 <div class="list-group">
-                    <ui:repeat var="user" value="#{loginBean.user.friends}" varStatus="status">
-                        <h:form>
-                            <b>User name:</b>#{user.get_name()}<br></br>
-                        
-                            <b>Real name:</b>#{user.firstname} #{user.lastname}<br></br>
-        
-                            <b>Member since:</b><p style="color: #adadad">#{user.date}</p><br></br>
-                            
-                        </h:form>
+                    <ui:repeat var="user" value="#{listUserBB.list}" varStatus="status">
+
+                        <div class="list-group">
+                            <div class="list-group-item disabled">
+                                #{user.name} 
+
+
+
+
+                            </div>
+                            <div class="list-group-item"><b>Real name:</b> #{user.firstname} #{user.lastname} </div>
+                            <div class="list-group-item"><b>Age:</b> #{user.age}  </div>
+                            <div class="list-group-item"><b>E-mail:</b> #{user.email}  </div>
+                            <div class="list-group-item"><b>Number of posts:</b> #{user.nrPosts}  </div>
+                            <div class="list-group-item"><b>Number of comments:</b> #{user.nrComments}  </div>
+                            <div class="list-group-item">
+                                <h:form>
+                                    <div class="btn-group">
+                                        <h:link value="Send messege" outcome="sendMessenge.xhtml" class="btn btn-primary" >
+                                            <f:param name="userId" value="#{user.id}"/>
+                                        </h:link>
+
+                                        <h:commandButton value="Remove Friend"  actionListener="#{addFriendCtrl.removeFriend(user.id)}"  styleClass="btn btn-danger">
+                                        </h:commandButton>
+                                    </div>
+                                </h:form>
+
+                            </div>
+                        </div>
                     </ui:repeat>
-                     </div>
-                
+                </div>
 
 
 

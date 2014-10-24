@@ -14,13 +14,11 @@
                 
                 <h:form>
                     
-                        
-                        
-                    <h:outputLabel value="Send a messenge to ; #{sendMessengeBB.userName}" />
+                    <h:outputLabel value="Send a messenge to : #{sendMessengeBB.userName}" />
                     <h:inputTextarea value="#{sendMessengeBB.content}" class="form-control" rows="3"/>
                     <div class="btn-group">
                         <h:commandButton value="Save" actionListener="#{sendMessengeCtrl.send}" 
-                                         action="postStream?faces-redirect=true" class="btn btn-primary whide_button "/>
+                                         action="messages?faces-redirect=true" class="btn btn-primary whide_button "/>
                     </div>
                 </h:form>
                 
