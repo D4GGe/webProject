@@ -17,6 +17,15 @@
         <h:outputStylesheet library="css" name="jumb.css"  />
         <h:outputScript library="js" name="bootstrap.min.js"/>
       
+    <script>
+function myFunction() {
+  
+    confirm("Accept this!!!!");
+     
+    document.getElementById("demo").innerHTML;
+}
+
+</script>
 
         <title>7chan</title>
 
@@ -182,9 +191,10 @@
                                                     <f:ajax render="regbutton" />
                                                 </h:selectBooleanCheckbox>
                                                 <label class="control-label-reg">
-                                                    <a data-toggle="modal" data-target=".modaltva">
+                                                    <a onclick="myFunction()">
                                                         Accept terms and conditions
                                                     </a> 
+                                                    <p id="demo"></p>
                                                 </label>
 
                                             <!-- Button -->                                             
@@ -198,29 +208,7 @@
                                                 
                                             </h:form>
 
-                                            <div class="modal fade modaltva">
-                                                <div class="modal-dialog" id="terms">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-
-                                                            <h4 class="modal-title">Terms and conditions</h4>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <p>blablablablablablaablablablablablalab</p>
-                                                            <!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
-                                                            <!--<button type="button" class="btn btn-primary" data-dismiss="modal"></button>-->
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <center>
-                                                                <button type="button" class="btn btn-primary" data-dismiss="modal">I have read the conditions</button>
-                                                            </center>
-                                                        </div>
-
-                                                    </div><!-- /.modal-content -->
-
-                                                </div><!-- /.modal-dialog -->
-
-                                            </div><!-- /.modal -->
+                                            
                                             </fieldset>
                                     </h:form>
                                     
