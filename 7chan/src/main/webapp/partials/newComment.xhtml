@@ -8,6 +8,7 @@
         <ui:composition template="/WEB-INF/template.xhtml">
             <ui:define name="metadata">
                 <f:metadata>
+                    <!-- Wrong to stash this variable in to an sesionscoped bean but it crashes when i try to move it and time is short.. -->
                     <f:viewParam name="postId" value="#{loginBean.postid}"/>
                 </f:metadata>
             </ui:define>

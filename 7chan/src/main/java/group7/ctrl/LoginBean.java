@@ -54,17 +54,9 @@ public class LoginBean implements Serializable {
     }
    
     public String login(String userName,String userPassword) {
-        //User result = userContainer.login(loginBB.getName(), loginBB.getPassword());
+        User result = userContainer.login(loginBB.getName(), loginBB.getPassword());
         //wrong metod shuld be an sql query but (as the function over)
-        User result = null;
-        for (User user : userContainer.findAll()) {
-                if(userName.equals(user.get_name()) && userPassword.equals(user.get_password())){
-                    result = user;
-                    
-                    break;
-                }
-        }
-
+       
         if (result != null) {
             this.loggedIn = true;
             this.user = result;

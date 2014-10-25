@@ -41,33 +41,24 @@ public class UserContainer extends AbstractDAO<User, Long> implements IUserConta
     @Override
     public boolean userExsists(String name){
         EntityManager em = getEntityManager();
-        EasyCriteria<User> easyCriteria = easyCriteria = EasyCriteriaFactory.createQueryCriteria(em,User.class);
+        EasyCriteria<User> easyCriteria  = EasyCriteriaFactory.createQueryCriteria(em,User.class);
         easyCriteria.andEquals("name", name);
         return !easyCriteria.getResultList().isEmpty();
     }
     @Override
     public User login(String name, String password) {
-         EntityManager em = getEntityManager();
-       
-        // Warning because typename not found in string (clazz.getSimpleName())
-        // Criteria API better, possible misstakes in String, NOTE space before t
-        TypedQuery<User> q =  em.createQuery("select U from CHAN_USER U where U.name =':name' AND U.password =':password'",User.class);
-        q.setParameter("name", name);
-        q.setParameter("password", password);
-        
-        List<User> a = q.getResultList();
-        if (a.size()==0){
-            return null;
-        }else{
-           return a.get(0);
-        }
+          EntityManager em = getEntityManager();
+        EasyCriteria<User> easyCriteria  = EasyCriteriaFactory.createQueryCriteria(em,User.class);
+        easyCriteria.andEquals("name", name);
+        easyCriteria.andEquals("password", password);
+        return easyCriteria.getSingleResult();
         
     }
 
     @Override
     public List<User> getByName(String name) {
         EntityManager em = getEntityManager();
-        EasyCriteria<User> easyCriteria = easyCriteria = EasyCriteriaFactory.createQueryCriteria(em,User.class);
+        EasyCriteria<User> easyCriteria  = EasyCriteriaFactory.createQueryCriteria(em,User.class);
         easyCriteria.andStringLike("name","%"+name+"%");
         return easyCriteria.getResultList();
         
