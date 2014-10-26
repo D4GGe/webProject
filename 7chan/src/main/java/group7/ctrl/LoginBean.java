@@ -10,6 +10,7 @@ import group7.core.IUserContainer;
 import group7.core.PostContainer;
 import group7.core.User;
 import group7.core.UserContainer;
+import group7.util.Md5;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -53,26 +54,19 @@ public class LoginBean implements Serializable {
         this.loginBB = loginBB;
     }
    
-    public String login(String userName,String userPassword) {
-        User result = userContainer.login(loginBB.getName(), loginBB.getPassword());
+    public void login(User user) {
+        //User result = userContainer.login(loginBB.getName(), loginBB.getPassword());
         //wrong metod shuld be an sql query but (as the function over)
-       
-        if (result != null) {
-            this.loggedIn = true;
-            this.user = result;
-            System.out.println(this.user.getName());
-            return "user?faces-redirect=true";
-            
-        } else {
-            System.out.println("login fail "+ userName);
-            return "loginFail.xhtml?faces-redirect=true";
-        }
-
+       if(user != null){
+        this.loggedIn = true;
+       this.user = user;
+       }
     }
     
     
     public String login() {
-        User result = userContainer.login(loginBB.getName(), loginBB.getPassword());
+        User result = userContainer.login(loginBB.getName(), Md5.hash(loginBB.getPassword()));
+        
         //wrong metod shuld be an sql query but (as the function over)
         /*User result = null;
         for (User user : userContainer.findAll()) {
@@ -84,7 +78,7 @@ public class LoginBean implements Serializable {
         }*/
 
         if (result != null) {
-            // get Http Session and store username
+            
             this.loggedIn = true;
             this.user = result;
             return "user?faces-redirect=true";

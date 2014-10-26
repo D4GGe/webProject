@@ -47,28 +47,22 @@
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav nav-pills pull-right">
-                        <c:if test="#{loginBean.loggedIn}">
+                         <ui:fragment rendered="#{loginBean.loggedIn}">
                             <li><h:link value="New Post" class="navbar-brand" outcome="newPost" /></li>
-                        </c:if>
-                        <c:if test="#{loginBean.loggedIn}">
                             <li><h:link value="Friends" class="navbar-brand" outcome="friends" /></li>
-                        </c:if>
-                        <c:if test="#{loginBean.loggedIn}">
                             <li><h:link value="Old posts" class="navbar-brand" outcome="oldposts" /></li>
-                        </c:if>
-                        <c:if test="#{loginBean.loggedIn}">
                             <li><h:link value="Messages" class="navbar-brand" outcome="messages" /></li>
-                        </c:if>
+                         </ui:fragment>
                         <li><h:link value="About" class="navbar-brand" outcome="about" /></li>
                         <li><h:link value="Post stream" class="navbar-brand" outcome="postStream" /> </li>
-                        <c:if test="#{not loginBean.loggedIn}">
+                        <ui:fragment rendered="#{not loginBean.loggedIn}">
                             <li> <a class="navbar-brand " href="#signup" data-toggle="modal" data-target=".bs-modal-sm">Sign In/Register</a> </li>
-                        </c:if>
-                        <c:if test="#{loginBean.loggedIn}">
+                        </ui:fragment>
+                        <ui:fragment rendered="#{loginBean.loggedIn}">
 
                             <li><h:link value="Users" class="navbar-brand" outcome="userList" /> </li>
                             <li><h:link value="Profile" class="navbar-brand" outcome="user" /> </li>
-                        </c:if>
+                        </ui:fragment>
 
 
                     </ul>               
