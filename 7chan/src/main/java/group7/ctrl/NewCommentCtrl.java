@@ -1,3 +1,8 @@
+/*
+ * Control bean for new comment.
+ * Execute business logic.
+ *
+ */
 package group7.ctrl;
 
 import goup7.view.NewCommentBB;
@@ -6,8 +11,6 @@ import group7.core.IPostContainer;
 import group7.core.IUserContainer;
 import group7.core.Post;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;

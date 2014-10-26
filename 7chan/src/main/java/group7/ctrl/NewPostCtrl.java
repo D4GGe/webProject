@@ -1,7 +1,7 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Control bean for new post.
+ * Execute business logic.
+ *
  */
 
 package group7.ctrl;
@@ -10,8 +10,6 @@ import goup7.view.NewPostBB;
 import group7.core.IPostContainer;
 import group7.core.IUserContainer;
 import group7.core.Post;
-import group7.core.PostContainer;
-import group7.core.UserContainer;
 import java.io.Serializable;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;

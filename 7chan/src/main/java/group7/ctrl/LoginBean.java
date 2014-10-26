@@ -1,25 +1,20 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Control bean for logged in user.
+ * Execute business logic for logging in and logging out.
+ *
  */
 package group7.ctrl;
 
 import goup7.view.LoginBB;
 import group7.core.IUserContainer;
-import group7.core.PostContainer;
 import group7.core.User;
-import group7.core.UserContainer;
 import group7.util.Md5;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
-import javax.servlet.http.HttpSession;
 
 @Named
 @SessionScoped
