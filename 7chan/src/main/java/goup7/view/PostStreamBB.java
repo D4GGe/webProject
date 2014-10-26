@@ -51,7 +51,7 @@ public class PostStreamBB implements Serializable {
         return postContainer.findRange(pageSize * currentPage, pageSize);
     }
     public Collection<Integer> getPages(){
-        Collection a = new ArrayList<Integer>();
+        Collection<Integer> a = new ArrayList<>();
         for(int n = 0; (n) * pageSize < count;n++){
             a.add(n+1);
         }

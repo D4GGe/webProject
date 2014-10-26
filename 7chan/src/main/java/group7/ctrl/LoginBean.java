@@ -60,24 +60,28 @@ public class LoginBean implements Serializable {
         if (result != null) {
             this.loggedIn = true;
             this.user = result;
+            System.out.println(this.user.getName());
             return "user?faces-redirect=true";
-
+            
         } else {
+            System.out.println("login fail "+ userName);
             return "loginFail.xhtml?faces-redirect=true";
         }
 
     }
+    
+    
     public String login() {
-        //User result = userContainer.login(loginBB.getName(), loginBB.getPassword());
+        User result = userContainer.login(loginBB.getName(), loginBB.getPassword());
         //wrong metod shuld be an sql query but (as the function over)
-        User result = null;
+        /*User result = null;
         for (User user : userContainer.findAll()) {
                 if(loginBB.getName().equals(user.get_name()) && loginBB.getPassword().equals(user.get_password())){
                     result = user;
                     
                     break;
                 }
-        }
+        }*/
 
         if (result != null) {
             // get Http Session and store username
