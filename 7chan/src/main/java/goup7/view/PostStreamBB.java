@@ -1,14 +1,11 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Backing bean. Holds data for the post stream.
  */
 
 package goup7.view;
 
 import group7.core.IPostContainer;
 import group7.core.Post;
-import group7.core.PostContainer;
 import group7.ctrl.LoginBean;
 import java.io.Serializable;
 import java.util.ArrayList;

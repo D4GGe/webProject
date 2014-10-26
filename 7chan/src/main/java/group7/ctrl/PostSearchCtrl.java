@@ -1,19 +1,16 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Control bean for searching among posts.
+ * Execute business logic.
+ *
  */
-
 package group7.ctrl;
 
-import goup7.view.PostSearchBB;
 import group7.core.IPostContainer;
 import group7.core.Post;
 import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
-import javax.inject.Inject;
 import javax.inject.Named;
 
 /**
