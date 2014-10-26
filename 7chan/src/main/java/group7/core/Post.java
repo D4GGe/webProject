@@ -122,10 +122,6 @@ public class Post extends AbstractEntity {
      */
     public void setUser(User user) {
         this.user = user;
-    }
-   
-   
-   
-   
+    } 
     
 }
