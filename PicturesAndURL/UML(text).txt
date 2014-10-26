@@ -2,7 +2,7 @@ UML i textform:
 för grupp 7 - HT2014
 Daniel, Kevin, Richard, Sanna
 
-Betäckningar: D - done ; C - changed ; N - new (för final version mot dev. version)
+Betäckningar: D - done ; C - changed ; N - new ; M - made (för final version mot dev. version)
 Klasserna följer UML-n uppifrån och ner( Med nya klasser på slutet):
 
 -----------------------------------------------------------------------------------example
@@ -114,7 +114,7 @@ AbstractEntityContainer<T ex IEntity<K>,K>
 +(O) findAll() : List<T>
 +(O) findRange(int,int) : List<T>
 +(O) count() : int
------------------------------------------------------------------------------------Comment --- C
+-----------------------------------------------------------------------------------Comment --- C-M-D
 Comment
 --
 
@@ -132,7 +132,7 @@ Comment
 + getUser() : User
 + setUser(User)
 +(O) toString(): String
------------------------------------------------------------------------------------Post --- C
+-----------------------------------------------------------------------------------Post --- C-M-D
 Post
 --
 - name : String
@@ -153,7 +153,7 @@ Post
 + setComments(List<Comment>)
 + getUser() : User
 + setUser(User)
------------------------------------------------------------------------------------User --- C
+-----------------------------------------------------------------------------------User --- C-M-D
 User
 --
 - name : String
@@ -208,7 +208,7 @@ User
 + setFriends(List<User>)
 + getMessenges() : List<Messenge>
 + setMessenges(List<Messenge>)
------------------------------------------------------------------------------------IUserContainer --- C
+-----------------------------------------------------------------------------------IUserContainer --- C-M-D
 IUserContainer
 --
 
@@ -216,14 +216,14 @@ IUserContainer
 + userExsists(String) : boolean
 + getByName(String) : List<User>
 + login(String, String) : User
------------------------------------------------------------------------------------IPostContainer --- C
+-----------------------------------------------------------------------------------IPostContainer --- C-M-D
 IPostContainer
 --
 
 --
 + getByName(String) : List<Post>
 + getByUser(User) : List<Post>
------------------------------------------------------------------------------------UserContainer---C
+-----------------------------------------------------------------------------------UserContainer---C-M-D
 UserContainer
 --
 -(PeCo) em : EntityManager
@@ -234,7 +234,7 @@ UserContainer
 +(O) userExsists(String)
 +(O) login(String, String) : User
 +(O) getByName(String) : List<User>
------------------------------------------------------------------------------------PostContainer --- C
+-----------------------------------------------------------------------------------PostContainer --- C-M-D
 PostContainer
 --
 -(PeCo) em : EntityManager
@@ -244,7 +244,7 @@ PostContainer
 +(s) newInstance() : IPostContainer
 +(O) getByUser(User) : List<Post>
 +(O) getByName(String) : List<Post>
------------------------------------------------------------------------------------LoginBean --- C
+-----------------------------------------------------------------------------------LoginBean --- C-M-D
 LoginBean
 --
 -(s)(f) serialVersionUID : Long
@@ -279,7 +279,7 @@ LoginBB
 + setName(String)
 + getPassword() : String
 + setPassword(String)
------------------------------------------------------------------------------------NewCommentCtrl --- C
+-----------------------------------------------------------------------------------NewCommentCtrl --- C-M-D
 NewCommentCtrl
 --
 - newCommentBB : NewCommentBB
@@ -290,7 +290,7 @@ NewCommentCtrl
 # NewCommentCtrl()
 +(inj) setNewCommentBB(NewCommentBB)
 + save()
------------------------------------------------------------------------------------NewCommentBB --- C
+-----------------------------------------------------------------------------------NewCommentBB --- C-M-D
 NewCommentBB
 --
 - name : String
@@ -309,7 +309,7 @@ NewCommentBB
 + getPost() : Post
 + setPost(Post)
 + getPostid() : long
------------------------------------------------------------------------------------NewUserCtrl --- C
+-----------------------------------------------------------------------------------NewUserCtrl --- C-M-D
 NewUserCtrl
 --
 - newUserBB : NewUserBB
@@ -318,7 +318,7 @@ NewUserCtrl
 --
 +(inj) setnubb(NewUserBB)
 + save() : String
------------------------------------------------------------------------------------NewUserBB --- C
+-----------------------------------------------------------------------------------NewUserBB --- C-M-D
 NewUserBB
 --
 - name : String
@@ -332,7 +332,7 @@ NewUserBB
 + getPassword() : String
 + setPassword(String)
 +(O) toString() : String
------------------------------------------------------------------------------------EditUserCtrl --- C
+-----------------------------------------------------------------------------------EditUserCtrl --- C-M-D
 EditUserCtrl
 --
 -(inj) editUserBB : EditUserBB
@@ -342,7 +342,7 @@ EditUserCtrl
 # EditUserCtrl()
 + edit()
 + delete()
------------------------------------------------------------------------------------EditUserBB --- C
+-----------------------------------------------------------------------------------EditUserBB --- C-M-D
 EditUserBB
 --
 - id : long
@@ -367,7 +367,7 @@ EditUserBB
 + setPassword(String)
 + getName() : String
 + getPassword() : String
------------------------------------------------------------------------------------NewPostCtrl --- C
+-----------------------------------------------------------------------------------NewPostCtrl --- C-M-D
 NewPostCtrl
 --
 -(ejb) postContainer : IPostContainer
@@ -388,7 +388,7 @@ NewPostBB
 + setName(String)
 + getContent() : String
 + setContent(String)
------------------------------------------------------------------------------------ListUserBB --- C
+-----------------------------------------------------------------------------------ListUserBB --- C-M-D
 ListUserBB
 --
 - currentPage : int
@@ -411,7 +411,7 @@ ListUserBB
 + getSearchWord() : String
 + setSeatchWord(String)
 + doSearch()
------------------------------------------------------------------------------------PostStreamBB --- C
+-----------------------------------------------------------------------------------PostStreamBB --- C-M-D
 PostStreamBB
 --
 - currentPage : int
@@ -430,7 +430,7 @@ PostStreamBB
 + getCurrentPage() : int
 + setCurrentPage(int)
 + count() : int
------------------------------------------------------------------------------------PostSearchCtrl --- N
+-----------------------------------------------------------------------------------PostSearchCtrl --- N-M-D
 PostSearchCtrl
 --
 -(ejb) postContainer : IPostContainer
@@ -442,7 +442,7 @@ PostSearchCtrl
 + setPosts(List<Post>)
 + getSearch() : String
 + setSearch(String)
------------------------------------------------------------------------------------SendMessengeCtrl --- N
+-----------------------------------------------------------------------------------SendMessengeCtrl --- N-M-D
 SendMessengeCtrl
 --
 -(ejb) userContainer : IUserContainer
@@ -450,15 +450,15 @@ SendMessengeCtrl
 -(inj) sendMessengeBB : SendMessengeBB
 --
 + send()
------------------------------------------------------------------------------------addFriendCtrl --- N
-addFriendCtrl
+-----------------------------------------------------------------------------------AddFriendCtrl --- N-M-D
+AddFriendCtrl
 --
 -(ejb) userContainer : IUserContainer
 -(inj) loginBean : LoginBean
 --
 + removeFriend(long)
 + addFriend(long)
------------------------------------------------------------------------------------Messenge --- N
+-----------------------------------------------------------------------------------Messenge --- N-M-D
 Messenge
 --
 -(T) date : Date
@@ -479,7 +479,7 @@ Messenge
 + setReceiver(User)
 + isIsSender() : boolean
 + setIsSender(boolean)
------------------------------------------------------------------------------------PostSearchBB --- N
+-----------------------------------------------------------------------------------PostSearchBB --- N-M-D
 PostSearchBB
 --
 - search : String
@@ -490,8 +490,8 @@ PostSearchBB
 + getSearch() : String
 + setSearch(String)
 + preformSearch()
------------------------------------------------------------------------------------SendMessageBB --- N
-SendMessageBB
+-----------------------------------------------------------------------------------SendMessengeBB --- N-M-D
+SendMessengeBB
 --
 - userId : long
 - content : String
