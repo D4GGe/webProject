@@ -9,6 +9,7 @@ package group7.ctrl;
 import goup7.view.NewUserBB;
 import group7.core.IUserContainer;
 import group7.core.User;
+import group7.util.Md5;
 import java.io.Serializable;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
@@ -39,9 +40,9 @@ public class NewUserCtrl implements Serializable{
 
         
         if(!userContainer.userExsists(newUserBB.getName())&newUserBB.getName().length()>3&newUserBB.getPassword().length()>2&newUserBB.getEmail().length()>4){
-        User user = new User(newUserBB.getName(),newUserBB.getPassword(), newUserBB.getEmail());
+        User user = new User(newUserBB.getName(),Md5.hash(newUserBB.getPassword()), newUserBB.getEmail());
         userContainer.create(user);
-        loginBean.login(user.getName(),user.getPassword());
+        loginBean.login(user);
         return "user?faces-redirect=true"; 
         }
         System.out.println("daadssfdfds");
