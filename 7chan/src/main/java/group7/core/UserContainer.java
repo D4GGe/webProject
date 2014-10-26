@@ -1,7 +1,6 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * UserContainer, holds all the users and have some custom querys to search or users.
+ * login returns a the user if it exists a user with the right password and the right username, this is used in Loginbean
  */
 
 package group7.core;
