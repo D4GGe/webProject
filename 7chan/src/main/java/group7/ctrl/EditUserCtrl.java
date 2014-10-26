@@ -38,7 +38,7 @@ public class EditUserCtrl implements Serializable{
     }
     
     public void edit(){
-        loginBean.getUser().set_password(editUserBB.getPassword());
+        loginBean.getUser().setPassword(editUserBB.getPassword());
         loginBean.getUser().setFirstname(editUserBB.getFirstname());
         loginBean.getUser().setLastname(editUserBB.getLastname());
         loginBean.getUser().setAge(editUserBB.getAge());
@@ -49,7 +49,7 @@ public class EditUserCtrl implements Serializable{
     }
 
     public void delete(){
-        loginBean.getUser().set_disabled(true);
+        loginBean.getUser().setDisabled(true);
         
         userContainer.update(loginBean.getUser());
         

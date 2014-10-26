@@ -167,6 +167,7 @@
                                                     <h:inputText a:placeholder="example@mail.com" value="#{newUserBB.email}" class="form-control input-large"/> 
                                                     <!--<input id="Email" name="Email" class="form-control" type="text" placeholder="JoeSixpack@sixpacksrus.com" class="input-large" required="">-->
                                                 </div>
+                                                <i class="atleast">At least 5 characters.</i>
                                             </div>
 
                                             <!-- Text input-->
@@ -176,6 +177,8 @@
                                                     <h:inputText a:placeholder="username" value="#{newUserBB.name}" class="form-control input-large"/> 
                                                     <!--<input id="userid" name="userid" class="form-control" type="text" placeholder="JoeSixpack" class="input-large" required="">-->
                                                 </div>
+                                                
+                                                <i class="atleast">At least 4 characters.</i>
                                             </div>
 
                                             <!-- Password input-->
@@ -185,7 +188,7 @@
                                                     <h:inputText a:placeholder="password" value="#{newUserBB.password}" class="form-control input-large" />
 
                                                 </div>
-                                                <i>At least 3 characters.</i>
+                                                <i class="atleast">At least 3 characters.</i>
                                             </div>
                                             <h:form id="form2">
                                                 <h:selectBooleanCheckbox id="check" binding="#{check}">
