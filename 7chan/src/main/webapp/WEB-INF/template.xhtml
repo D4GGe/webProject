@@ -16,16 +16,17 @@
         <h:outputStylesheet library="css" name="custom.css"  />
         <h:outputStylesheet library="css" name="jumb.css"  />
         <h:outputScript library="js" name="bootstrap.min.js"/>
-      
-    <script>
-function myFunction() {
-  
-    confirm("Accept this!!!!");
-     
-    document.getElementById("demo").innerHTML;
-}
 
-</script>
+        <script>
+            function popitup(url) {
+
+                newwindow = window.open(url, 'name', 'height=400,width=250');
+                if (window.focus) {
+                    newwindow.focus();
+                }
+                return false;
+            }
+        </script>
 
         <title>7chan</title>
 
@@ -191,27 +192,27 @@ function myFunction() {
                                                     <f:ajax render="regbutton" />
                                                 </h:selectBooleanCheckbox>
                                                 <label class="control-label-reg">
-                                                    <a onclick="myFunction()">
+                                                    <a href="popupex.xhtml" onclick="return popitup('popupex.xhtml')">
                                                         Accept terms and conditions
                                                     </a> 
-                                                    <p id="demo"></p>
+
+
                                                 </label>
 
-                                            <!-- Button -->                                             
-                                                    <label class="control-label" for="confirmsignup"></label>
-                                                    <div class="controls">
-                                                        <h:commandButton id="regbutton" value="Register" type="submit" 
-                                                                         action="#{newUserCtrl.save}" class="btn btn-success" disabled="#{not check.value}"/>
-                                                                         
+                                                <!-- Button -->                                             
+                                                <label class="control-label" for="confirmsignup"></label>
+                                                <div class="controls">
+                                                    <h:commandButton id="regbutton" value="Register" type="submit" 
+                                                                     action="#{newUserCtrl.save}" class="btn btn-success" disabled="#{not check.value}"/>
 
-                                                    </div>
-                                                
+                                                </div>
+
                                             </h:form>
 
-                                            
-                                            </fieldset>
+
+                                        </fieldset>
                                     </h:form>
-                                    
+
                                 </div>
                             </div>
                         </div>
@@ -226,7 +227,7 @@ function myFunction() {
 
             <!-- end modal -->
 
-            <script>        </script>
+            <script></script>
             <footer>
                 <p> </p>
             </footer>
@@ -234,4 +235,3 @@ function myFunction() {
 
     </h:body>
 </html>
-  
