@@ -48,12 +48,7 @@ public class EditUserCtrl implements Serializable{
        
     }
 
-    public void delete(){
-        loginBean.getUser().set_disabled(true);
-        
-        userContainer.update(loginBean.getUser());
-        
-    }
+    
     /*
     Depending on the behaviour of the database, 
     the commented solution might be the optimal solution for editing a user. 
