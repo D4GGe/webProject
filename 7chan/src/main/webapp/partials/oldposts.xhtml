@@ -3,7 +3,8 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:h="http://java.sun.com/jsf/html"> 
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"> 
     <h:body>
         <ui:composition template="/WEB-INF/template.xhtml">
             <ui:define name="content">
@@ -11,11 +12,12 @@
                 <div class="list-group">
                     <ui:repeat var="post" value="#{postStreamBB.userPosts}" varStatus="status">
                         <div class="list-group">
-                           
-                            <h4>#{post.name} </h4>
+                           <h:link outcome="newComment.xhtml" class="list-group-item">
+                                <f:param name="postId" value="#{post.id}"/>
+                               <h4>#{post.user.name}: #{post.name} </h4>
                             <p>#{post.content}</p>
                             <p style="color: #adadad">#{post.date}</p>
-                                
+                           </h:link>
                         </div>
                     </ui:repeat>
                 </div>
