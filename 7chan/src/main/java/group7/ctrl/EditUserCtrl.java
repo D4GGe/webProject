@@ -6,14 +6,10 @@
 package group7.ctrl; 
 
 import goup7.view.EditUserBB;
-import goup7.view.LoginBB;
-import goup7.view.NewUserBB;
 import group7.core.IUserContainer;
-import group7.core.User;
 import java.io.Serializable;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
-import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -38,7 +34,7 @@ public class EditUserCtrl implements Serializable{
     }
     
     public void edit(){
-        loginBean.getUser().set_password(editUserBB.getPassword());
+        loginBean.getUser().setPassword(editUserBB.getPassword());
         loginBean.getUser().setFirstname(editUserBB.getFirstname());
         loginBean.getUser().setLastname(editUserBB.getLastname());
         loginBean.getUser().setAge(editUserBB.getAge());
@@ -48,10 +44,5 @@ public class EditUserCtrl implements Serializable{
        
     }
 
-    
-    /*
-    Depending on the behaviour of the database, 
-    the commented solution might be the optimal solution for editing a user. 
-    (Unsure whether the information is stored when using loginbean) 
-    */
+
 }

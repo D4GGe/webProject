@@ -83,43 +83,7 @@ public class User extends AbstractEntity {
         this.date = date;
     }
     
-    public String get_name(){
-        return getName();
-        
-    }
-    public String get_password(){
-        return getPassword();
-    }
-    
-    
-    public int get_nr_posts(){
-        return getNrPosts();
-    }
-    
-     public int get_nr_comments(){
-        return getNrComments();
-    }
-    
-    public void set_name(String name){
-        this.setName(name);
-    }
-     public boolean get_disabled(){
-        return isDisabled();
-    }
-    
-    public void set_disabled(boolean disabled){
-        this.setDisabled(disabled);
-    }
-    
-    public void set_password(String password){
-        this.setPassword(password);
-    }
-    public void set_nr_posts(int nrPosts){
-        this.setNrPosts(nrPosts);
-    }
-    public void set_nr_comments(int nrComments){
-        this.setNrComments(nrComments);
-    }
+  
      public void increase_nr_comments(){
          this.setNrComments(this.getNrComments() + 1);
     }

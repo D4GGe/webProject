@@ -38,7 +38,7 @@ public class NewPostCtrl implements Serializable{
         
     }
     public void save(){
-        System.out.println(loginBean.getUser().get_name());
+        System.out.println(loginBean.getUser().getName());
         postContainer.create(new Post(newPostBB.getName(),newPostBB.getContent(),loginBean.getUser()));
        loginBean.getUser().increase_nr_posts();
         userContainer.update(loginBean.getUser()); 
