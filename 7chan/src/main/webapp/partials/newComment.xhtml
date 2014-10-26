@@ -13,7 +13,7 @@
                 </f:metadata>
             </ui:define>
             <ui:define name="content">
-                <div class="well">
+                <div class="well list-post">
                     <h4>#{newCommentBB.getPost().name}</h4>
                     <br></br>
                    
@@ -23,14 +23,16 @@
                 <div class="list-group">
                     <ui:repeat var="p" value="#{newCommentBB.commentList}" varStatus="status">
                     
-                        <p class="list-group-item"><b>#{p.user.name}: </b>#{p.data} <br/>#{p.date}</p>
+                        <p class="list-group-item list-comment"><b>#{p.user.name}: </b>#{p.data} <br/>#{p.date}</p>
                             
                            
                        
                     </ui:repeat>
                 </div>
                
+                <ui:fragment rendered="#{loginBean.loggedIn}">
                 <h3>New Comment</h3>
+                
                 <h:form>
                         <h:outputLabel value="Content" />
                         <h:inputTextarea value="#{newCommentBB.content}" class="form-control" rows="3"/>
@@ -48,6 +50,7 @@
                         
                     </div>
                 </h:form>
+                </ui:fragment>
             </ui:define>
         </ui:composition>
     </h:body>
