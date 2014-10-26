@@ -2,7 +2,8 @@ UML i textform:
 för grupp 7 - HT2014
 Daniel, Kevin, Richard, Sanna
 
-Klasserna följer UML-n uppifrån och ner:
+Betäckningar: D - done ; C - changed ; N - new (för final version mot dev. version)
+Klasserna följer UML-n uppifrån och ner( Med nya klasser på slutet):
 
 -----------------------------------------------------------------------------------example
 <<StereoType>>
@@ -35,7 +36,7 @@ Class Name
 
 // Line break (\n) enter in-between text for line break
 
------------------------------------------------------------------------------------IDAO
+-----------------------------------------------------------------------------------IDAO --- D
 IDAO<T,K>
 --
 
@@ -49,7 +50,7 @@ IDAO<T,K>
 + findAll() : List<T>
 + findRange(int,int) : List<T>
 + count() : int
------------------------------------------------------------------------------------IEntity
+-----------------------------------------------------------------------------------IEntity --- D
 IEntity<K>
 --
 
@@ -57,7 +58,7 @@ IEntity<K>
 --
 
 + getId() : K
------------------------------------------------------------------------------------AbstractEntity
+-----------------------------------------------------------------------------------AbstractEntity --- D
 AbstractEntity
 --
 
@@ -69,13 +70,14 @@ AbstractEntity
 + getId() : Long
 +(O) hashCode() : int
 +(O) equals(Object) : boolean
------------------------------------------------------------------------------------AbstractDAO
+-----------------------------------------------------------------------------------AbstractDAO --- D
 AbstractDAO<T,K>
 --
 
 -(f) clazz : Class<T>
 --
 
++ AbstractDAO(Class<T>)
 #(a) getEntityManager() : EntityManager
 +(O) create(T)
 +(O) delete(K)
@@ -85,7 +87,7 @@ AbstractDAO<T,K>
 +(O) findRange(int,int) : List<T>
 - get(boolean, int, int) : List<T>
 +(O) count() : int
------------------------------------------------------------------------------------IEntityContainer
+-----------------------------------------------------------------------------------IEntityContainer --- D
 IEntityContainer<T ex IEntity<K>,K>
 --
 
@@ -99,7 +101,7 @@ IEntityContainer<T ex IEntity<K>,K>
 + findAll() : List<T>
 + findRange(int,int) : List<T>
 + count() : int
------------------------------------------------------------------------------------AbstractEntityContainer
+-----------------------------------------------------------------------------------AbstractEntityContainer --- D
 AbstractEntityContainer<T ex IEntity<K>,K>
 --
 
@@ -112,7 +114,7 @@ AbstractEntityContainer<T ex IEntity<K>,K>
 +(O) findAll() : List<T>
 +(O) findRange(int,int) : List<T>
 +(O) count() : int
------------------------------------------------------------------------------------Comment
+-----------------------------------------------------------------------------------Comment --- C
 Comment
 --
 
@@ -122,7 +124,7 @@ Comment
 --
 
 + Comment()
-+ Comment(String)
++ Comment(String, User)
 + getDate() : Date
 + getData() : String
 + setDate(Date)
@@ -130,13 +132,13 @@ Comment
 + getUser() : User
 + setUser(User)
 +(O) toString(): String
------------------------------------------------------------------------------------Post
+-----------------------------------------------------------------------------------Post --- C
 Post
 --
 - name : String
 -(T) date : Date
 - content : String
--(OTM) comments : List<Comment>
+-(MTM) comments : List<Comment>
 -(MTO) user : User
 --
 + post(String,String,user)
@@ -151,50 +153,88 @@ Post
 + setComments(List<Comment>)
 + getUser() : User
 + setUser(User)
------------------------------------------------------------------------------------User
+-----------------------------------------------------------------------------------User --- C
 User
 --
 - name : String
+- firstname : String
+- lastname : String
+- age : int
+- email : String
 - password : String
+- disabled : boolean
 - nrPosts : int
 - nrComments : int
+-(T) date : Date
+-(MTM) friends : List<User>
+-(MTM) messenges : List<Messenge>
 --
 + User()
 + User(String, String)
++ User(String, String, String)
++ getDate() : String
++ setDate(Date)
 + get_name() : String
 + get_password() : String
 + get_nr_posts() : int
 + get_nr_comments() : int
 + set_name(String)
++ get_disabled() : boolean
++ set_disabled(boolean)
 + set_password(String)
 + set_nr_posts(int)
 + set_nr_comments(int)
 + increase_nr_comments()
 + increase_nr_posts()
------------------------------------------------------------------------------------IUserContainer
++ getEmail() : String
++ setEmail(String)
++ getName() : String
++ setName(String)
++ getFirstname() : String
++ setFirstname(String)
++ getLastname() : String
++ setLastname(String)
++ getAge() : int
++ setAge(int)
++ getPassword() : String
++ setPassword(String)
++ isDisabled() : boolean
++ setDisabled(boolean)
++ getNrPosts() : int
++ setNrPosts(int)
++ getNrComments() : int
++ setNrComments(int)
++ getFriends() : List<User>
++ setFriends(List<User>)
++ getMessenges() : List<Messenge>
++ setMessenges(List<Messenge>)
+-----------------------------------------------------------------------------------IUserContainer --- C
 IUserContainer
 --
 
 --
-+ test() : String
++ userExsists(String) : boolean
++ getByName(String) : List<User>
 + login(String, String) : User
------------------------------------------------------------------------------------IPostContainer
+-----------------------------------------------------------------------------------IPostContainer --- C
 IPostContainer
 --
 
 --
 + getByName(String) : List<Post>
------------------------------------------------------------------------------------UserContainer
++ getByUser(User) : List<Post>
+-----------------------------------------------------------------------------------UserContainer---C
 UserContainer
 --
-- em : EntityManager
+-(PeCo) em : EntityManager
 --
 + UserContainer()
 #(O) getEntityManager : EntityManager
 +(s) newInstance() : IUserContainer
-+(O) test() : String
++(O) userExsists(String)
 +(O) login(String, String) : User
------------------------------------------------------------------------------------PostContainer
++(O) getByName(String) : List<User>
+-----------------------------------------------------------------------------------PostContainer --- C
 PostContainer
 --
 -(PeCo) em : EntityManager
@@ -202,23 +242,33 @@ PostContainer
 + PostContainer()
 #(O) getEntityManager : EntityManager
 +(s) newInstance() : IPostContainer
++(O) getByUser(User) : List<Post>
 +(O) getByName(String) : List<Post>
------------------------------------------------------------------------------------LoginBean
+-----------------------------------------------------------------------------------LoginBean --- C
 LoginBean
 --
--(s)(f) serialVersionUID : long
+-(s)(f) serialVersionUID : Long
 -(ejb) userContainer : IUserContainer
 - loginBB : LoginBB
 - user : User
 - loggedIn : boolean
+- postid : Long
+- redirect : String
 --
 +(PC) post()
++ isUser(long) : boolean
++ updateUser()
 +(inj) setLoginBB(LoginBB)
-+ login()
++ login(String, String) : String
++ login() : String
 + getUser() : User
 + getLoggedIn() : boolean
 + logout()
------------------------------------------------------------------------------------LoginBB
++ getPostid() : long
++ setPostid(long)
++ getRedirect() : String
++ setRedirect(String)
+-----------------------------------------------------------------------------------LoginBB --- D
 LoginBB
 --
 - name : String
@@ -229,22 +279,25 @@ LoginBB
 + setName(String)
 + getPassword() : String
 + setPassword(String)
------------------------------------------------------------------------------------NewCommentCtrl
+-----------------------------------------------------------------------------------NewCommentCtrl --- C
 NewCommentCtrl
 --
 - newCommentBB : NewCommentBB
+-(ejb) postContainer : IPostContainer
+-(ejb) userContainer : IUserContainer
+-(inj) loginBean : LoginBean
 --
 # NewCommentCtrl()
 +(inj) setNewCommentBB(NewCommentBB)
 + save()
------------------------------------------------------------------------------------NewCommentBB
+-----------------------------------------------------------------------------------NewCommentBB --- C
 NewCommentBB
 --
 - name : String
 - content : String
-- postId : long
 - post : Post
 -(ejb) postContainer : IPostContainer
++(inj) loginBean : LoginBean
 --
 +(PC) post()
 + getName() : String
@@ -255,55 +308,76 @@ NewCommentBB
 + getCommentList() : List<Comment>
 + getPost() : Post
 + setPost(Post)
------------------------------------------------------------------------------------NewUserCtrl
++ getPostid() : long
+-----------------------------------------------------------------------------------NewUserCtrl --- C
 NewUserCtrl
 --
 - newUserBB : NewUserBB
 -(ejb) UserContainer : IUserContainer
+-(inj) loginBean : LoginBean
 --
 +(inj) setnubb(NewUserBB)
-+ save()
------------------------------------------------------------------------------------NewUserBB
++ save() : String
+-----------------------------------------------------------------------------------NewUserBB --- C
 NewUserBB
 --
 - name : String
 - password : String
+- email : String
 --
 + getName() : String
++ getEmail() : String
++ setEmail(String)
 + setName(String)
 + getPassword() : String
 + setPassword(String)
 +(O) toString() : String
------------------------------------------------------------------------------------EditUserCtrl
+-----------------------------------------------------------------------------------EditUserCtrl --- C
 EditUserCtrl
 --
--(ejb) UserContainer : IUserContainer
-- UserBB : EditUserBB
+-(inj) editUserBB : EditUserBB
 -(inj) loginbean : LoginBean
+-(ejb) UserContainer : IUserContainer
 --
 # EditUserCtrl()
-+ update() : String
------------------------------------------------------------------------------------EditUserBB
++ edit()
++ delete()
+-----------------------------------------------------------------------------------EditUserBB --- C
 EditUserBB
 --
+- id : long
 - name : String
 - password : String
+- firstname : String
+- lastname : String
+- age : int
+(inj) loginBean : LoginBean
 --
 # EditUserBB()
++(PC) post()
++ getId() : long
++ getAge() : int
++ setAge(int)
++ getFirstname() : String
++ setFirstname(String)
++ getLastname() : String
++ setLastname(String)
++ setId(long)
 + setName(String)
 + setPassword(String)
 + getName() : String
 + getPassword() : String
------------------------------------------------------------------------------------NewPostCtrl
+-----------------------------------------------------------------------------------NewPostCtrl --- C
 NewPostCtrl
 --
--(ejb) PostContainer : IPostContainer
+-(ejb) postContainer : IPostContainer
+-(ejb) userContainer : IUserContainer
 -(inj) newPostBB : NewPostBB
 -(inj) loginbean : LoginBean
 --
 + NewPostCtrl()
 + save()
------------------------------------------------------------------------------------NewPostBB
+-----------------------------------------------------------------------------------NewPostBB --- D
 NewPostBB
 --
 - name : String
@@ -314,35 +388,117 @@ NewPostBB
 + setName(String)
 + getContent() : String
 + setContent(String)
------------------------------------------------------------------------------------ListUserBB
+-----------------------------------------------------------------------------------ListUserBB --- C
 ListUserBB
 --
 - currentPage : int
 -(f) pageSize : int
 - count : int
+- searchWord : String
+- list : Collection<User>
+(inj) loginBean : LoginBean
 -(ejb) userContainer : IUserContainer
 --
 # ListUserBB()
-+ user()
++(PC) user()
 + getList() : Collection<User>
 + next()
 + prev()
-+ getCurrentPage() : int
++ isFriend(long) : boolean
++ userFriends()
 + setCurrentPage(int)
 + count() : int
------------------------------------------------------------------------------------PostStreamBB
++ getSearchWord() : String
++ setSeatchWord(String)
++ doSearch()
+-----------------------------------------------------------------------------------PostStreamBB --- C
 PostStreamBB
 --
 - currentPage : int
 -(f) pageSize : int
 - count : int
 -(ejb) postContainer : IPostContainer
+-(inj) loginBean : LoginBean
 --
 # postStreamBB()
 +(PC) post()
++ getUserPosts() : Collection<Post>
 + getList() : Collection<User>
++ getPages() : Collection<Integer>
 + next()
 + prev()
 + getCurrentPage() : int
 + setCurrentPage(int)
 + count() : int
+-----------------------------------------------------------------------------------PostSearchCtrl --- N
+PostSearchCtrl
+--
+-(ejb) postContainer : IPostContainer
+- posts : List<Post>
+- search : String
+--
++ preform_search()
++ getPosts() : List<Post>
++ setPosts(List<Post>)
++ getSearch() : String
++ setSearch(String)
+-----------------------------------------------------------------------------------SendMessengeCtrl --- N
+SendMessengeCtrl
+--
+-(ejb) userContainer : IUserContainer
+-(inj) loginBean : LoginBean
+-(inj) sendMessengeBB : SendMessengeBB
+--
++ send()
+-----------------------------------------------------------------------------------addFriendCtrl --- N
+addFriendCtrl
+--
+-(ejb) userContainer : IUserContainer
+-(inj) loginBean : LoginBean
+--
++ removeFriend(long)
++ addFriend(long)
+-----------------------------------------------------------------------------------Messenge --- N
+Messenge
+--
+-(T) date : Date
+- content : String
+-(MTO) sender : User
+- receiver : User
+- isSender : boolean
+--
++ Messenge()
++ Messenge(String,User,User)
++ getDate() : Date
++ setDate(Date)
++ getContent() : String
++ setContent(String)
++ getSender() : User
++ setSender(User)
++ getReceiver() : User
++ setReceiver(User)
++ isIsSender() : boolean
++ setIsSender(boolean)
+-----------------------------------------------------------------------------------PostSearchBB --- N
+PostSearchBB
+--
+- search : String
+-(inj) postSearchCtrl : PostSearchCtrl
+--
++ PostSearchBB
++(PC) post()
++ getSearch() : String
++ setSearch(String)
++ preformSearch()
+-----------------------------------------------------------------------------------SendMessageBB --- N
+SendMessageBB
+--
+- userId : long
+- content : String
+(ejb) userContainer : IUserContainer
+--
++ getUserId() : long
++ getUserName() : String
++ setUserId(long)
++ getContent() : String
++ setContent(String)
