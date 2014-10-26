@@ -1,7 +1,6 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Messenge class, holds messange, wich user as sended and wich user as recived
+ * Exsists only in users
  */
 package group7.core;
 
